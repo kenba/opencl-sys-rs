@@ -1,3 +1,5 @@
+[![crates.io](https://img.shields.io/crates/v/opencl-sys.svg)](https://crates.io/crates/opencl-sys)
+[![docs.io](https://docs.rs/opencl-sys/badge.svg)](https://docs.rs/opencl-sys/)
 [![OpenCL 3.0](https://img.shields.io/badge/OpenCL-3.0-blue.svg)](https://www.khronos.org/registry/OpenCL/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Rust](https://github.com/kenba/opencl-sys-rs/workflows/Rust/badge.svg)](https://github.com/kenba/opencl-sys-rs/actions)
@@ -6,8 +8,8 @@ OpenCL C FFI bindings for the Rust programming language.
 
 # Description
 
-Rust [FFI](https://doc.rust-lang.org/nomicon/ffi.html) Bindings to the
-[Khronos OpenCL C language headers](https://github.com/KhronosGroup/OpenCL-Headers),
+Rust [FFI](https://doc.rust-lang.org/nomicon/ffi.html) Bindings to the Khronos
+[OpenCL C language headers](https://github.com/KhronosGroup/OpenCL-Headers),
 see the [OpenCL Resource Guide](https://www.khronos.org/opencl/resources).
 
 The Rust FFI files attempt to match the format and layout of the original

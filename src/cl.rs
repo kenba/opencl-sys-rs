@@ -1269,7 +1269,10 @@ extern "system" {
     ) -> cl_program;
 
     #[cfg(feature = "CL_VERSION_2_2")]
-    #[deprecated(since = "0.1.0", note = "From CL_VERSION_3_0")]
+    #[cfg_attr(
+        feature = "CL_VERSION_3_0",
+        deprecated(since = "0.1.0", note = "From CL_VERSION_3_0")
+    )]
     pub fn clSetProgramReleaseCallback(
         program: cl_program,
         pfn_notify: Option<unsafe extern "C" fn(program: cl_program, user_data: *mut c_void)>,
@@ -1787,7 +1790,16 @@ extern "system" {
 
     // Deprecated OpenCL 1.1 APIs
 
-    #[deprecated(since = "0.1.0", note = "From CL_VERSION_1_2 use clCreateImage")]
+    #[cfg_attr(
+        any(
+            feature = "CL_VERSION_1_2",
+            feature = "CL_VERSION_2_0",
+            feature = "CL_VERSION_2_1",
+            feature = "CL_VERSION_2_2",
+            feature = "CL_VERSION_3_0"
+        ),
+        deprecated(since = "0.1.0", note = "From CL_VERSION_1_2 use clCreateImage")
+    )]
     pub fn clCreateImage2D(
         context: cl_context,
         flags: cl_mem_flags,
@@ -1799,7 +1811,16 @@ extern "system" {
         errcode_ret: *mut cl_int,
     ) -> cl_mem;
 
-    #[deprecated(since = "0.1.0", note = "From CL_VERSION_1_2 use clCreateImage")]
+    #[cfg_attr(
+        any(
+            feature = "CL_VERSION_1_2",
+            feature = "CL_VERSION_2_0",
+            feature = "CL_VERSION_2_1",
+            feature = "CL_VERSION_2_2",
+            feature = "CL_VERSION_3_0"
+        ),
+        deprecated(since = "0.1.0", note = "From CL_VERSION_1_2 use clCreateImage")
+    )]
     pub fn clCreateImage3D(
         context: cl_context,
         flags: cl_mem_flags,
@@ -1813,7 +1834,19 @@ extern "system" {
         errcode_ret: *mut cl_int,
     ) -> cl_mem;
 
-    #[deprecated(since = "0.1.0", note = "From CL_VERSION_1_2 use clEnqueueMarkerWithWaitList")]
+    #[cfg_attr(
+        any(
+            feature = "CL_VERSION_1_2",
+            feature = "CL_VERSION_2_0",
+            feature = "CL_VERSION_2_1",
+            feature = "CL_VERSION_2_2",
+            feature = "CL_VERSION_3_0"
+        ),
+        deprecated(
+            since = "0.1.0",
+            note = "From CL_VERSION_1_2 use clEnqueueMarkerWithWaitList"
+        )
+    )]
     pub fn clEnqueueMarker(command_queue: cl_command_queue, event: *mut cl_event) -> cl_int;
 
     #[deprecated(since = "0.1.0", note = "From CL_VERSION_1_2")]
@@ -1823,18 +1856,65 @@ extern "system" {
         event_list: *mut cl_event,
     ) -> cl_int;
 
-    #[deprecated(since = "0.1.0", note = "From CL_VERSION_1_2 use clEnqueueBarrierWithWaitList")]
+    #[cfg_attr(
+        any(
+            feature = "CL_VERSION_1_2",
+            feature = "CL_VERSION_2_0",
+            feature = "CL_VERSION_2_1",
+            feature = "CL_VERSION_2_2",
+            feature = "CL_VERSION_3_0"
+        ),
+        deprecated(
+            since = "0.1.0",
+            note = "From CL_VERSION_1_2 use clEnqueueBarrierWithWaitList"
+        )
+    )]
     pub fn clEnqueueBarrier(command_queue: cl_command_queue) -> cl_int;
 
-    #[deprecated(since = "0.1.0", note = "From CL_VERSION_1_2 use clUnloadPlatformCompiler")]
+    #[cfg_attr(
+        any(
+            feature = "CL_VERSION_1_2",
+            feature = "CL_VERSION_2_0",
+            feature = "CL_VERSION_2_1",
+            feature = "CL_VERSION_2_2",
+            feature = "CL_VERSION_3_0"
+        ),
+        deprecated(
+            since = "0.1.0",
+            note = "From CL_VERSION_1_2 use clUnloadPlatformCompiler"
+        )
+    )]
     pub fn clUnloadCompiler() -> cl_int;
 
-    #[deprecated(since = "0.1.0", note = "From CL_VERSION_1_2 use clGetExtensionFunctionAddressForPlatform")]
+    #[cfg_attr(
+        any(
+            feature = "CL_VERSION_1_2",
+            feature = "CL_VERSION_2_0",
+            feature = "CL_VERSION_2_1",
+            feature = "CL_VERSION_2_2",
+            feature = "CL_VERSION_3_0"
+        ),
+        deprecated(
+            since = "0.1.0",
+            note = "From CL_VERSION_1_2 use clGetExtensionFunctionAddressForPlatform"
+        )
+    )]
     pub fn clGetExtensionFunctionAddress(func_name: *const c_char);
 
     // Deprecated OpenCL 2.0 APIs
 
-    #[deprecated(since = "0.1.0", note = "From CL_VERSION_2_0 use clCreateCommandQueueWithProperties")]
+    #[cfg_attr(
+        any(
+            feature = "CL_VERSION_2_0",
+            feature = "CL_VERSION_2_1",
+            feature = "CL_VERSION_2_2",
+            feature = "CL_VERSION_3_0"
+        ),
+        deprecated(
+            since = "0.1.0",
+            note = "From CL_VERSION_2_0 use clCreateCommandQueueWithProperties"
+        )
+    )]
     pub fn clCreateCommandQueue(
         context: cl_context,
         device: cl_device_id,
@@ -1842,7 +1922,18 @@ extern "system" {
         errcode_ret: *mut cl_int,
     ) -> cl_command_queue;
 
-    #[deprecated(since = "0.1.0", note = "From CL_VERSION_2_0 use clCreateSamplerWithProperties")]
+    #[cfg_attr(
+        any(
+            feature = "CL_VERSION_2_0",
+            feature = "CL_VERSION_2_1",
+            feature = "CL_VERSION_2_2",
+            feature = "CL_VERSION_3_0"
+        ),
+        deprecated(
+            since = "0.1.0",
+            note = "From CL_VERSION_2_0 use clCreateSamplerWithProperties"
+        )
+    )]
     pub fn clCreateSampler(
         context: cl_context,
         normalize_coords: cl_bool,
@@ -1852,7 +1943,18 @@ extern "system" {
     ) -> cl_sampler;
 
     // Deprecated 1.2
-    #[deprecated(since = "0.1.0", note = "From CL_VERSION_2_0 use clEnqueueNDRangeKernel")]
+    #[cfg_attr(
+        any(
+            feature = "CL_VERSION_2_0",
+            feature = "CL_VERSION_2_1",
+            feature = "CL_VERSION_2_2",
+            feature = "CL_VERSION_3_0"
+        ),
+        deprecated(
+            since = "0.1.0",
+            note = "From CL_VERSION_2_0 use clEnqueueNDRangeKernel"
+        )
+    )]
     pub fn clEnqueueTask(
         command_queue: cl_command_queue,
         kernel: cl_kernel,

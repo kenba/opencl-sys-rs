@@ -29,9 +29,9 @@
 //! The Rust FFI files attempt to match the format and layout of the original
 //! C source files instead of [bindgen](https://rust-lang.github.io/rust-bindgen/)
 //! output files to ease maintenance.
-//! 
+//!
 //! ## Contribution
-//! 
+//!
 //! If you want to contribute through code or documentation, the [Contributing](CONTRIBUTING.md)
 //! guide is the best place to start.  
 //! If you have any questions, please feel free to ask.
@@ -45,7 +45,7 @@
 //! Unless you explicitly state otherwise, any contribution intentionally submitted
 //! for inclusion in the work by you, as defined in the Apache-2.0 license,
 //! shall be licensed as above, without any additional terms or conditions.
-//! 
+//!
 //! OpenCL and the OpenCL logo are trademarks of Apple Inc. used under license by Khronos.
 
 extern crate libc;
@@ -55,8 +55,8 @@ mod cl;
 mod cl_ext;
 // Note: The Intel extensions have been moved into cl_ext.h.
 // pub mod cl_ext_intel
-mod cl_platform;
 mod cl_gl;
+mod cl_platform;
 // Note: All OpenGL-related extensions have been moved into cl_gl.h.
 // pub mod cl_gl_ext
 
@@ -68,6 +68,6 @@ pub use self::cl_platform::*;
 pub mod cl_d3d10;
 pub mod cl_d3d11;
 pub mod cl_dx9_media_sharing;
-// Note: Intel DX9 media sharing extensions have been moved into cl_dx9_media_sharing.h. 
+// Note: Intel DX9 media sharing extensions have been moved into cl_dx9_media_sharing.h.
 // pub mod cl_dx9_media_sharing_intel
 pub mod cl_egl;

@@ -110,7 +110,19 @@ extern "system" {
     ) -> cl_int;
 
     // Deprecated OpenCL 1.1 APIs
-    #[deprecated(since = "0.1.0", note = "From CL_VERSION_1_2 use clCreateFromGLTexture")]
+    #[cfg_attr(
+        any(
+            feature = "CL_VERSION_1_2",
+            feature = "CL_VERSION_2_0",
+            feature = "CL_VERSION_2_1",
+            feature = "CL_VERSION_2_2",
+            feature = "CL_VERSION_3_0"
+        ),
+        deprecated(
+            since = "0.1.0",
+            note = "From CL_VERSION_1_2 use clCreateFromGLTexture"
+        )
+    )]
     pub fn clCreateFromGLTexture2D(
         context: cl_context,
         flags: cl_mem_flags,
@@ -120,7 +132,19 @@ extern "system" {
         errcode_ret: *mut cl_int,
     ) -> cl_mem;
 
-    #[deprecated(since = "0.1.0", note = "From CL_VERSION_1_2 use clCreateFromGLTexture")]
+    #[cfg_attr(
+        any(
+            feature = "CL_VERSION_1_2",
+            feature = "CL_VERSION_2_0",
+            feature = "CL_VERSION_2_1",
+            feature = "CL_VERSION_2_2",
+            feature = "CL_VERSION_3_0"
+        ),
+        deprecated(
+            since = "0.1.0",
+            note = "From CL_VERSION_1_2 use clCreateFromGLTexture"
+        )
+    )]
     pub fn clCreateFromGLTexture3D(
         context: cl_context,
         flags: cl_mem_flags,

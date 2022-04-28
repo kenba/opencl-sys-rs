@@ -248,7 +248,10 @@ extern "system" {
 
     // cl_intel_sharing_format_query_dx9
 
-    #[cfg(any(feature = "cl_khr_dx9_media_sharing", feature = "cl_intel_dx9_media_sharing"))]
+    #[cfg(any(
+        feature = "cl_khr_dx9_media_sharing",
+        feature = "cl_intel_dx9_media_sharing"
+    ))]
     pub fn clGetSupportedDX9MediaSurfaceFormatsINTEL(
         context: cl_context,
         flags: cl_mem_flags,

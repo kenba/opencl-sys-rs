@@ -21,10 +21,10 @@
 pub use super::cl::{
     cl_bitfield, cl_bool, cl_channel_type, cl_command_queue, cl_command_queue_properties,
     cl_command_type, cl_context, cl_device_id, cl_device_info, cl_event, cl_event_info,
-    cl_image_format, cl_kernel, cl_kernel_exec_info, cl_kernel_info, cl_kernel_sub_group_info,
-    cl_map_flags, cl_mem, cl_mem_flags, cl_mem_info, cl_mem_migration_flags, cl_platform_id,
-    cl_platform_info, cl_program, cl_program_info, cl_properties, cl_queue_properties,
-    cl_sampler_properties,
+    cl_image_desc, cl_image_format, cl_kernel, cl_kernel_exec_info, cl_kernel_info,
+    cl_kernel_sub_group_info, cl_map_flags, cl_mem, cl_mem_flags, cl_mem_info,
+    cl_mem_migration_flags, cl_mem_properties, cl_platform_id, cl_platform_info, cl_program,
+    cl_program_info, cl_properties, cl_queue_properties, cl_sampler_properties,
 };
 use super::cl_platform::{cl_int, cl_uchar, cl_uint, cl_ulong};
 
@@ -2360,6 +2360,50 @@ pub const CL_QUEUE_CAPABILITY_TRANSFER_IMAGE_BUFFER_INTEL: cl_command_queue_capa
 pub const CL_QUEUE_CAPABILITY_MARKER_INTEL: cl_command_queue_capabilities_intel = 1 << 24;
 pub const CL_QUEUE_CAPABILITY_BARRIER_INTEL: cl_command_queue_capabilities_intel = 1 << 25;
 pub const CL_QUEUE_CAPABILITY_KERNEL_INTEL: cl_command_queue_capabilities_intel = 1 << 26;
+
+// cl_ext_image_requirements_info
+
+pub type cl_image_requirements_info_ext = cl_uint;
+
+pub const CL_IMAGE_REQUIREMENTS_ROW_PITCH_ALIGNMENT_EXT: cl_image_requirements_info_ext = 0x1290;
+pub const CL_IMAGE_REQUIREMENTS_BASE_ADDRESS_ALIGNMENT_EXT: cl_image_requirements_info_ext = 0x1292;
+pub const CL_IMAGE_REQUIREMENTS_SIZE_EXT: cl_image_requirements_info_ext = 0x12B2;
+pub const CL_IMAGE_REQUIREMENTS_MAX_WIDTH_EXT: cl_image_requirements_info_ext = 0x12B3;
+pub const CL_IMAGE_REQUIREMENTS_MAX_HEIGHT_EXT: cl_image_requirements_info_ext = 0x12B4;
+pub const CL_IMAGE_REQUIREMENTS_MAX_DEPTH_EXT: cl_image_requirements_info_ext = 0x12B5;
+pub const CL_IMAGE_REQUIREMENTS_MAX_ARRAY_SIZE_EXT: cl_image_requirements_info_ext = 0x12B6;
+
+#[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
+#[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
+#[cfg(feature = "cl_ext_image_requirements_info")]
+extern "system" {
+
+    pub fn clGetImageRequirementsInfoEXT(
+        context: cl_context,
+        properties: *const cl_mem_properties,
+        flags: cl_mem_flags,
+        image_format: *const cl_image_format,
+        image_desc: *const cl_image_desc,
+        param_name: cl_image_requirements_info_ext,
+        param_value_size: size_t,
+        param_value: *mut c_void,
+        param_value_size_ret: *mut size_t,
+    ) -> cl_int;
+}
+
+pub type clGetImageRequirementsInfoEXT_fn = Option<
+    unsafe extern "C" fn(
+        context: cl_context,
+        properties: *const cl_mem_properties,
+        flags: cl_mem_flags,
+        image_format: *const cl_image_format,
+        image_desc: *const cl_image_desc,
+        param_name: cl_image_requirements_info_ext,
+        param_value_size: size_t,
+        param_value: *mut c_void,
+        param_value_size_ret: *mut size_t,
+    ) -> cl_int,
+>;
 
 #[cfg(test)]
 mod tests {

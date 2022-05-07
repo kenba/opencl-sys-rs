@@ -30,13 +30,13 @@
 //! "CL_VERSION_2_0" and "cl_khr_gl_sharing". To enable an OpenCL version, the feature
 //! for that version and **all** previous OpenCL versions must be enabled,
 //! e.g. for "CL_VERSION_2_0"; "CL_VERSION_1_1" and "CL_VERSION_1_2" must also be enabled.
-//! 
+//!
 //! The default features are "CL_VERSION_1_1" and "CL_VERSION_1_2".
-//! 
+//!
 //! Rust deprecation warnings are given for OpenCL API functions that are
 //! deprecated by an enabled OpenCL version e.g., `clCreateCommandQueue` is
 //! deprecated whenever "CL_VERSION_2_0" is enabled.
-//! 
+//!
 //! The Rust FFI files attempt to match the format and layout of the original
 //! C source files instead of [bindgen](https://rust-lang.github.io/rust-bindgen/)
 //! output files to ease maintenance.

@@ -2405,6 +2405,10 @@ pub type clGetImageRequirementsInfoEXT_fn = Option<
     ) -> cl_int,
 >;
 
+// cl_ext_image_from_buffer
+
+pub const CL_IMAGE_REQUIREMENTS_SLICE_PITCH_ALIGNMENT_EXT: cl_image_requirements_info_ext = 0x1291;
+
 #[cfg(test)]
 mod tests {
     use super::*;

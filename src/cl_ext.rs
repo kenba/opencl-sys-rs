@@ -2361,6 +2361,9 @@ pub const CL_QUEUE_CAPABILITY_MARKER_INTEL: cl_command_queue_capabilities_intel 
 pub const CL_QUEUE_CAPABILITY_BARRIER_INTEL: cl_command_queue_capabilities_intel = 1 << 25;
 pub const CL_QUEUE_CAPABILITY_KERNEL_INTEL: cl_command_queue_capabilities_intel = 1 << 26;
 
+// cl_intel_queue_no_sync_operations
+pub const CL_QUEUE_NO_SYNC_OPERATIONS_INTEL: cl_command_queue_properties = 1 << 29;
+
 // cl_ext_image_requirements_info
 
 pub type cl_image_requirements_info_ext = cl_uint;

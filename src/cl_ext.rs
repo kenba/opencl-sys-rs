@@ -1720,11 +1720,20 @@ pub const CL_DEVICE_SCHEDULING_DEFERRED_FLUSH_ARM: cl_device_scheduling_controls
     1 << 3;
 pub const CL_DEVICE_SCHEDULING_REGISTER_ALLOCATION_ARM:
     cl_device_scheduling_controls_capabilities_arm = 1 << 4;
+pub const CL_DEVICE_SCHEDULING_WARP_THROTTLING_ARM:
+    cl_device_scheduling_controls_capabilities_arm = 1 << 5;
+pub const CL_DEVICE_SCHEDULING_COMPUTE_UNIT_BATCH_QUEUE_SIZE_ARM:
+    cl_device_scheduling_controls_capabilities_arm = 1 << 6;
 
 pub const CL_DEVICE_SUPPORTED_REGISTER_ALLOCATIONS_ARM: cl_device_info = 0x41EB;
+pub const CL_DEVICE_MAX_WARP_COUNT_ARM: cl_device_info = 0x41EA;
 
-pub const CL_KERNEL_EXEC_INFO_WORKGROUP_BATCH_SIZE_ARM: cl_kernel_info = 0x41E5;
-pub const CL_KERNEL_EXEC_INFO_WORKGROUP_BATCH_SIZE_MODIFIER_ARM: cl_kernel_info = 0x41E6;
+pub const CL_KERNEL_MAX_WARP_COUNT_ARM: cl_kernel_info = 0x41E9;
+
+pub const CL_KERNEL_EXEC_INFO_WORKGROUP_BATCH_SIZE_ARM: cl_kernel_exec_info = 0x41E5;
+pub const CL_KERNEL_EXEC_INFO_WORKGROUP_BATCH_SIZE_MODIFIER_ARM: cl_kernel_exec_info = 0x41E6;
+pub const CL_KERNEL_EXEC_INFO_WARP_COUNT_LIMIT_ARM: cl_kernel_exec_info = 0x41E8;
+pub const CL_KERNEL_EXEC_INFO_COMPUTE_UNIT_MAX_QUEUED_BATCHES_ARM: cl_kernel_exec_info = 0x41F1;
 
 pub const CL_QUEUE_KERNEL_BATCHING_ARM: cl_queue_properties = 0x41E7;
 pub const CL_QUEUE_DEFERRED_FLUSH_ARM: cl_queue_properties = 0x41EC;

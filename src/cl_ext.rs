@@ -428,6 +428,119 @@ extern "system" {
 
 }
 
+// cl_khr_command_buffer_mutable_dispatch
+
+pub type cl_command_buffer_structure_type_khr = cl_uint;
+pub type cl_mutable_dispatch_fields_khr = cl_bitfield;
+pub type cl_mutable_command_info_khr = cl_uint;
+
+#[derive(Debug, Copy, Clone)]
+#[repr(C)]
+pub struct cl_mutable_dispatch_arg_khr {
+    pub arg_index: cl_uint,
+    pub arg_size: size_t,
+    pub arg_value: *const c_void,
+}
+
+#[derive(Debug, Copy, Clone)]
+#[repr(C)]
+pub struct cl_mutable_dispatch_exec_info_khr {
+    pub param_name: cl_uint,
+    pub param_value_size: size_t,
+    pub param_value: *const c_void,
+}
+
+#[derive(Debug, Copy, Clone)]
+#[repr(C)]
+pub struct cl_mutable_dispatch_config_khr {
+    pub t_type: cl_command_buffer_structure_type_khr,
+    pub next: *const c_void,
+    pub command: cl_mutable_command_khr,
+    pub num_args: cl_uint,
+    pub num_svm_args: cl_uint,
+    pub num_exec_infos: cl_uint,
+    pub work_dim: cl_uint,
+    pub arg_list: *const cl_mutable_dispatch_arg_khr,
+    pub arg_svm_list: *const cl_mutable_dispatch_arg_khr,
+    pub exec_info_list: *const cl_mutable_dispatch_exec_info_khr,
+    pub global_work_offset: *const size_t,
+    pub global_work_size: *const size_t,
+    pub local_work_size: *const size_t,
+}
+
+
+#[derive(Debug, Copy, Clone)]
+#[repr(C)]
+pub struct cl_mutable_base_config_khr {
+    pub t_type: cl_command_buffer_structure_type_khr,
+    pub next: *const c_void,
+    pub num_mutable_dispatch: cl_uint,
+    pub mutable_dispatch_list: *const cl_mutable_dispatch_config_khr,
+}
+
+pub const CL_COMMAND_BUFFER_MUTABLE_KHR: cl_command_buffer_flags_khr =  1 << 1;
+
+pub const CL_INVALID_MUTABLE_COMMAND_KHR: cl_int = -1141;
+
+pub const CL_DEVICE_MUTABLE_DISPATCH_CAPABILITIES_KHR: cl_device_info = 0x12B0;
+
+pub const CL_MUTABLE_DISPATCH_UPDATABLE_FIELDS_KHR: cl_ndrange_kernel_command_properties_khr = 0x12B1;
+
+pub const CL_MUTABLE_DISPATCH_GLOBAL_OFFSET_KHR: cl_mutable_dispatch_fields_khr =  1 << 0;
+pub const CL_MUTABLE_DISPATCH_GLOBAL_SIZE_KHR: cl_mutable_dispatch_fields_khr =  1 << 1;
+pub const CL_MUTABLE_DISPATCH_LOCAL_SIZE_KHR: cl_mutable_dispatch_fields_khr =  1 << 2;
+pub const CL_MUTABLE_DISPATCH_ARGUMENTS_KHR: cl_mutable_dispatch_fields_khr =  1 << 3;
+pub const CL_MUTABLE_DISPATCH_EXEC_INFO_KHR: cl_mutable_dispatch_fields_khr =  1 << 4;
+
+pub const CL_MUTABLE_COMMAND_COMMAND_QUEUE_KHR: cl_mutable_command_info_khr = 0x12A0;
+pub const CL_MUTABLE_COMMAND_COMMAND_BUFFER_KHR: cl_mutable_command_info_khr = 0x12A1;
+pub const CL_MUTABLE_COMMAND_COMMAND_TYPE_KHR: cl_mutable_command_info_khr = 0x12AD;
+pub const CL_MUTABLE_DISPATCH_PROPERTIES_ARRAY_KHR: cl_mutable_command_info_khr = 0x12A2;
+pub const CL_MUTABLE_DISPATCH_KERNEL_KHR: cl_mutable_command_info_khr = 0x12A3;
+pub const CL_MUTABLE_DISPATCH_DIMENSIONS_KHR: cl_mutable_command_info_khr = 0x12A4;
+pub const CL_MUTABLE_DISPATCH_GLOBAL_WORK_OFFSET_KHR: cl_mutable_command_info_khr = 0x12A5;
+pub const CL_MUTABLE_DISPATCH_GLOBAL_WORK_SIZE_KHR: cl_mutable_command_info_khr = 0x12A6;
+pub const CL_MUTABLE_DISPATCH_LOCAL_WORK_SIZE_KHR: cl_mutable_command_info_khr = 0x12A7;
+
+pub const CL_STRUCTURE_TYPE_MUTABLE_BASE_CONFIG_KHR: cl_command_buffer_structure_type_khr = 0;
+pub const CL_STRUCTURE_TYPE_MUTABLE_DISPATCH_CONFIG_KHR: cl_command_buffer_structure_type_khr = 1;
+
+pub type clUpdateMutableCommandsKHR_fn = Option<
+    unsafe extern "C" fn(
+        command_buffer: cl_command_buffer_khr,
+        mutable_config: *const cl_mutable_base_config_khr,
+    ) -> cl_int,
+>;
+
+pub type clGetMutableCommandInfoKHR_fn = Option<
+    unsafe extern "C" fn(
+        command: cl_command_buffer_khr,
+        param_name: cl_command_buffer_khr,
+        param_value_size: size_t,
+        param_value: *mut c_void,
+        param_value_size_ret: *mut size_t,
+    ) -> cl_int,
+>;
+
+#[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
+#[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
+#[cfg(feature = "cl_khr_command_buffer_mutable_dispatch")]
+extern "system" {
+
+    pub fn clUpdateMutableCommandsKHR(
+        command_buffer: cl_command_buffer_khr,
+        mutable_config: *const cl_mutable_base_config_khr,
+    ) -> cl_command_buffer_khr;
+
+    pub fn clGetMutableCommandInfoKHR(
+        command: cl_command_buffer_khr,
+        param_name: cl_command_buffer_khr,
+        param_value_size: size_t,
+        param_value: *mut c_void,
+        param_value_size_ret: *mut size_t,
+    ) -> cl_command_buffer_khr;
+}
+
 // cl_khr_fp64 extension
 
 // #if CL_TARGET_OPENCL_VERSION <= 110

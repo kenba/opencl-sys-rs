@@ -25,6 +25,7 @@ cl_apple_setmemobjectdestructor = []
 cl_apple_contextloggingfunctions = []
 
 cl_khr_command_buffer = []
+cl_khr_command_buffer_mutable_dispatch = []
 cl_khr_icd = []
 cl_khr_il_program = []
 cl_khr_terminate_context = []

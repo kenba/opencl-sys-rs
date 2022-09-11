@@ -468,7 +468,6 @@ pub struct cl_mutable_dispatch_config_khr {
     pub local_work_size: *const size_t,
 }
 
-
 #[derive(Debug, Copy, Clone)]
 #[repr(C)]
 pub struct cl_mutable_base_config_khr {
@@ -478,19 +477,20 @@ pub struct cl_mutable_base_config_khr {
     pub mutable_dispatch_list: *const cl_mutable_dispatch_config_khr,
 }
 
-pub const CL_COMMAND_BUFFER_MUTABLE_KHR: cl_command_buffer_flags_khr =  1 << 1;
+pub const CL_COMMAND_BUFFER_MUTABLE_KHR: cl_command_buffer_flags_khr = 1 << 1;
 
 pub const CL_INVALID_MUTABLE_COMMAND_KHR: cl_int = -1141;
 
 pub const CL_DEVICE_MUTABLE_DISPATCH_CAPABILITIES_KHR: cl_device_info = 0x12B0;
 
-pub const CL_MUTABLE_DISPATCH_UPDATABLE_FIELDS_KHR: cl_ndrange_kernel_command_properties_khr = 0x12B1;
+pub const CL_MUTABLE_DISPATCH_UPDATABLE_FIELDS_KHR: cl_ndrange_kernel_command_properties_khr =
+    0x12B1;
 
-pub const CL_MUTABLE_DISPATCH_GLOBAL_OFFSET_KHR: cl_mutable_dispatch_fields_khr =  1 << 0;
-pub const CL_MUTABLE_DISPATCH_GLOBAL_SIZE_KHR: cl_mutable_dispatch_fields_khr =  1 << 1;
-pub const CL_MUTABLE_DISPATCH_LOCAL_SIZE_KHR: cl_mutable_dispatch_fields_khr =  1 << 2;
-pub const CL_MUTABLE_DISPATCH_ARGUMENTS_KHR: cl_mutable_dispatch_fields_khr =  1 << 3;
-pub const CL_MUTABLE_DISPATCH_EXEC_INFO_KHR: cl_mutable_dispatch_fields_khr =  1 << 4;
+pub const CL_MUTABLE_DISPATCH_GLOBAL_OFFSET_KHR: cl_mutable_dispatch_fields_khr = 1 << 0;
+pub const CL_MUTABLE_DISPATCH_GLOBAL_SIZE_KHR: cl_mutable_dispatch_fields_khr = 1 << 1;
+pub const CL_MUTABLE_DISPATCH_LOCAL_SIZE_KHR: cl_mutable_dispatch_fields_khr = 1 << 2;
+pub const CL_MUTABLE_DISPATCH_ARGUMENTS_KHR: cl_mutable_dispatch_fields_khr = 1 << 3;
+pub const CL_MUTABLE_DISPATCH_EXEC_INFO_KHR: cl_mutable_dispatch_fields_khr = 1 << 4;
 
 pub const CL_MUTABLE_COMMAND_COMMAND_QUEUE_KHR: cl_mutable_command_info_khr = 0x12A0;
 pub const CL_MUTABLE_COMMAND_COMMAND_BUFFER_KHR: cl_mutable_command_info_khr = 0x12A1;
@@ -1720,8 +1720,8 @@ pub const CL_DEVICE_SCHEDULING_DEFERRED_FLUSH_ARM: cl_device_scheduling_controls
     1 << 3;
 pub const CL_DEVICE_SCHEDULING_REGISTER_ALLOCATION_ARM:
     cl_device_scheduling_controls_capabilities_arm = 1 << 4;
-pub const CL_DEVICE_SCHEDULING_WARP_THROTTLING_ARM:
-    cl_device_scheduling_controls_capabilities_arm = 1 << 5;
+pub const CL_DEVICE_SCHEDULING_WARP_THROTTLING_ARM: cl_device_scheduling_controls_capabilities_arm =
+    1 << 5;
 pub const CL_DEVICE_SCHEDULING_COMPUTE_UNIT_BATCH_QUEUE_SIZE_ARM:
     cl_device_scheduling_controls_capabilities_arm = 1 << 6;
 

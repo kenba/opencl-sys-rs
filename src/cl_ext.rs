@@ -514,8 +514,8 @@ pub type clUpdateMutableCommandsKHR_fn = Option<
 
 pub type clGetMutableCommandInfoKHR_fn = Option<
     unsafe extern "C" fn(
-        command: cl_command_buffer_khr,
-        param_name: cl_command_buffer_khr,
+        command: cl_mutable_command_khr,
+        param_name: cl_mutable_command_info_khr,
         param_value_size: size_t,
         param_value: *mut c_void,
         param_value_size_ret: *mut size_t,
@@ -530,15 +530,15 @@ extern "system" {
     pub fn clUpdateMutableCommandsKHR(
         command_buffer: cl_command_buffer_khr,
         mutable_config: *const cl_mutable_base_config_khr,
-    ) -> cl_command_buffer_khr;
+    ) -> cl_int;
 
     pub fn clGetMutableCommandInfoKHR(
-        command: cl_command_buffer_khr,
-        param_name: cl_command_buffer_khr,
+        command: cl_mutable_command_khr,
+        param_name: cl_mutable_command_info_khr,
         param_value_size: size_t,
         param_value: *mut c_void,
         param_value_size_ret: *mut size_t,
-    ) -> cl_command_buffer_khr;
+    ) -> cl_int;
 }
 
 // cl_khr_fp64 extension

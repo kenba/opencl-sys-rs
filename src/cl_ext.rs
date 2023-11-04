@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Via Technology Ltd.
+// Copyright (c) 2022-2023 Via Technology Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -33,6 +33,7 @@ use libc::{c_char, c_void, intptr_t, size_t};
 
 // cl_khr_command_buffer
 
+pub type cl_platform_command_buffer_capabilities_khr = cl_bitfield;
 pub type cl_device_command_buffer_capabilities_khr = cl_bitfield;
 pub type cl_command_buffer_khr = *mut c_void;
 pub type cl_sync_point_khr = cl_uint;
@@ -427,6 +428,56 @@ extern "system" {
         param_value_size_ret: *mut size_t,
     ) -> cl_int;
 
+}
+
+// cl_khr_command_buffer_multi_device
+
+// cl_platform_info
+pub const CL_PLATFORM_COMMAND_BUFFER_CAPABILITIES_KHR: cl_platform_info = 0x0908;
+
+// cl_platform_command_buffer_capabilities_khr
+pub const CL_COMMAND_BUFFER_PLATFORM_UNIVERSAL_SYNC_KHR: cl_platform_command_buffer_capabilities_khr = 1 << 0;
+pub const CL_COMMAND_BUFFER_PLATFORM_REMAP_QUEUES_KHR: cl_platform_command_buffer_capabilities_khr = 1 << 1;
+pub const CL_COMMAND_BUFFER_PLATFORM_AUTOMATIC_REMAP_KHR: cl_platform_command_buffer_capabilities_khr = 1 << 2;
+
+// cl_device_info
+pub const CL_DEVICE_COMMAND_BUFFER_NUM_SYNC_DEVICES_KHR: cl_device_info = 0x12AB;
+pub const CL_DEVICE_COMMAND_BUFFER_SYNC_DEVICES_KHR: cl_device_info = 0x12AC;
+
+// cl_device_command_buffer_capabilities_khr
+pub const CL_COMMAND_BUFFER_CAPABILITY_MULTIPLE_QUEUE_KHR: cl_device_command_buffer_capabilities_khr = 1 << 4;
+
+// cl_command_buffer_flags_khr
+pub const CL_COMMAND_BUFFER_DEVICE_SIDE_SYNC_KHR: cl_command_buffer_flags_khr = 1 << 2;
+
+pub type clRemapCommandBufferKHR_fn = Option<
+    unsafe extern "C" fn(
+        command_buffer: cl_command_buffer_khr,
+        automatic: cl_bool,
+        num_queues: cl_uint,
+        queues: *const cl_command_queue,
+        num_handles: cl_uint,
+        handles: *const cl_mutable_command_khr,
+        handles_ret: *mut cl_mutable_command_khr,
+        errcode_ret: *mut cl_int,
+    ) -> cl_command_buffer_khr,
+>;
+
+#[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
+#[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
+#[cfg(feature = "cl_khr_command_buffer_multi_device")]
+extern "system" {
+
+    pub fn clRemapCommandBufferKHR(
+        command_buffer: cl_command_buffer_khr,
+        automatic: cl_bool,
+        num_queues: cl_uint,
+        queues: *const cl_command_queue,
+        num_handles: cl_uint,
+        handles: *const cl_mutable_command_khr,
+        handles_ret: *mut cl_mutable_command_khr,
+        errcode_ret: *mut cl_int,
+    ) -> cl_command_buffer_khr;
 }
 
 // cl_khr_command_buffer_mutable_dispatch

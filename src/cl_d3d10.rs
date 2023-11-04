@@ -1,4 +1,4 @@
-// Copyright (c) 2021-2022 Via Technology Ltd.
+// Copyright (c) 2021-2023 Via Technology Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -36,11 +36,11 @@ pub const CL_INVALID_D3D10_RESOURCE_KHR: cl_int = -1003;
 pub const CL_D3D10_RESOURCE_ALREADY_ACQUIRED_KHR: cl_int = -1004;
 pub const CL_D3D10_RESOURCE_NOT_ACQUIRED_KHR: cl_int = -1005;
 
-// cl_d3d10_device_source_nv
+// cl_d3d10_device_source_khr
 pub const CL_D3D10_DEVICE_KHR: cl_d3d10_device_source_khr = 0x4010;
 pub const CL_D3D10_DXGI_ADAPTER_KHR: cl_d3d10_device_source_khr = 0x4011;
 
-// cl_d3d10_device_set_nv
+// cl_d3d10_device_set_khr
 pub const CL_PREFERRED_DEVICES_FOR_D3D10_KHR: cl_d3d10_device_set_khr = 0x4012;
 pub const CL_ALL_DEVICES_FOR_D3D10_KHR: cl_d3d10_device_set_khr = 0x4013;
 

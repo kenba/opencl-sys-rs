@@ -535,11 +535,8 @@ pub const CL_Rx: cl_channel_order = 0x10BA;
 pub const CL_RGx: cl_channel_order = 0x10BB;
 pub const CL_RGBx: cl_channel_order = 0x10BC;
 // #endif
-// #ifdef CL_VERSION_1_2
-pub const CL_DEPTH: cl_channel_order = 0x10BD;
-pub const CL_DEPTH_STENCIL: cl_channel_order = 0x10BE;
-// #endif
 // #ifdef CL_VERSION_2_0
+pub const CL_DEPTH: cl_channel_order = 0x10BD;
 pub const CL_sRGB: cl_channel_order = 0x10BF;
 pub const CL_sRGBx: cl_channel_order = 0x10C0;
 pub const CL_sRGBA: cl_channel_order = 0x10C1;
@@ -563,9 +560,6 @@ pub const CL_UNSIGNED_INT16: cl_channel_type = 0x10DB;
 pub const CL_UNSIGNED_INT32: cl_channel_type = 0x10DC;
 pub const CL_HALF_FLOAT: cl_channel_type = 0x10DD;
 pub const CL_FLOAT: cl_channel_type = 0x10DE;
-// #ifdef CL_VERSION_1_2
-pub const CL_UNORM_INT24: cl_channel_type = 0x10DF;
-// #endif
 // #ifdef CL_VERSION_2_1
 pub const CL_UNORM_INT_101010_2: cl_channel_type = 0x10E0;
 // #endif

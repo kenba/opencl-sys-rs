@@ -81,7 +81,6 @@ pub const CL_COMMAND_BUFFER_CONTEXT_KHR: cl_command_buffer_info_khr = 0x1299;
 pub const CL_COMMAND_BUFFER_STATE_RECORDING_KHR: cl_command_buffer_state_khr = 0;
 pub const CL_COMMAND_BUFFER_STATE_EXECUTABLE_KHR: cl_command_buffer_state_khr = 1;
 pub const CL_COMMAND_BUFFER_STATE_PENDING_KHR: cl_command_buffer_state_khr = 2;
-pub const CL_COMMAND_BUFFER_STATE_INVALID_KHR: cl_command_buffer_state_khr = 3;
 
 // cl_command_type
 pub const CL_COMMAND_COMMAND_BUFFER_KHR: cl_command_type = 0x12A8;
@@ -258,6 +257,35 @@ pub type clCommandNDRangeKernelKHR_fn = Option<
     ) -> cl_int,
 >;
 
+pub type clCommandSVMMemcpyKHR_fn = Option<
+    unsafe extern "C" fn(
+        command_buffer: cl_command_buffer_khr,
+        command_queue: cl_command_queue,
+        dst_ptr: *mut c_void,
+        src_ptr: *const c_void,
+        size: size_t,
+        num_sync_points_in_wait_list: cl_uint,
+        sync_point_wait_list: *const cl_sync_point_khr,
+        sync_point: *mut cl_sync_point_khr,
+        mutable_handle: *mut cl_mutable_command_khr,
+    ) -> cl_int,
+>;
+
+pub type clCommandSVMMemFillKHR_fn = Option<
+    unsafe extern "C" fn(
+        command_buffer: cl_command_buffer_khr,
+        command_queue: cl_command_queue,
+        svm_ptr: *mut c_void,
+        pattern: *const c_void,
+        pattern_size: size_t,
+        size: size_t,
+        num_sync_points_in_wait_list: cl_uint,
+        sync_point_wait_list: *const cl_sync_point_khr,
+        sync_point: *mut cl_sync_point_khr,
+        mutable_handle: *mut cl_mutable_command_khr,
+    ) -> cl_int,
+>;
+
 pub type clGetCommandBufferInfoKHR_fn = Option<
     unsafe extern "C" fn(
         command_buffer: cl_command_buffer_khr,
@@ -414,6 +442,31 @@ extern "system" {
         global_work_offset: *const size_t,
         global_work_size: *const size_t,
         local_work_size: *const size_t,
+        num_sync_points_in_wait_list: cl_uint,
+        sync_point_wait_list: *const cl_sync_point_khr,
+        sync_point: *mut cl_sync_point_khr,
+        mutable_handle: *mut cl_mutable_command_khr,
+    ) -> cl_int;
+
+    pub fn clCommandSVMMemcpyKHR(
+        command_buffer: cl_command_buffer_khr,
+        command_queue: cl_command_queue,
+        dst_ptr: *mut c_void,
+        src_ptr: *const c_void,
+        size: size_t,
+        num_sync_points_in_wait_list: cl_uint,
+        sync_point_wait_list: *const cl_sync_point_khr,
+        sync_point: *mut cl_sync_point_khr,
+        mutable_handle: *mut cl_mutable_command_khr,
+    ) -> cl_int;
+
+    pub fn clCommandSVMMemFillKHR(
+        command_buffer: cl_command_buffer_khr,
+        command_queue: cl_command_queue,
+        svm_ptr: *mut c_void,
+        pattern: *const c_void,
+        pattern_size: size_t,
+        size: size_t,
         num_sync_points_in_wait_list: cl_uint,
         sync_point_wait_list: *const cl_sync_point_khr,
         sync_point: *mut cl_sync_point_khr,
@@ -1303,6 +1356,7 @@ pub const CL_PLATFORM_EXTERNAL_MEMORY_IMPORT_HANDLE_TYPES_KHR: cl_platform_info 
 
 // cl_device_info
 pub const CL_DEVICE_EXTERNAL_MEMORY_IMPORT_HANDLE_TYPES_KHR: cl_device_info = 0x204F;
+pub const CL_DEVICE_EXTERNAL_MEMORY_IMPORT_ASSUME_LINEAR_IMAGES_HANDLE_TYPES_KHR : cl_device_info = 0x2052;
 
 // cl_mem_properties
 pub const CL_DEVICE_HANDLE_LIST_KHR: cl_ulong = 0x2051;
@@ -2653,6 +2707,11 @@ pub type clGetImageRequirementsInfoEXT_fn = Option<
 // cl_ext_image_from_buffer
 
 pub const CL_IMAGE_REQUIREMENTS_SLICE_PITCH_ALIGNMENT_EXT: cl_image_requirements_info_ext = 0x1291;
+
+// cl_ext_image_raw10_raw12
+
+pub const CL_UNSIGNED_INT_RAW10_EXT: cl_uint = 0x10E3;
+pub const CL_UNSIGNED_INT_RAW12_EXT: cl_uint = 0x10E4;
 
 #[cfg(test)]
 mod tests {

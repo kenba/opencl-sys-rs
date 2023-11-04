@@ -74,6 +74,7 @@ pub const CL_COMMAND_BUFFER_NUM_QUEUES_KHR: cl_command_buffer_info_khr = 0x1295;
 pub const CL_COMMAND_BUFFER_REFERENCE_COUNT_KHR: cl_command_buffer_info_khr = 0x1296;
 pub const CL_COMMAND_BUFFER_STATE_KHR: cl_command_buffer_info_khr = 0x1297;
 pub const CL_COMMAND_BUFFER_PROPERTIES_ARRAY_KHR: cl_command_buffer_info_khr = 0x1298;
+pub const CL_COMMAND_BUFFER_CONTEXT_KHR: cl_command_buffer_info_khr = 0x1299;
 
 // cl_command_buffer_state_khr
 pub const CL_COMMAND_BUFFER_STATE_RECORDING_KHR: cl_command_buffer_state_khr = 0;
@@ -2425,6 +2426,74 @@ pub type clCreateBufferWithPropertiesINTEL_fn = Option<
         errcode_ret: *mut cl_int,
     ) -> cl_mem,
 >;
+
+// cl_intel_program_scope_host_pipe
+
+// clGetEventInfo response when param_name is CL_EVENT_COMMAND_TYPE
+pub const CL_COMMAND_READ_HOST_PIPE_INTEL: cl_uint = 0x4214;
+pub const CL_COMMAND_WRITE_HOST_PIPE_INTEL: cl_uint = 0x4215;
+
+// clGetProgramInfo param_name
+pub const CL_PROGRAM_NUM_HOST_PIPES_INTEL: cl_program_info = 0x4216;
+pub const CL_PROGRAM_HOST_PIPE_NAMES_INTEL: cl_program_info = 0x4217;
+
+pub type clEnqueueReadHostPipeINTEL_fn = Option<
+    unsafe extern "C" fn(
+        queue: cl_command_queue,
+        program: cl_program,
+        pipe_symbol: *const c_char,
+        blocking_read: cl_bool,
+        ptr: *mut c_void,
+        size: size_t,
+        num_events_in_wait_list: cl_uint,
+        event_wait_list: *const cl_event,
+        event: *mut cl_event,
+    ) -> cl_int,
+>;
+
+pub type clEnqueueWriteHostPipeINTEL_fn = Option<
+    unsafe extern "C" fn(
+        queue: cl_command_queue,
+        program: cl_program,
+        pipe_symbol: *const c_char,
+        blocking_write: cl_bool,
+        ptr: *const c_void,
+        size: size_t,
+        num_events_in_wait_list: cl_uint,
+        event_wait_list: *const cl_event,
+        event: *mut cl_event,
+    ) -> cl_int,
+>;
+
+#[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
+#[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
+#[cfg(feature = "cl_intel_program_scope_host_pipe")]
+extern "system" {
+
+    pub fn clEnqueueReadHostPipeINTEL(
+        queue: cl_command_queue,
+        program: cl_program,
+        pipe_symbol: *const c_char,
+        blocking_read: cl_bool,
+        ptr: *mut c_void,
+        size: size_t,
+        num_events_in_wait_list: cl_uint,
+        event_wait_list: *const cl_event,
+        event: *mut cl_event,
+    ) -> cl_mem;
+
+    pub fn clEnqueueWriteHostPipeINTEL(
+        queue: cl_command_queue,
+        program: cl_program,
+        pipe_symbol: *const c_char,
+        blocking_write: cl_bool,
+        ptr: *const c_void,
+        size: size_t,
+        num_events_in_wait_list: cl_uint,
+        event_wait_list: *const cl_event,
+        event: *mut cl_event,
+    ) -> cl_mem;
+}
 
 // cl_intel_mem_channel_property extension
 

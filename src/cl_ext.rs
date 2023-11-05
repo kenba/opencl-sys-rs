@@ -2585,7 +2585,7 @@ extern "system" {
         num_events_in_wait_list: cl_uint,
         event_wait_list: *const cl_event,
         event: *mut cl_event,
-    ) -> cl_mem;
+    ) -> cl_int;
 
     pub fn clEnqueueWriteHostPipeINTEL(
         queue: cl_command_queue,
@@ -2597,7 +2597,7 @@ extern "system" {
         num_events_in_wait_list: cl_uint,
         event_wait_list: *const cl_event,
         event: *mut cl_event,
-    ) -> cl_mem;
+    ) -> cl_int;
 }
 
 // cl_intel_mem_channel_property extension

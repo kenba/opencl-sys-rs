@@ -85,7 +85,7 @@ pub const CL_COMMAND_BUFFER_STATE_PENDING_KHR: cl_command_buffer_state_khr = 2;
 // cl_command_type
 pub const CL_COMMAND_COMMAND_BUFFER_KHR: cl_command_type = 0x12A8;
 
-pub type clCreateCommandBufferKHR_fn = Option<
+pub type clCreateCommandBufferKHR_t = Option<
     unsafe extern "C" fn(
         num_queues: cl_uint,
         queues: *const cl_command_queue,
@@ -93,17 +93,21 @@ pub type clCreateCommandBufferKHR_fn = Option<
         errcode_ret: *mut cl_int,
     ) -> cl_command_buffer_khr,
 >;
+pub type clCreateCommandBufferKHR_fn = clCreateCommandBufferKHR_t;
 
-pub type clFinalizeCommandBufferKHR_fn =
+pub type clFinalizeCommandBufferKHR_t =
     Option<unsafe extern "C" fn(command_buffer: cl_command_buffer_khr) -> cl_int>;
+pub type clFinalizeCommandBufferKHR_fn = clFinalizeCommandBufferKHR_t;
 
-pub type clRetainCommandBufferKHR_fn =
+pub type clRetainCommandBufferKHR_t =
     Option<unsafe extern "C" fn(command_buffer: cl_command_buffer_khr) -> cl_int>;
+pub type clRetainCommandBufferKHR_fn = clRetainCommandBufferKHR_t;
 
-pub type clReleaseCommandBufferKHR_fn =
+pub type clReleaseCommandBufferKHR_t =
     Option<unsafe extern "C" fn(command_buffer: cl_command_buffer_khr) -> cl_int>;
+pub type clReleaseCommandBufferKHR_fn = clReleaseCommandBufferKHR_t;
 
-pub type clEnqueueCommandBufferKHR_fn = Option<
+pub type clEnqueueCommandBufferKHR_t = Option<
     unsafe extern "C" fn(
         num_queues: cl_uint,
         queues: *mut cl_command_queue,
@@ -113,8 +117,9 @@ pub type clEnqueueCommandBufferKHR_fn = Option<
         event: *mut cl_event,
     ) -> cl_int,
 >;
+pub type clEnqueueCommandBufferKHR_fn = clEnqueueCommandBufferKHR_t;
 
-pub type clCommandBarrierWithWaitListKHR_fn = Option<
+pub type clCommandBarrierWithWaitListKHR_t = Option<
     unsafe extern "C" fn(
         command_buffer: cl_command_buffer_khr,
         command_queue: cl_command_queue,
@@ -124,8 +129,9 @@ pub type clCommandBarrierWithWaitListKHR_fn = Option<
         mutable_handle: *mut cl_mutable_command_khr,
     ) -> cl_int,
 >;
+pub type clCommandBarrierWithWaitListKHR_fn = clCommandBarrierWithWaitListKHR_t;
 
-pub type clCommandCopyBufferKHR_fn = Option<
+pub type clCommandCopyBufferKHR_t = Option<
     unsafe extern "C" fn(
         command_buffer: cl_command_buffer_khr,
         command_queue: cl_command_queue,
@@ -140,8 +146,9 @@ pub type clCommandCopyBufferKHR_fn = Option<
         mutable_handle: *mut cl_mutable_command_khr,
     ) -> cl_int,
 >;
+pub type clCommandCopyBufferKHR_fn = clCommandCopyBufferKHR_t;
 
-pub type clCommandCopyBufferRectKHR_fn = Option<
+pub type clCommandCopyBufferRectKHR_t = Option<
     unsafe extern "C" fn(
         command_buffer: cl_command_buffer_khr,
         command_queue: cl_command_queue,
@@ -160,8 +167,9 @@ pub type clCommandCopyBufferRectKHR_fn = Option<
         mutable_handle: *mut cl_mutable_command_khr,
     ) -> cl_int,
 >;
+pub type clCommandCopyBufferRectKHR_fn = clCommandCopyBufferRectKHR_t;
 
-pub type clCommandCopyBufferToImageKHR_fn = Option<
+pub type clCommandCopyBufferToImageKHR_t = Option<
     unsafe extern "C" fn(
         command_buffer: cl_command_buffer_khr,
         command_queue: cl_command_queue,
@@ -176,8 +184,9 @@ pub type clCommandCopyBufferToImageKHR_fn = Option<
         mutable_handle: *mut cl_mutable_command_khr,
     ) -> cl_int,
 >;
+pub type clCommandCopyBufferToImageKHR_fn = clCommandCopyBufferToImageKHR_t;
 
-pub type clCommandCopyImageKHR_fn = Option<
+pub type clCommandCopyImageKHR_t = Option<
     unsafe extern "C" fn(
         command_buffer: cl_command_buffer_khr,
         command_queue: cl_command_queue,
@@ -192,8 +201,9 @@ pub type clCommandCopyImageKHR_fn = Option<
         mutable_handle: *mut cl_mutable_command_khr,
     ) -> cl_int,
 >;
+pub type clCommandCopyImageKHR_fn = clCommandCopyImageKHR_t;
 
-pub type clCommandCopyImageToBufferKHR_fn = Option<
+pub type clCommandCopyImageToBufferKHR_t = Option<
     unsafe extern "C" fn(
         command_buffer: cl_command_buffer_khr,
         command_queue: cl_command_queue,
@@ -208,8 +218,9 @@ pub type clCommandCopyImageToBufferKHR_fn = Option<
         mutable_handle: *mut cl_mutable_command_khr,
     ) -> cl_int,
 >;
+pub type clCommandCopyImageToBufferKHR_fn = clCommandCopyImageToBufferKHR_t;
 
-pub type clCommandFillBufferKHR_fn = Option<
+pub type clCommandFillBufferKHR_t = Option<
     unsafe extern "C" fn(
         command_buffer: cl_command_buffer_khr,
         command_queue: cl_command_queue,
@@ -224,8 +235,9 @@ pub type clCommandFillBufferKHR_fn = Option<
         mutable_handle: *mut cl_mutable_command_khr,
     ) -> cl_int,
 >;
+pub type clCommandFillBufferKHR_fn = clCommandFillBufferKHR_t;
 
-pub type clCommandFillImageKHR_fn = Option<
+pub type clCommandFillImageKHR_t = Option<
     unsafe extern "C" fn(
         command_buffer: cl_command_buffer_khr,
         command_queue: cl_command_queue,
@@ -239,8 +251,9 @@ pub type clCommandFillImageKHR_fn = Option<
         mutable_handle: *mut cl_mutable_command_khr,
     ) -> cl_int,
 >;
+pub type clCommandFillImageKHR_fn = clCommandFillImageKHR_t;
 
-pub type clCommandNDRangeKernelKHR_fn = Option<
+pub type clCommandNDRangeKernelKHR_t = Option<
     unsafe extern "C" fn(
         command_buffer: cl_command_buffer_khr,
         command_queue: cl_command_queue,
@@ -256,8 +269,9 @@ pub type clCommandNDRangeKernelKHR_fn = Option<
         mutable_handle: *mut cl_mutable_command_khr,
     ) -> cl_int,
 >;
+pub type clCommandNDRangeKernelKHR_fn = clCommandNDRangeKernelKHR_t;
 
-pub type clCommandSVMMemcpyKHR_fn = Option<
+pub type clCommandSVMMemcpyKHR_t = Option<
     unsafe extern "C" fn(
         command_buffer: cl_command_buffer_khr,
         command_queue: cl_command_queue,
@@ -270,8 +284,9 @@ pub type clCommandSVMMemcpyKHR_fn = Option<
         mutable_handle: *mut cl_mutable_command_khr,
     ) -> cl_int,
 >;
+pub type clCommandSVMMemcpyKHR_fn = clCommandSVMMemcpyKHR_t;
 
-pub type clCommandSVMMemFillKHR_fn = Option<
+pub type clCommandSVMMemFillKHR_t = Option<
     unsafe extern "C" fn(
         command_buffer: cl_command_buffer_khr,
         command_queue: cl_command_queue,
@@ -285,8 +300,9 @@ pub type clCommandSVMMemFillKHR_fn = Option<
         mutable_handle: *mut cl_mutable_command_khr,
     ) -> cl_int,
 >;
+pub type clCommandSVMMemFillKHR_fn = clCommandSVMMemFillKHR_t;
 
-pub type clGetCommandBufferInfoKHR_fn = Option<
+pub type clGetCommandBufferInfoKHR_t = Option<
     unsafe extern "C" fn(
         command_buffer: cl_command_buffer_khr,
         param_name: cl_command_buffer_info_khr,
@@ -295,6 +311,7 @@ pub type clGetCommandBufferInfoKHR_fn = Option<
         param_value_size_ret: *mut size_t,
     ) -> cl_int,
 >;
+pub type clGetCommandBufferInfoKHR_fn = clGetCommandBufferInfoKHR_t;
 
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
@@ -489,21 +506,25 @@ extern "system" {
 pub const CL_PLATFORM_COMMAND_BUFFER_CAPABILITIES_KHR: cl_platform_info = 0x0908;
 
 // cl_platform_command_buffer_capabilities_khr
-pub const CL_COMMAND_BUFFER_PLATFORM_UNIVERSAL_SYNC_KHR: cl_platform_command_buffer_capabilities_khr = 1 << 0;
-pub const CL_COMMAND_BUFFER_PLATFORM_REMAP_QUEUES_KHR: cl_platform_command_buffer_capabilities_khr = 1 << 1;
-pub const CL_COMMAND_BUFFER_PLATFORM_AUTOMATIC_REMAP_KHR: cl_platform_command_buffer_capabilities_khr = 1 << 2;
+pub const CL_COMMAND_BUFFER_PLATFORM_UNIVERSAL_SYNC_KHR:
+    cl_platform_command_buffer_capabilities_khr = 1 << 0;
+pub const CL_COMMAND_BUFFER_PLATFORM_REMAP_QUEUES_KHR: cl_platform_command_buffer_capabilities_khr =
+    1 << 1;
+pub const CL_COMMAND_BUFFER_PLATFORM_AUTOMATIC_REMAP_KHR:
+    cl_platform_command_buffer_capabilities_khr = 1 << 2;
 
 // cl_device_info
 pub const CL_DEVICE_COMMAND_BUFFER_NUM_SYNC_DEVICES_KHR: cl_device_info = 0x12AB;
 pub const CL_DEVICE_COMMAND_BUFFER_SYNC_DEVICES_KHR: cl_device_info = 0x12AC;
 
 // cl_device_command_buffer_capabilities_khr
-pub const CL_COMMAND_BUFFER_CAPABILITY_MULTIPLE_QUEUE_KHR: cl_device_command_buffer_capabilities_khr = 1 << 4;
+pub const CL_COMMAND_BUFFER_CAPABILITY_MULTIPLE_QUEUE_KHR:
+    cl_device_command_buffer_capabilities_khr = 1 << 4;
 
 // cl_command_buffer_flags_khr
 pub const CL_COMMAND_BUFFER_DEVICE_SIDE_SYNC_KHR: cl_command_buffer_flags_khr = 1 << 2;
 
-pub type clRemapCommandBufferKHR_fn = Option<
+pub type clRemapCommandBufferKHR_t = Option<
     unsafe extern "C" fn(
         command_buffer: cl_command_buffer_khr,
         automatic: cl_bool,
@@ -515,6 +536,7 @@ pub type clRemapCommandBufferKHR_fn = Option<
         errcode_ret: *mut cl_int,
     ) -> cl_command_buffer_khr,
 >;
+pub type clRemapCommandBufferKHR_fn = clRemapCommandBufferKHR_t;
 
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
@@ -610,22 +632,24 @@ pub const CL_MUTABLE_DISPATCH_LOCAL_WORK_SIZE_KHR: cl_mutable_command_info_khr =
 pub const CL_STRUCTURE_TYPE_MUTABLE_BASE_CONFIG_KHR: cl_command_buffer_structure_type_khr = 0;
 pub const CL_STRUCTURE_TYPE_MUTABLE_DISPATCH_CONFIG_KHR: cl_command_buffer_structure_type_khr = 1;
 
-pub type clUpdateMutableCommandsKHR_fn = Option<
+pub type clUpdateMutableCommandsKHR_t = Option<
     unsafe extern "C" fn(
         command_buffer: cl_command_buffer_khr,
         mutable_config: *const cl_mutable_base_config_khr,
     ) -> cl_int,
 >;
+pub type clUpdateMutableCommandsKHR_fn = clUpdateMutableCommandsKHR_t;
 
-pub type clGetMutableCommandInfoKHR_fn = Option<
+pub type clGetMutableCommandInfoKHR_t = Option<
     unsafe extern "C" fn(
         command: cl_mutable_command_khr,
         param_name: cl_mutable_command_info_khr,
-        param_value_size: size_t,
-        param_value: *mut c_void,
-        param_value_size_ret: *mut size_t,
+        param_value_size: usize,
+        param_value: *mut ::std::os::raw::c_void,
+        param_value_size_ret: *mut usize,
     ) -> cl_int,
 >;
+pub type clGetMutableCommandInfoKHR_fn = clGetMutableCommandInfoKHR_t;
 
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
@@ -653,6 +677,47 @@ pub const CL_DEVICE_DOUBLE_FP_CONFIG: cl_device_info = 0x1032;
 // #endif
 // cl_khr_fp16 extension
 pub const CL_DEVICE_HALF_FP_CONFIG: cl_device_info = 0x1033;
+
+pub type clSetMemObjectDestructorAPPLE_t = Option<
+    unsafe extern "C" fn(
+        memobj: cl_mem,
+        pfn_notify: ::std::option::Option<
+            unsafe extern "C" fn(memobj: cl_mem, user_data: *mut c_void),
+        >,
+        user_data: *mut ::std::os::raw::c_void,
+    ) -> cl_int,
+>;
+pub type clSetMemObjectDestructorAPPLE_fn = clSetMemObjectDestructorAPPLE_t;
+
+pub type clLogMessagesToSystemLogAPPLE_t = Option<
+    unsafe extern "C" fn(
+        errstr: *const c_char,
+        private_info: *const c_void,
+        cb: usize,
+        user_data: *mut c_void,
+    ),
+>;
+pub type clLogMessagesToSystemLogAPPLE_fn = clLogMessagesToSystemLogAPPLE_t;
+
+pub type clLogMessagesToStdoutAPPLE_t = Option<
+    unsafe extern "C" fn(
+        errstr: *const c_char,
+        private_info: *const c_void,
+        cb: usize,
+        user_data: *mut c_void,
+    ),
+>;
+pub type clLogMessagesToStdoutAPPLE_fn = clLogMessagesToStdoutAPPLE_t;
+
+pub type clLogMessagesToStderrAPPLE_t = Option<
+    unsafe extern "C" fn(
+        errstr: *const c_char,
+        private_info: *const c_void,
+        cb: usize,
+        user_data: *mut c_void,
+    ),
+>;
+pub type clLogMessagesToStderrAPPLE_fn = clLogMessagesToStderrAPPLE_t;
 
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
@@ -725,6 +790,15 @@ pub const CL_PLATFORM_ICD_SUFFIX_KHR: cl_platform_info = 0x0920;
 // Additional Error Codes
 pub const CL_PLATFORM_NOT_FOUND_KHR: cl_int = -1001;
 
+pub type clIcdGetPlatformIDsKHR_t = Option<
+    unsafe extern "C" fn(
+        num_entries: cl_uint,
+        platforms: *mut cl_platform_id,
+        num_platforms: *mut cl_uint,
+    ) -> cl_int,
+>;
+pub type clIcdGetPlatformIDsKHR_fn = clIcdGetPlatformIDsKHR_t;
+
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_khr_icd")]
@@ -736,14 +810,6 @@ extern "system" {
     ) -> cl_int;
 }
 
-pub type clIcdGetPlatformIDsKHR_fn = Option<
-    unsafe extern "C" fn(
-        num_entries: cl_uint,
-        platforms: *mut cl_platform_id,
-        num_platforms: *mut cl_uint,
-    ) -> cl_int,
->;
-
 // cl_khr_il_program extension
 
 /// New property to clGetDeviceInfo for retrieving supported intermediate languages.
@@ -751,6 +817,16 @@ pub const CL_DEVICE_IL_VERSION_KHR: cl_device_info = 0x105B;
 
 /// New property to clGetProgramInfo for retrieving for retrieving the IL of a program.
 pub const CL_PROGRAM_IL_KHR: cl_program_info = 0x1169;
+
+pub type clCreateProgramWithILKHR_t = Option<
+    unsafe extern "C" fn(
+        context: cl_context,
+        il: *const c_void,
+        length: usize,
+        errcode_ret: *mut cl_int,
+    ) -> cl_program,
+>;
+pub type clCreateProgramWithILKHR_fn = clCreateProgramWithILKHR_t;
 
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
@@ -763,15 +839,6 @@ extern "system" {
         errcode_ret: *mut cl_int,
     ) -> cl_program;
 }
-
-pub type clCreateProgramWithILKHR_fn = Option<
-    unsafe extern "C" fn(
-        context: cl_context,
-        il: *const c_void,
-        length: size_t,
-        errcode_ret: *mut cl_int,
-    ) -> cl_program,
->;
 
 /* Extension: cl_khr_image2d_from_buffer
  *
@@ -804,14 +871,15 @@ pub const CL_CONTEXT_TERMINATED_KHR: cl_int = -1121;
 pub const CL_DEVICE_TERMINATE_CAPABILITY_KHR: cl_uint = 0x2031;
 pub const CL_CONTEXT_TERMINATE_KHR: cl_uint = 0x2032;
 
+pub type clTerminateContextKHR_t = Option<unsafe extern "C" fn(context: cl_context) -> cl_int>;
+pub type clTerminateContextKHR_fn = clTerminateContextKHR_t;
+
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_khr_terminate_context")]
 extern "system" {
     pub fn clTerminateContextKHR(context: cl_context) -> cl_int;
 }
-
-pub type clTerminateContextKHR_fn = Option<unsafe extern "C" fn(context: cl_context) -> cl_int>;
 
 /*
  * Extension: cl_khr_spir
@@ -826,6 +894,16 @@ pub const CL_PROGRAM_BINARY_TYPE_INTERMEDIATE: cl_uint = 0x40E1;
 // cl_khr_create_command_queue extension
 pub type cl_queue_properties_khr = cl_properties;
 
+pub type clCreateCommandQueueWithPropertiesKHR_t = ::std::option::Option<
+    unsafe extern "C" fn(
+        context: cl_context,
+        device: cl_device_id,
+        properties: *const cl_queue_properties_khr,
+        errcode_ret: *mut cl_int,
+    ) -> cl_command_queue,
+>;
+pub type clCreateCommandQueueWithPropertiesKHR_fn = clCreateCommandQueueWithPropertiesKHR_t;
+
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_khr_create_command_queue")]
@@ -837,15 +915,6 @@ extern "system" {
         errcode_ret: *mut cl_int,
     ) -> cl_command_queue;
 }
-
-pub type clCreateCommandQueueWithPropertiesKHR_fn = Option<
-    unsafe extern "C" fn(
-        context: cl_context,
-        device: cl_device_id,
-        properties: *const cl_queue_properties_khr,
-        errcode_ret: *mut cl_int,
-    ) -> cl_command_queue,
->;
 
 // cl_nv_device_attribute_query extension
 
@@ -906,6 +975,23 @@ pub const CL_PRINTF_BUFFERSIZE_ARM: cl_uint = 0x40B1;
 // cl_device_partition_property_ext
 pub type cl_device_partition_property_ext = cl_ulong;
 
+pub type clReleaseDeviceEXT_t = Option<unsafe extern "C" fn(device: cl_device_id) -> cl_int>;
+pub type clReleaseDeviceEXT_fn = clReleaseDeviceEXT_t;
+
+pub type clRetainDeviceEXT_t = Option<unsafe extern "C" fn(device: cl_device_id) -> cl_int>;
+pub type clRetainDeviceEXT_fn = clRetainDeviceEXT_t;
+
+pub type clCreateSubDevicesEXT_t = Option<
+    unsafe extern "C" fn(
+        in_device: cl_device_id,
+        properties: *const cl_device_partition_property_ext,
+        num_entries: cl_uint,
+        out_devices: *mut cl_device_id,
+        num_devices: *mut cl_uint,
+    ) -> cl_int,
+>;
+pub type clCreateSubDevicesEXT_fn = clCreateSubDevicesEXT_t;
+
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_ext_device_fission")]
@@ -922,20 +1008,6 @@ extern "system" {
         num_devices: *mut cl_uint,
     ) -> cl_int;
 }
-
-pub type clReleaseDeviceEXT_fn = Option<unsafe extern "C" fn(device: cl_device_id) -> cl_int>;
-
-pub type clRetainDeviceEXT_fn = Option<unsafe extern "C" fn(device: cl_device_id) -> cl_int>;
-
-pub type clCreateSubDevicesEXT_fn = Option<
-    unsafe extern "C" fn(
-        in_device: cl_device_id,
-        properties: *const cl_device_partition_property_ext,
-        num_entries: cl_uint,
-        out_devices: *mut cl_device_id,
-        num_devices: *mut cl_uint,
-    ) -> cl_int,
->;
 
 // cl_device_partition_property_ext
 pub const CL_DEVICE_PARTITION_EQUALLY_EXT: cl_device_partition_property_ext = 0x4050;
@@ -974,6 +1046,19 @@ pub type cl_mem_migration_flags_ext = cl_bitfield;
 pub const CL_MIGRATE_MEM_OBJECT_HOST_EXT: cl_mem_migration_flags_ext = 0x1;
 pub const CL_COMMAND_MIGRATE_MEM_OBJECT_EXT: cl_mem_migration_flags_ext = 0x4040;
 
+pub type clEnqueueMigrateMemObjectEXT_t = Option<
+    unsafe extern "C" fn(
+        command_queue: cl_command_queue,
+        num_mem_objects: cl_uint,
+        mem_objects: *const cl_mem,
+        flags: cl_mem_migration_flags_ext,
+        num_events_in_wait_list: cl_uint,
+        event_wait_list: *const cl_event,
+        event: *mut cl_event,
+    ) -> cl_int,
+>;
+pub type clEnqueueMigrateMemObjectEXT_fn = clEnqueueMigrateMemObjectEXT_t;
+
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_ext_migrate_memobject")]
@@ -988,18 +1073,6 @@ extern "system" {
         event: *mut cl_event,
     ) -> cl_int;
 }
-
-pub type clEnqueueMigrateMemObjectEXT_fn = Option<
-    unsafe extern "C" fn(
-        command_queue: cl_command_queue,
-        num_mem_objects: cl_uint,
-        mem_objects: *const cl_mem,
-        flags: cl_mem_migration_flags_ext,
-        num_events_in_wait_list: cl_uint,
-        event_wait_list: *const cl_event,
-        event: *mut cl_event,
-    ) -> cl_int,
->;
 
 // cl_ext_cxx_for_opencl extension
 pub const CL_DEVICE_CXX_FOR_OPENCL_NUMERIC_VERSION_EXT: cl_uint = 0x4230;
@@ -1018,6 +1091,20 @@ pub const CL_MEM_HOST_WRITETHROUGH_QCOM: cl_qcom_ext_host_ptr = 0x40A6;
 pub const CL_MEM_HOST_WRITE_COMBINING_QCOM: cl_qcom_ext_host_ptr = 0x40A7;
 
 pub type cl_image_pitch_info_qcom = cl_uint;
+
+pub type clGetDeviceImageInfoQCOM_t = Option<
+    unsafe extern "C" fn(
+        device: cl_device_id,
+        image_width: size_t,
+        image_height: size_t,
+        image_format: *const cl_image_format,
+        param_name: cl_image_pitch_info_qcom,
+        param_value_size: size_t,
+        param_value: *mut c_void,
+        param_value_size_ret: *mut size_t,
+    ) -> cl_int,
+>;
+pub type clGetDeviceImageInfoQCOM_fn = clGetDeviceImageInfoQCOM_t;
 
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
@@ -1086,6 +1173,30 @@ pub const CL_COMMAND_RELEASE_GRALLOC_OBJECTS_IMG: cl_event_info = 0x40D3;
 pub const CL_GRALLOC_RESOURCE_NOT_ACQUIRED_IMG: cl_int = 0x40D4;
 pub const CL_INVALID_GRALLOC_OBJECT_IMG: cl_int = 0x40D5;
 
+pub type clEnqueueAcquireGrallocObjectsIMG_t = Option<
+    unsafe extern "C" fn(
+        command_queue: cl_command_queue,
+        num_objects: cl_uint,
+        mem_objects: *const cl_mem,
+        num_events_in_wait_list: cl_uint,
+        event_wait_list: *const cl_event,
+        event: *mut cl_event,
+    ) -> cl_int,
+>;
+pub type clEnqueueAcquireGrallocObjectsIMG_fn = clEnqueueAcquireGrallocObjectsIMG_t;
+
+pub type clEnqueueReleaseGrallocObjectsIMG_t = Option<
+    unsafe extern "C" fn(
+        command_queue: cl_command_queue,
+        num_objects: cl_uint,
+        mem_objects: *const cl_mem,
+        num_events_in_wait_list: cl_uint,
+        event_wait_list: *const cl_event,
+        event: *mut cl_event,
+    ) -> cl_int,
+>;
+pub type clEnqueueReleaseGrallocObjectsIMG_fn = clEnqueueReleaseGrallocObjectsIMG_t;
+
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_img_use_gralloc_ptr")]
@@ -1119,6 +1230,21 @@ pub const CL_MIPMAP_FILTER_BOX_IMG: cl_mipmap_filter_mode_img = 0x1;
 // To be used by clGetEventInfo
 pub const CL_COMMAND_GENERATE_MIPMAP_IMG: cl_event_info = 0x40D6;
 
+pub type clEnqueueGenerateMipmapIMG_t = Option<
+    unsafe extern "C" fn(
+        command_queue: cl_command_queue,
+        src_image: cl_mem,
+        dst_image: cl_mem,
+        mipmap_filter_mode: cl_mipmap_filter_mode_img,
+        array_region: *const usize,
+        mip_region: *const usize,
+        num_events_in_wait_list: cl_uint,
+        event_wait_list: *const cl_event,
+        event: *mut cl_event,
+    ) -> cl_int,
+>;
+pub type clEnqueueGenerateMipmapIMG_fn = clEnqueueGenerateMipmapIMG_t;
+
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_img_generate_mipmap")]
@@ -1150,6 +1276,20 @@ pub const CL_MEM_ALLOC_RELAX_REQUIREMENTS_IMG: cl_mem_alloc_flags_img = 1 << 0;
 pub const CL_KERNEL_MAX_SUB_GROUP_SIZE_FOR_NDRANGE_KHR: cl_kernel_sub_group_info = 0x2033;
 pub const CL_KERNEL_SUB_GROUP_COUNT_FOR_NDRANGE_KHR: cl_kernel_sub_group_info = 0x2034;
 
+pub type clGetKernelSubGroupInfoKHR_t = Option<
+    unsafe extern "C" fn(
+        in_kernel: cl_kernel,
+        in_device: cl_device_id,
+        param_name: cl_kernel_sub_group_info,
+        input_value_size: usize,
+        input_value: *const c_void,
+        param_value_size: size_t,
+        param_value: *mut c_void,
+        param_value_size_ret: *mut size_t,
+    ) -> cl_int,
+>;
+pub type clGetKernelSubGroupInfoKHR_fn = clGetKernelSubGroupInfoKHR_t;
+
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_khr_subgroups")]
@@ -1165,19 +1305,6 @@ extern "system" {
         param_value_size_ret: *mut size_t,
     ) -> cl_int;
 }
-
-pub type clGetKernelSubGroupInfoKHR_fn = Option<
-    unsafe extern "C" fn(
-        in_kernel: cl_kernel,
-        in_device: cl_device_id,
-        param_name: cl_kernel_sub_group_info,
-        input_value_size: size_t,
-        input_value: *const c_void,
-        param_value_size: size_t,
-        param_value: *mut c_void,
-        param_value_size_ret: *mut size_t,
-    ) -> cl_int,
->;
 
 // cl_khr_mipmap_image extension
 
@@ -1296,6 +1423,18 @@ pub const CL_DEVICE_PCI_BUS_INFO_KHR: cl_device_info = 0x410F;
 
 // cl_khr_suggested_local_work_size
 
+pub type clGetKernelSuggestedLocalWorkSizeKHR_t = Option<
+    unsafe extern "C" fn(
+        command_queue: cl_command_queue,
+        kernel: cl_kernel,
+        work_dim: cl_uint,
+        global_work_offset: *const size_t,
+        global_work_size: *const size_t,
+        suggested_local_work_size: *mut size_t,
+    ) -> cl_int,
+>;
+pub type clGetKernelSuggestedLocalWorkSizeKHR_fn = clGetKernelSuggestedLocalWorkSizeKHR_t;
+
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_khr_suggested_local_work_size")]
@@ -1309,17 +1448,6 @@ extern "system" {
         suggested_local_work_size: *mut size_t,
     ) -> cl_int;
 }
-
-pub type clGetKernelSuggestedLocalWorkSizeKHR_fn = Option<
-    unsafe extern "C" fn(
-        command_queue: cl_command_queue,
-        kernel: cl_kernel,
-        work_dim: cl_uint,
-        global_work_offset: *const size_t,
-        global_work_size: *const size_t,
-        suggested_local_work_size: *mut size_t,
-    ) -> cl_int,
->;
 
 // cl_khr_integer_dot_product
 
@@ -1356,7 +1484,8 @@ pub const CL_PLATFORM_EXTERNAL_MEMORY_IMPORT_HANDLE_TYPES_KHR: cl_platform_info 
 
 // cl_device_info
 pub const CL_DEVICE_EXTERNAL_MEMORY_IMPORT_HANDLE_TYPES_KHR: cl_device_info = 0x204F;
-pub const CL_DEVICE_EXTERNAL_MEMORY_IMPORT_ASSUME_LINEAR_IMAGES_HANDLE_TYPES_KHR : cl_device_info = 0x2052;
+pub const CL_DEVICE_EXTERNAL_MEMORY_IMPORT_ASSUME_LINEAR_IMAGES_HANDLE_TYPES_KHR: cl_device_info =
+    0x2052;
 
 // cl_mem_properties
 pub const CL_DEVICE_HANDLE_LIST_KHR: cl_ulong = 0x2051;
@@ -1366,7 +1495,7 @@ pub const CL_DEVICE_HANDLE_LIST_END_KHR: cl_ulong = 0;
 pub const CL_COMMAND_ACQUIRE_EXTERNAL_MEM_OBJECTS_KHR: cl_command_type = 0x2047;
 pub const CL_COMMAND_RELEASE_EXTERNAL_MEM_OBJECTS_KHR: cl_command_type = 0x2048;
 
-pub type clEnqueueAcquireExternalMemObjectsKHR_fn = Option<
+pub type clEnqueueAcquireExternalMemObjectsKHR_t = Option<
     unsafe extern "C" fn(
         command_queue: cl_command_queue,
         num_mem_objects: cl_uint,
@@ -1376,8 +1505,9 @@ pub type clEnqueueAcquireExternalMemObjectsKHR_fn = Option<
         event: *mut cl_event,
     ) -> cl_int,
 >;
+pub type clEnqueueAcquireExternalMemObjectsKHR_fn = clEnqueueAcquireExternalMemObjectsKHR_t;
 
-pub type clEnqueueReleaseExternalMemObjectsKHR_fn = Option<
+pub type clEnqueueReleaseExternalMemObjectsKHR_t = Option<
     unsafe extern "C" fn(
         command_queue: cl_command_queue,
         num_mem_objects: cl_uint,
@@ -1387,6 +1517,7 @@ pub type clEnqueueReleaseExternalMemObjectsKHR_fn = Option<
         event: *mut cl_event,
     ) -> cl_int,
 >;
+pub type clEnqueueReleaseExternalMemObjectsKHR_fn = clEnqueueReleaseExternalMemObjectsKHR_t;
 
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
@@ -1454,16 +1585,17 @@ pub const CL_DEVICE_SEMAPHORE_EXPORT_HANDLE_TYPES_KHR: cl_device_info = 0x204E;
 pub const CL_SEMAPHORE_EXPORT_HANDLE_TYPES_KHR: cl_semaphore_properties_khr = 0x203F;
 pub const CL_SEMAPHORE_EXPORT_HANDLE_TYPES_LIST_END_KHR: cl_semaphore_properties_khr = 0;
 
-pub type clGetSemaphoreHandleForTypeKHR_fn = Option<
+pub type clGetSemaphoreHandleForTypeKHR_t = Option<
     unsafe extern "C" fn(
         sema_object: cl_semaphore_khr,
         device: cl_device_id,
         handle_type: cl_external_semaphore_handle_type_khr,
         handle_size: size_t,
         handle_ptr: *mut c_void,
-        handle_size_ret: *mut size_t,
+        handle_size_ret: *mut usize,
     ) -> cl_int,
 >;
+pub type clGetSemaphoreHandleForTypeKHR_fn = clGetSemaphoreHandleForTypeKHR_t;
 
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
@@ -1528,15 +1660,16 @@ pub const CL_COMMAND_SEMAPHORE_SIGNAL_KHR: cl_command_type = 0x2043;
 // Error codes
 pub const CL_INVALID_SEMAPHORE_KHR: cl_int = -1142;
 
-pub type clCreateSemaphoreWithPropertiesKHR_fn = Option<
+pub type clCreateSemaphoreWithPropertiesKHR_t = Option<
     unsafe extern "C" fn(
         context: cl_context,
         sema_props: *const cl_semaphore_properties_khr,
         errcode_ret: *mut cl_int,
     ) -> cl_semaphore_khr,
 >;
+pub type clCreateSemaphoreWithPropertiesKHR_fn = clCreateSemaphoreWithPropertiesKHR_t;
 
-pub type clEnqueueWaitSemaphoresKHR_fn = Option<
+pub type clEnqueueWaitSemaphoresKHR_t = Option<
     unsafe extern "C" fn(
         command_queue: cl_command_queue,
         num_sema_objects: cl_uint,
@@ -1547,8 +1680,9 @@ pub type clEnqueueWaitSemaphoresKHR_fn = Option<
         event: *mut cl_event,
     ) -> cl_int,
 >;
+pub type clEnqueueWaitSemaphoresKHR_fn = clEnqueueWaitSemaphoresKHR_t;
 
-pub type clEnqueueSignalSemaphoresKHR_fn = Option<
+pub type clEnqueueSignalSemaphoresKHR_t = Option<
     unsafe extern "C" fn(
         command_queue: cl_command_queue,
         num_sema_objects: cl_uint,
@@ -1559,22 +1693,26 @@ pub type clEnqueueSignalSemaphoresKHR_fn = Option<
         event: *mut cl_event,
     ) -> cl_int,
 >;
+pub type clEnqueueSignalSemaphoresKHR_fn = clEnqueueSignalSemaphoresKHR_t;
 
-pub type clGetSemaphoreInfoKHR_fn = Option<
+pub type clGetSemaphoreInfoKHR_t = Option<
     unsafe extern "C" fn(
         sema_object: cl_semaphore_khr,
         param_name: cl_semaphore_info_khr,
         param_value_size: size_t,
-        param_value: *mut c_void,
+        param_value: *mut ::std::os::raw::c_void,
         param_value_size_ret: *mut size_t,
     ) -> cl_int,
 >;
+pub type clGetSemaphoreInfoKHR_fn = clGetSemaphoreInfoKHR_t;
 
-pub type clReleaseSemaphoreKHR_fn =
+pub type clReleaseSemaphoreKHR_t =
     Option<unsafe extern "C" fn(sema_object: cl_semaphore_khr) -> cl_int>;
+pub type clReleaseSemaphoreKHR_fn = clReleaseSemaphoreKHR_t;
 
-pub type clRetainSemaphoreKHR_fn =
+pub type clRetainSemaphoreKHR_t =
     Option<unsafe extern "C" fn(sema_object: cl_semaphore_khr) -> cl_int>;
+pub type clRetainSemaphoreKHR_fn = clRetainSemaphoreKHR_t;
 
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
@@ -1667,6 +1805,19 @@ pub const CL_IMPORT_MEMORY_WHOLE_ALLOCATION_ARM: cl_import_properties_arm =
  * This extension maps pages with the same properties as the normal buffer creation
  * function clCreateBuffer.
  */
+
+pub type clImportMemoryARM_t = Option<
+    unsafe extern "C" fn(
+        context: cl_context,
+        flags: cl_mem_flags,
+        properties: *const cl_import_properties_arm,
+        memory: *mut c_void,
+        size: size_t,
+        errcode_ret: *mut cl_int,
+    ) -> cl_mem,
+>;
+pub type clImportMemoryARM_fn = clImportMemoryARM_t;
+
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_arm_import_memory")]
@@ -1712,6 +1863,114 @@ pub const CL_DEVICE_SVM_ATOMICS_ARM: cl_device_svm_capabilities_arm = 1 << 3;
 pub type cl_svm_mem_flags_arm = cl_bitfield;
 pub const CL_MEM_SVM_FINE_GRAIN_BUFFER_ARM: cl_svm_mem_flags_arm = 1 << 10;
 pub const CL_MEM_SVM_ATOMICS_ARM: cl_svm_mem_flags_arm = 1 << 11;
+
+pub type clSVMAllocARM_t = Option<
+    unsafe extern "C" fn(
+        context: cl_context,
+        flags: cl_svm_mem_flags_arm,
+        size: size_t,
+        alignment: cl_uint,
+    ) -> *mut c_void,
+>;
+pub type clSVMAllocARM_fn = clSVMAllocARM_t;
+
+pub type clSVMFreeARM_t = Option<
+    unsafe extern "C" fn(context: cl_context, svm_pointer: *mut c_void),
+>;
+pub type clSVMFreeARM_fn = clSVMFreeARM_t;
+
+pub type clEnqueueSVMFreeARM_t = Option<
+    unsafe extern "C" fn(
+        command_queue: cl_command_queue,
+        num_svm_pointers: cl_uint,
+        svm_pointers: *mut *mut c_void,
+        pfn_free_func: Option<
+            unsafe extern "C" fn(
+                queue: cl_command_queue,
+                num_svm_pointers: cl_uint,
+                svm_pointers: *mut *mut c_void,
+                user_data: *mut c_void,
+            ),
+        >,
+        user_data: *mut c_void,
+        num_events_in_wait_list: cl_uint,
+        event_wait_list: *const cl_event,
+        event: *mut cl_event,
+    ) -> cl_int,
+>;
+pub type clEnqueueSVMFreeARM_fn = clEnqueueSVMFreeARM_t;
+
+pub type clEnqueueSVMMemcpyARM_t = Option<
+    unsafe extern "C" fn(
+        command_queue: cl_command_queue,
+        blocking_copy: cl_bool,
+        dst_ptr: *mut c_void,
+        src_ptr: *const c_void,
+        size: size_t,
+        num_events_in_wait_list: cl_uint,
+        event_wait_list: *const cl_event,
+        event: *mut cl_event,
+    ) -> cl_int,
+>;
+pub type clEnqueueSVMMemcpyARM_fn = clEnqueueSVMMemcpyARM_t;
+
+pub type clEnqueueSVMMemFillARM_t = Option<
+    unsafe extern "C" fn(
+        command_queue: cl_command_queue,
+        svm_ptr: *mut c_void,
+        pattern: *const c_void,
+        pattern_size: size_t,
+        size: size_t,
+        num_events_in_wait_list: cl_uint,
+        event_wait_list: *const cl_event,
+        event: *mut cl_event,
+    ) -> cl_int,
+>;
+pub type clEnqueueSVMMemFillARM_fn = clEnqueueSVMMemFillARM_t;
+
+pub type clEnqueueSVMMapARM_t = Option<
+    unsafe extern "C" fn(
+        command_queue: cl_command_queue,
+        blocking_map: cl_bool,
+        flags: cl_map_flags,
+        svm_ptr: *mut c_void,
+        size: size_t,
+        num_events_in_wait_list: cl_uint,
+        event_wait_list: *const cl_event,
+        event: *mut cl_event,
+    ) -> cl_int,
+>;
+pub type clEnqueueSVMMapARM_fn = clEnqueueSVMMapARM_t;
+
+pub type clEnqueueSVMUnmapARM_t = Option<
+    unsafe extern "C" fn(
+        command_queue: cl_command_queue,
+        svm_ptr: *mut c_void,
+        num_events_in_wait_list: cl_uint,
+        event_wait_list: *const cl_event,
+        event: *mut cl_event,
+    ) -> cl_int,
+>;
+pub type clEnqueueSVMUnmapARM_fn = clEnqueueSVMUnmapARM_t;
+
+pub type clSetKernelArgSVMPointerARM_t = Option<
+    unsafe extern "C" fn(
+        kernel: cl_kernel,
+        arg_index: cl_uint,
+        arg_value: *const c_void,
+    ) -> cl_int,
+>;
+pub type clSetKernelArgSVMPointerARM_fn = clSetKernelArgSVMPointerARM_t;
+
+pub type clSetKernelExecInfoARM_t = Option<
+    unsafe extern "C" fn(
+        kernel: cl_kernel,
+        param_name: cl_kernel_exec_info_arm,
+        param_value_size: size_t,
+        param_value: *const c_void,
+    ) -> cl_int,
+>;
+pub type clSetKernelExecInfoARM_fn = clSetKernelExecInfoARM_t;
 
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
@@ -1994,6 +2253,36 @@ pub const CL_ME_VERSION_LEGACY_INTEL: cl_uint = 0x0;
 pub const CL_ME_VERSION_ADVANCED_VER_1_INTEL: cl_uint = 0x1;
 pub const CL_ME_VERSION_ADVANCED_VER_2_INTEL: cl_uint = 0x2;
 
+pub type clCreateAcceleratorINTEL_t = Option<
+    unsafe extern "C" fn(
+        context: cl_context,
+        accelerator_type: cl_accelerator_type_intel,
+        descriptor_size: size_t,
+        descriptor: *const c_void,
+        errcode_ret: *mut cl_int,
+    ) -> cl_accelerator_intel,
+>;
+pub type clCreateAcceleratorINTEL_fn = clCreateAcceleratorINTEL_t;
+
+pub type clGetAcceleratorInfoINTEL_t = Option<
+    unsafe extern "C" fn(
+        accelerator: cl_accelerator_intel,
+        param_name: cl_accelerator_info_intel,
+        param_value_size: size_t,
+        param_value: *mut c_void,
+        param_value_size_ret: *mut usize,
+    ) -> cl_int,
+>;
+pub type clGetAcceleratorInfoINTEL_fn = clGetAcceleratorInfoINTEL_t;
+
+pub type clRetainAcceleratorINTEL_t =
+    Option<unsafe extern "C" fn(accelerator: cl_accelerator_intel) -> cl_int>;
+pub type clRetainAcceleratorINTEL_fn = clRetainAcceleratorINTEL_t;
+
+pub type clReleaseAcceleratorINTEL_t =
+    Option<unsafe extern "C" fn(accelerator: cl_accelerator_intel) -> cl_int>;
+pub type clReleaseAcceleratorINTEL_fn = clReleaseAcceleratorINTEL_t;
+
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_intel_accelerator")]
@@ -2018,32 +2307,6 @@ extern "system" {
 
     pub fn clReleaseAcceleratorINTEL(accelerator: cl_accelerator_intel) -> cl_int;
 }
-
-pub type clCreateAcceleratorINTEL_fn = Option<
-    unsafe extern "C" fn(
-        context: cl_context,
-        accelerator_type: cl_accelerator_type_intel,
-        descriptor_size: size_t,
-        descriptor: *const c_void,
-        errcode_ret: *mut cl_int,
-    ) -> cl_accelerator_intel,
->;
-
-pub type clGetAcceleratorInfoINTEL_fn = Option<
-    unsafe extern "C" fn(
-        accelerator: cl_accelerator_intel,
-        param_name: cl_accelerator_info_intel,
-        param_value_size: size_t,
-        param_value: *mut c_void,
-        param_value_size_ret: *mut size_t,
-    ) -> cl_int,
->;
-
-pub type clRetainAcceleratorINTEL_fn =
-    Option<unsafe extern "C" fn(accelerator: cl_accelerator_intel) -> cl_int>;
-
-pub type clReleaseAcceleratorINTEL_fn =
-    Option<unsafe extern "C" fn(accelerator: cl_accelerator_intel) -> cl_int>;
 
 // cl_intel_simultaneous_sharing extension
 pub const CL_DEVICE_SIMULTANEOUS_INTEROPS_INTEL: cl_uint = 0x4104;
@@ -2282,7 +2545,7 @@ pub const CL_COMMAND_MEMCPY_INTEL: cl_command_type = 0x4205;
 pub const CL_COMMAND_MIGRATEMEM_INTEL: cl_command_type = 0x4206;
 pub const CL_COMMAND_MEMADVISE_INTEL: cl_command_type = 0x4207;
 
-pub type clHostMemAllocINTEL_fn = Option<
+pub type clHostMemAllocINTEL_t = Option<
     unsafe extern "C" fn(
         context: cl_context,
         properties: *const cl_mem_properties_intel,
@@ -2291,19 +2554,9 @@ pub type clHostMemAllocINTEL_fn = Option<
         errcode_ret: *mut cl_int,
     ) -> *mut c_void,
 >;
+pub type clHostMemAllocINTEL_fn = clHostMemAllocINTEL_t;
 
-pub type clDeviceMemAllocINTEL_fn = Option<
-    unsafe extern "C" fn(
-        context: cl_context,
-        device: cl_device_id,
-        properties: *const cl_mem_properties_intel,
-        size: size_t,
-        alignment: cl_uint,
-        errcode_ret: *mut cl_int,
-    ) -> *mut c_void,
->;
-
-pub type clSharedMemAllocINTEL_fn = Option<
+pub type clDeviceMemAllocINTEL_t = Option<
     unsafe extern "C" fn(
         context: cl_context,
         device: cl_device_id,
@@ -2313,14 +2566,31 @@ pub type clSharedMemAllocINTEL_fn = Option<
         errcode_ret: *mut cl_int,
     ) -> *mut c_void,
 >;
+pub type clDeviceMemAllocINTEL_fn = clDeviceMemAllocINTEL_t;
 
-pub type clMemFreeINTEL_fn =
-    Option<unsafe extern "C" fn(context: cl_context, ptr: *mut c_void) -> cl_int>;
+pub type clSharedMemAllocINTEL_t =Option<
+    unsafe extern "C" fn(
+        context: cl_context,
+        device: cl_device_id,
+        properties: *const cl_mem_properties_intel,
+        size: size_t,
+        alignment: cl_uint,
+        errcode_ret: *mut cl_int,
+    ) -> *mut c_void,
+>;
+pub type clSharedMemAllocINTEL_fn = clSharedMemAllocINTEL_t;
 
-pub type clMemBlockingFreeINTEL_fn =
-    Option<unsafe extern "C" fn(context: cl_context, ptr: *mut c_void) -> cl_int>;
+pub type clMemFreeINTEL_t = Option<
+    unsafe extern "C" fn(context: cl_context, ptr: *mut c_void) -> cl_int,
+>;
+pub type clMemFreeINTEL_fn = clMemFreeINTEL_t;
 
-pub type clGetMemAllocInfoINTEL_fn = Option<
+pub type clMemBlockingFreeINTEL_t = Option<
+    unsafe extern "C" fn(context: cl_context, ptr: *mut c_void) -> cl_int,
+>;
+pub type clMemBlockingFreeINTEL_fn = clMemBlockingFreeINTEL_t;
+
+pub type clGetMemAllocInfoINTEL_t = Option<
     unsafe extern "C" fn(
         context: cl_context,
         ptr: *const c_void,
@@ -2330,12 +2600,18 @@ pub type clGetMemAllocInfoINTEL_fn = Option<
         param_value_size_ret: *mut size_t,
     ) -> cl_int,
 >;
+pub type clGetMemAllocInfoINTEL_fn = clGetMemAllocInfoINTEL_t;
 
-pub type clSetKernelArgMemPointerINTEL_fn = Option<
-    unsafe extern "C" fn(kernel: cl_kernel, arg_index: cl_uint, arg_value: *const c_void) -> cl_int,
+pub type clSetKernelArgMemPointerINTEL_t = Option<
+    unsafe extern "C" fn(
+        kernel: cl_kernel,
+        arg_index: cl_uint,
+        arg_value: *const c_void,
+    ) -> cl_int,
 >;
+pub type clSetKernelArgMemPointerINTEL_fn = clSetKernelArgMemPointerINTEL_t;
 
-pub type clEnqueueMemFillINTEL_fn = Option<
+pub type clEnqueueMemFillINTEL_t = Option<
     unsafe extern "C" fn(
         command_queue: cl_command_queue,
         dst_ptr: *mut c_void,
@@ -2347,8 +2623,9 @@ pub type clEnqueueMemFillINTEL_fn = Option<
         event: *mut cl_event,
     ) -> cl_int,
 >;
+pub type clEnqueueMemFillINTEL_fn = clEnqueueMemFillINTEL_t;
 
-pub type clEnqueueMemcpyINTEL_fn = Option<
+pub type clEnqueueMemcpyINTEL_t = Option<
     unsafe extern "C" fn(
         command_queue: cl_command_queue,
         blocking: cl_bool,
@@ -2360,8 +2637,9 @@ pub type clEnqueueMemcpyINTEL_fn = Option<
         event: *mut cl_event,
     ) -> cl_int,
 >;
+pub type clEnqueueMemcpyINTEL_fn = clEnqueueMemcpyINTEL_t;
 
-pub type clEnqueueMemAdviseINTEL_fn = Option<
+pub type clEnqueueMemAdviseINTEL_t = Option<
     unsafe extern "C" fn(
         command_queue: cl_command_queue,
         ptr: *const c_void,
@@ -2372,8 +2650,9 @@ pub type clEnqueueMemAdviseINTEL_fn = Option<
         event: *mut cl_event,
     ) -> cl_int,
 >;
+pub type clEnqueueMemAdviseINTEL_fn = clEnqueueMemAdviseINTEL_t;
 
-pub type clEnqueueMigrateMemINTEL_fn = Option<
+pub type clEnqueueMigrateMemINTEL_t = Option<
     unsafe extern "C" fn(
         command_queue: cl_command_queue,
         ptr: *const c_void,
@@ -2384,8 +2663,9 @@ pub type clEnqueueMigrateMemINTEL_fn = Option<
         event: *mut cl_event,
     ) -> cl_int,
 >;
+pub type clEnqueueMigrateMemINTEL_fn = clEnqueueMigrateMemINTEL_t;
 
-pub type clEnqueueMemsetINTEL_fn = Option<
+pub type clEnqueueMemsetINTEL_t = Option<
     unsafe extern "C" fn(
         command_queue: cl_command_queue,
         dst_ptr: *mut c_void,
@@ -2396,6 +2676,7 @@ pub type clEnqueueMemsetINTEL_fn = Option<
         event: *mut cl_event,
     ) -> cl_int,
 >;
+pub type clEnqueueMemsetINTEL_fn = clEnqueueMemsetINTEL_t;
 
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
@@ -2506,6 +2787,18 @@ pub const CL_MEM_ALLOC_BUFFER_LOCATION_INTEL: cl_mem_properties_intel = 0x419E;
 
 // cl_intel_create_buffer_with_properties extension
 
+pub type clCreateBufferWithPropertiesINTEL_t = Option<
+    unsafe extern "C" fn(
+        context: cl_context,
+        properties: *const cl_mem_properties_intel,
+        flags: cl_mem_flags,
+        size: size_t,
+        host_ptr: *mut c_void,
+        errcode_ret: *mut cl_int,
+    ) -> cl_mem,
+>;
+pub type clCreateBufferWithPropertiesINTEL_fn = clCreateBufferWithPropertiesINTEL_t;
+
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_intel_create_buffer_with_properties")]
@@ -2521,17 +2814,6 @@ extern "system" {
     ) -> cl_mem;
 }
 
-pub type clCreateBufferWithPropertiesINTEL_fn = Option<
-    unsafe extern "C" fn(
-        context: cl_context,
-        properties: *const cl_mem_properties_intel,
-        flags: cl_mem_flags,
-        size: size_t,
-        host_ptr: *mut c_void,
-        errcode_ret: *mut cl_int,
-    ) -> cl_mem,
->;
-
 // cl_intel_program_scope_host_pipe
 
 // clGetEventInfo response when param_name is CL_EVENT_COMMAND_TYPE
@@ -2542,9 +2824,9 @@ pub const CL_COMMAND_WRITE_HOST_PIPE_INTEL: cl_uint = 0x4215;
 pub const CL_PROGRAM_NUM_HOST_PIPES_INTEL: cl_program_info = 0x4216;
 pub const CL_PROGRAM_HOST_PIPE_NAMES_INTEL: cl_program_info = 0x4217;
 
-pub type clEnqueueReadHostPipeINTEL_fn = Option<
+pub type clEnqueueReadHostPipeINTEL_t = Option<
     unsafe extern "C" fn(
-        queue: cl_command_queue,
+        command_queue: cl_command_queue,
         program: cl_program,
         pipe_symbol: *const c_char,
         blocking_read: cl_bool,
@@ -2555,10 +2837,11 @@ pub type clEnqueueReadHostPipeINTEL_fn = Option<
         event: *mut cl_event,
     ) -> cl_int,
 >;
+pub type clEnqueueReadHostPipeINTEL_fn = clEnqueueReadHostPipeINTEL_t;
 
-pub type clEnqueueWriteHostPipeINTEL_fn = Option<
+pub type clEnqueueWriteHostPipeINTEL_t = Option<
     unsafe extern "C" fn(
-        queue: cl_command_queue,
+        command_queue: cl_command_queue,
         program: cl_program,
         pipe_symbol: *const c_char,
         blocking_write: cl_bool,
@@ -2569,6 +2852,7 @@ pub type clEnqueueWriteHostPipeINTEL_fn = Option<
         event: *mut cl_event,
     ) -> cl_int,
 >;
+pub type clEnqueueWriteHostPipeINTEL_fn = clEnqueueWriteHostPipeINTEL_t;
 
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
@@ -2672,6 +2956,21 @@ pub const CL_IMAGE_REQUIREMENTS_MAX_HEIGHT_EXT: cl_image_requirements_info_ext =
 pub const CL_IMAGE_REQUIREMENTS_MAX_DEPTH_EXT: cl_image_requirements_info_ext = 0x12B5;
 pub const CL_IMAGE_REQUIREMENTS_MAX_ARRAY_SIZE_EXT: cl_image_requirements_info_ext = 0x12B6;
 
+pub type clGetImageRequirementsInfoEXT_t = Option<
+    unsafe extern "C" fn(
+        context: cl_context,
+        properties: *const cl_mem_properties,
+        flags: cl_mem_flags,
+        image_format: *const cl_image_format,
+        image_desc: *const cl_image_desc,
+        param_name: cl_image_requirements_info_ext,
+        param_value_size: size_t,
+        param_value: *mut c_void,
+        param_value_size_ret: *mut usize,
+    ) -> cl_int,
+>;
+pub type clGetImageRequirementsInfoEXT_fn = clGetImageRequirementsInfoEXT_t;
+
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_ext_image_requirements_info")]
@@ -2690,23 +2989,56 @@ extern "system" {
     ) -> cl_int;
 }
 
-pub type clGetImageRequirementsInfoEXT_fn = Option<
-    unsafe extern "C" fn(
-        context: cl_context,
-        properties: *const cl_mem_properties,
-        flags: cl_mem_flags,
-        image_format: *const cl_image_format,
-        image_desc: *const cl_image_desc,
-        param_name: cl_image_requirements_info_ext,
-        param_value_size: size_t,
-        param_value: *mut c_void,
-        param_value_size_ret: *mut size_t,
-    ) -> cl_int,
->;
-
 // cl_ext_image_from_buffer
 
 pub const CL_IMAGE_REQUIREMENTS_SLICE_PITCH_ALIGNMENT_EXT: cl_image_requirements_info_ext = 0x1291;
+
+// cl_loader_info
+
+pub type cl_icdl_info = cl_uint;
+
+pub type clGetICDLoaderInfoOCLICD_t = Option<
+    unsafe extern "C" fn(
+        param_name: cl_icdl_info,
+        param_value_size: usize,
+        param_value: *mut c_void,
+        param_value_size_ret: *mut usize,
+    ) -> cl_int,
+>;
+pub type clGetICDLoaderInfoOCLICD_fn = clGetICDLoaderInfoOCLICD_t;
+
+#[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
+#[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
+#[cfg(feature = "cl_loader_info")]
+extern "system" {
+    pub fn clGetICDLoaderInfoOCLICD(
+        param_name: cl_icdl_info,
+        param_value_size: size_t,
+        param_value: *mut c_void,
+        param_value_size_ret: *mut size_t,
+    ) -> cl_int;
+}
+
+// cl_pocl_content_size
+
+pub type cl_device_fp_atomic_capabilities_ext = cl_bitfield;
+
+pub type clSetContentSizeBufferPoCL_t = Option<
+    unsafe extern "C" fn(buffer: cl_mem, content_size_buffer: cl_mem) -> cl_int,
+>;
+pub type clSetContentSizeBufferPoCL_fn = clSetContentSizeBufferPoCL_t;
+
+#[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
+#[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
+#[cfg(feature = "cl_pocl_content_size")]
+extern "system" {
+    pub fn clGetICDLoaderInfoOCLICD(
+        param_name: cl_icdl_info,
+        param_value_size: size_t,
+        param_value: *mut c_void,
+        param_value_size_ret: *mut size_t,
+    ) -> cl_int;
+}
 
 // cl_ext_image_raw10_raw12
 

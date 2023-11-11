@@ -1,4 +1,4 @@
-// Copyright (c) 2021-2022 Via Technology Ltd.
+// Copyright (c) 2021-2023 Via Technology Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -42,7 +42,7 @@ pub type CLeglSyncKHR = *mut c_void;
 // properties passed to clCreateFromEGLImageKHR
 pub type cl_egl_image_properties_khr = intptr_t;
 
-pub type clCreateFromEGLImageKHR_fn = Option<
+pub type clCreateFromEGLImageKHR_t = Option<
     unsafe extern "C" fn(
         context: cl_context,
         egldisplay: CLeglDisplayKHR,
@@ -52,8 +52,9 @@ pub type clCreateFromEGLImageKHR_fn = Option<
         errcode_ret: *mut cl_int,
     ) -> cl_mem,
 >;
+pub type clCreateFromEGLImageKHR_fn = clCreateFromEGLImageKHR_t;
 
-pub type clEnqueueAcquireEGLObjectsKHR_fn = Option<
+pub type clEnqueueAcquireEGLObjectsKHR_t = Option<
     unsafe extern "C" fn(
         command_queue: cl_command_queue,
         num_objects: cl_uint,
@@ -63,8 +64,9 @@ pub type clEnqueueAcquireEGLObjectsKHR_fn = Option<
         event: *mut cl_event,
     ) -> cl_int,
 >;
+pub type clEnqueueAcquireEGLObjectsKHR_fn = clEnqueueAcquireEGLObjectsKHR_t;
 
-pub type clEnqueueReleaseEGLObjectsKHR_fn = Option<
+pub type clEnqueueReleaseEGLObjectsKHR_t = Option<
     unsafe extern "C" fn(
         command_queue: cl_command_queue,
         num_objects: cl_uint,
@@ -74,8 +76,9 @@ pub type clEnqueueReleaseEGLObjectsKHR_fn = Option<
         event: *mut cl_event,
     ) -> cl_int,
 >;
+pub type clEnqueueReleaseEGLObjectsKHR_fn = clEnqueueReleaseEGLObjectsKHR_t;
 
-pub type clCreateEventFromEGLSyncKHR_fn = Option<
+pub type clCreateEventFromEGLSyncKHR_t = Option<
     unsafe extern "C" fn(
         context: cl_context,
         sync: CLeglSyncKHR,
@@ -83,6 +86,7 @@ pub type clCreateEventFromEGLSyncKHR_fn = Option<
         errcode_ret: *mut cl_int,
     ) -> cl_event,
 >;
+pub type clCreateEventFromEGLSyncKHR_fn = clCreateEventFromEGLSyncKHR_t;
 
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]

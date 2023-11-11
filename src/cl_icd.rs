@@ -16,7 +16,15 @@
 
 #![allow(non_camel_case_types, non_snake_case)]
 
+pub use super::cl_egl::*;
+pub use super::cl_ext::*;
 pub use super::cl_function_types::*;
+pub use super::cl_gl::*;
+
+// Windows
+pub use super::cl_d3d11::*;
+pub use super::cl_d3d10::*;
+pub use super::cl_dx9_media_sharing::*;
 
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -88,23 +96,23 @@ pub struct _cl_icd_dispatch {
     pub clEnqueueBarrier: clEnqueueBarrier_t,
     pub clGetExtensionFunctionAddress: clGetExtensionFunctionAddress_t,
 
-    // pub clCreateFromGLBuffer: clCreateFromGLBuffer_t,
-    // pub clCreateFromGLTexture2D: clCreateFromGLTexture2D_t,
-    // pub clCreateFromGLTexture3D: clCreateFromGLTexture3D_t,
-    // pub clCreateFromGLRenderbuffer: clCreateFromGLRenderbuffer_t,
-    // pub clGetGLObjectInfo: clGetGLObjectInfo_t,
-    // pub clGetGLTextureInfo: clGetGLTextureInfo_t,
-    // pub clEnqueueAcquireGLObjects: clEnqueueAcquireGLObjects_t,
-    // pub clEnqueueReleaseGLObjects: clEnqueueReleaseGLObjects_t,
-    // pub clGetGLContextInfoKHR: clGetGLContextInfoKHR_t,
+    pub clCreateFromGLBuffer: clCreateFromGLBuffer_t,
+    pub clCreateFromGLTexture2D: clCreateFromGLTexture2D_t,
+    pub clCreateFromGLTexture3D: clCreateFromGLTexture3D_t,
+    pub clCreateFromGLRenderbuffer: clCreateFromGLRenderbuffer_t,
+    pub clGetGLObjectInfo: clGetGLObjectInfo_t,
+    pub clGetGLTextureInfo: clGetGLTextureInfo_t,
+    pub clEnqueueAcquireGLObjects: clEnqueueAcquireGLObjects_t,
+    pub clEnqueueReleaseGLObjects: clEnqueueReleaseGLObjects_t,
+    pub clGetGLContextInfoKHR: clGetGLContextInfoKHR_t,
 
     // cl_khr_d3d10_sharing
-    // pub clGetDeviceIDsFromD3D10KHR: clGetDeviceIDsFromD3D10KHR_t,
-    // pub clCreateFromD3D10BufferKHR: clCreateFromD3D10BufferKHR_t,
-    // pub clCreateFromD3D10Texture2DKHR: clCreateFromD3D10Texture2DKHR_t,
-    // pub clCreateFromD3D10Texture3DKHR: clCreateFromD3D10Texture3DKHR_t,
-    // pub clEnqueueAcquireD3D10ObjectsKHR: clEnqueueAcquireD3D10ObjectsKHR_t,
-    // pub clEnqueueReleaseD3D10ObjectsKHR: clEnqueueReleaseD3D10ObjectsKHR_t,
+    pub clGetDeviceIDsFromD3D10KHR: clGetDeviceIDsFromD3D10KHR_t,
+    pub clCreateFromD3D10BufferKHR: clCreateFromD3D10BufferKHR_t,
+    pub clCreateFromD3D10Texture2DKHR: clCreateFromD3D10Texture2DKHR_t,
+    pub clCreateFromD3D10Texture3DKHR: clCreateFromD3D10Texture3DKHR_t,
+    pub clEnqueueAcquireD3D10ObjectsKHR: clEnqueueAcquireD3D10ObjectsKHR_t,
+    pub clEnqueueReleaseD3D10ObjectsKHR: clEnqueueReleaseD3D10ObjectsKHR_t,
 
     // OpenCL 1.1
     pub clSetEventCallback: clSetEventCallback_t,
@@ -117,10 +125,10 @@ pub struct _cl_icd_dispatch {
     pub clEnqueueCopyBufferRect: clEnqueueCopyBufferRect_t,
 
     // cl_ext_device_fission
-    // pub clCreateSubDevicesEXT: clCreateSubDevicesEXT_t,
-    // pub clRetainDeviceEXT: clRetainDeviceEXT_t,
-    // pub clReleaseDeviceEXT: clReleaseDeviceEXT_t,
-    // pub clCreateEventFromGLsyncKHR: clCreateEventFromGLsyncKHR_t,
+    pub clCreateSubDevicesEXT: clCreateSubDevicesEXT_t,
+    pub clRetainDeviceEXT: clRetainDeviceEXT_t,
+    pub clReleaseDeviceEXT: clReleaseDeviceEXT_t,
+    pub clCreateEventFromGLsyncKHR: clCreateEventFromGLsyncKHR_t,
 
     // OpenCL 1.2
     pub clCreateSubDevices: clCreateSubDevices_t,
@@ -138,27 +146,27 @@ pub struct _cl_icd_dispatch {
     pub clEnqueueMarkerWithWaitList: clEnqueueMarkerWithWaitList_t,
     pub clEnqueueBarrierWithWaitList: clEnqueueBarrierWithWaitList_t,
     pub clGetExtensionFunctionAddressForPlatform: clGetExtensionFunctionAddressForPlatform_t,
-    // pub clCreateFromGLTexture: clCreateFromGLTexture_t,
+    pub clCreateFromGLTexture: clCreateFromGLTexture_t,
 
     // cl_khr_d3d11_sharing and cl_khr_dx9_media_sharing
-    // pub clGetDeviceIDsFromD3D11KHR: clGetDeviceIDsFromD3D11KHR_t,
-    // pub clCreateFromD3D11BufferKHR: clCreateFromD3D11BufferKHR_t,
-    // pub clCreateFromD3D11Texture2DKHR: clCreateFromD3D11Texture2DKHR_t,
-    // pub clCreateFromD3D11Texture3DKHR: clCreateFromD3D11Texture3DKHR_t,
-    // pub clCreateFromDX9MediaSurfaceKHR: clCreateFromDX9MediaSurfaceKHR_t,
-    // pub clEnqueueAcquireD3D11ObjectsKHR: clEnqueueAcquireD3D11ObjectsKHR_t,
-    // pub clEnqueueReleaseD3D11ObjectsKHR: clEnqueueReleaseD3D11ObjectsKHR_t,
-    // pub clGetDeviceIDsFromDX9MediaAdapterKHR: clGetDeviceIDsFromDX9MediaAdapterKHR_t,
-    // pub clEnqueueAcquireDX9MediaSurfacesKHR: clEnqueueAcquireDX9MediaSurfacesKHR_t,
-    // pub clEnqueueReleaseDX9MediaSurfacesKHR: clEnqueueReleaseDX9MediaSurfacesKHR_t,
+    pub clGetDeviceIDsFromD3D11KHR: clGetDeviceIDsFromD3D11KHR_t,
+    pub clCreateFromD3D11BufferKHR: clCreateFromD3D11BufferKHR_t,
+    pub clCreateFromD3D11Texture2DKHR: clCreateFromD3D11Texture2DKHR_t,
+    pub clCreateFromD3D11Texture3DKHR: clCreateFromD3D11Texture3DKHR_t,
+    pub clCreateFromDX9MediaSurfaceKHR: clCreateFromDX9MediaSurfaceKHR_t,
+    pub clEnqueueAcquireD3D11ObjectsKHR: clEnqueueAcquireD3D11ObjectsKHR_t,
+    pub clEnqueueReleaseD3D11ObjectsKHR: clEnqueueReleaseD3D11ObjectsKHR_t,
+    pub clGetDeviceIDsFromDX9MediaAdapterKHR: clGetDeviceIDsFromDX9MediaAdapterKHR_t,
+    pub clEnqueueAcquireDX9MediaSurfacesKHR: clEnqueueAcquireDX9MediaSurfacesKHR_t,
+    pub clEnqueueReleaseDX9MediaSurfacesKHR: clEnqueueReleaseDX9MediaSurfacesKHR_t,
 
     // cl_khr_egl_image
-    // pub clCreateFromEGLImageKHR: clCreateFromEGLImageKHR_t,
-    // pub clEnqueueAcquireEGLObjectsKHR: clEnqueueAcquireEGLObjectsKHR_t,
-    // pub clEnqueueReleaseEGLObjectsKHR: clEnqueueReleaseEGLObjectsKHR_t,
+    pub clCreateFromEGLImageKHR: clCreateFromEGLImageKHR_t,
+    pub clEnqueueAcquireEGLObjectsKHR: clEnqueueAcquireEGLObjectsKHR_t,
+    pub clEnqueueReleaseEGLObjectsKHR: clEnqueueReleaseEGLObjectsKHR_t,
 
     // cl_khr_egl_event
-    // pub clCreateEventFromEGLSyncKHR: clCreateEventFromEGLSyncKHR_t,
+    pub clCreateEventFromEGLSyncKHR: clCreateEventFromEGLSyncKHR_t,
 
     // OpenCL 2.0
     pub clCreateCommandQueueWithProperties: clCreateCommandQueueWithProperties_t,
@@ -176,7 +184,7 @@ pub struct _cl_icd_dispatch {
     pub clSetKernelExecInfo: clSetKernelExecInfo_t,
 
     // cl_khr_sub_groups
-    // pub clGetKernelSubGroupInfoKHR: clGetKernelSubGroupInfoKHR_t,
+    pub clGetKernelSubGroupInfoKHR: clGetKernelSubGroupInfoKHR_t,
 
     // OpenCL 2.1
     pub clCloneKernel: clCloneKernel_t,

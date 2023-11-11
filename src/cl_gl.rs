@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Via Technology Ltd.
+// Copyright (c) 2022-2023 Via Technology Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -48,6 +48,138 @@ pub const CL_GL_MIPMAP_LEVEL: cl_gl_texture_info = 0x2005;
 // #ifdef CL_VERSION_1_2
 pub const CL_GL_NUM_SAMPLES: cl_gl_texture_info = 0x2012;
 // #endif
+
+pub type clGetGLContextInfoKHR_t = Option<
+    unsafe extern "C" fn(
+        properties: *const cl_context_properties,
+        param_name: cl_gl_context_info,
+        param_value_size: size_t,
+        param_value: *mut c_void,
+        param_value_size_ret: *mut size_t,
+    ) -> cl_int,
+>;
+pub type clGetGLContextInfoKHR_fn = clGetGLContextInfoKHR_t;
+
+pub type clCreateFromGLBuffer_t = Option<
+    unsafe extern "C" fn(
+        context: cl_context,
+        flags: cl_mem_flags,
+        bufobj: cl_GLuint,
+        errcode_ret: *mut cl_int,
+    ) -> cl_mem,
+>;
+pub type clCreateFromGLBuffer_fn = clCreateFromGLBuffer_t;
+
+pub type clCreateFromGLTexture_t = Option<
+    unsafe extern "C" fn(
+        context: cl_context,
+        flags: cl_mem_flags,
+        target: cl_GLenum,
+        miplevel: cl_GLint,
+        texture: cl_GLuint,
+        errcode_ret: *mut cl_int,
+    ) -> cl_mem,
+>;
+pub type clCreateFromGLTexture_fn = clCreateFromGLTexture_t;
+
+pub type clCreateFromGLRenderbuffer_t = Option<
+    unsafe extern "C" fn(
+        context: cl_context,
+        flags: cl_mem_flags,
+        renderbuffer: cl_GLuint,
+        errcode_ret: *mut cl_int,
+    ) -> cl_mem,
+>;
+pub type clCreateFromGLRenderbuffer_fn = clCreateFromGLRenderbuffer_t;
+
+pub type clGetGLObjectInfo_t = Option<
+    unsafe extern "C" fn(
+        memobj: cl_mem,
+        gl_object_type: *mut cl_gl_object_type,
+        gl_object_name: *mut cl_GLuint,
+    ) -> cl_int,
+>;
+pub type clGetGLObjectInfo_fn = clGetGLObjectInfo_t;
+
+pub type clGetGLTextureInfo_t = Option<
+    unsafe extern "C" fn(
+        memobj: cl_mem,
+        param_name: cl_gl_texture_info,
+        param_value_size: size_t,
+        param_value: *mut c_void,
+        param_value_size_ret: *mut size_t,
+    ) -> cl_int,
+>;
+pub type clGetGLTextureInfo_fn = clGetGLTextureInfo_t;
+
+pub type clEnqueueAcquireGLObjects_t = Option<
+    unsafe extern "C" fn(
+        command_queue: cl_command_queue,
+        num_objects: cl_uint,
+        mem_objects: *const cl_mem,
+        num_events_in_wait_list: cl_uint,
+        event_wait_list: *const cl_event,
+        event: *mut cl_event,
+    ) -> cl_int,
+>;
+pub type clEnqueueAcquireGLObjects_fn = clEnqueueAcquireGLObjects_t;
+
+pub type clEnqueueReleaseGLObjects_t = Option<
+    unsafe extern "C" fn(
+        command_queue: cl_command_queue,
+        num_objects: cl_uint,
+        mem_objects: *const cl_mem,
+        num_events_in_wait_list: cl_uint,
+        event_wait_list: *const cl_event,
+        event: *mut cl_event,
+    ) -> cl_int,
+>;
+pub type clEnqueueReleaseGLObjects_fn = clEnqueueReleaseGLObjects_t;
+
+pub type clCreateFromGLTexture2D_t = Option<
+    unsafe extern "C" fn(
+        context: cl_context,
+        flags: cl_mem_flags,
+        target: cl_GLenum,
+        miplevel: cl_GLint,
+        texture: cl_GLuint,
+        errcode_ret: *mut cl_int,
+    ) -> cl_mem,
+>;
+pub type clCreateFromGLTexture2D_fn = clCreateFromGLTexture2D_t;
+
+pub type clCreateFromGLTexture3D_t = Option<
+    unsafe extern "C" fn(
+        context: cl_context,
+        flags: cl_mem_flags,
+        target: cl_GLenum,
+        miplevel: cl_GLint,
+        texture: cl_GLuint,
+        errcode_ret: *mut cl_int,
+    ) -> cl_mem,
+>;
+pub type clCreateFromGLTexture3D_fn = clCreateFromGLTexture3D_t;
+
+pub type clCreateEventFromGLsyncKHR_t = Option<
+    unsafe extern "C" fn(
+        context: cl_context,
+        sync: cl_GLsync,
+        errcode_ret: *mut cl_int,
+    ) -> cl_event,
+>;
+pub type clCreateEventFromGLsyncKHR_fn = clCreateEventFromGLsyncKHR_t;
+
+pub type clGetSupportedGLTextureFormatsINTEL_t = Option<
+    unsafe extern "C" fn(
+        context: cl_context,
+        flags: cl_mem_flags,
+        image_type: cl_mem_object_type,
+        num_entries: cl_uint,
+        gl_formats: *mut cl_GLenum,
+        num_texture_formats: *mut cl_uint,
+    ) -> cl_int,
+>;
+pub type clGetSupportedGLTextureFormatsINTEL_fn = clGetSupportedGLTextureFormatsINTEL_t;
 
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
@@ -176,16 +308,6 @@ pub const CL_GLX_DISPLAY_KHR: cl_context_properties = 0x200A;
 pub const CL_WGL_HDC_KHR: cl_context_properties = 0x200B;
 pub const CL_CGL_SHAREGROUP_KHR: cl_context_properties = 0x200C;
 
-pub type clGetGLContextInfoKHR_fn = Option<
-    unsafe extern "C" fn(
-        properties: *const cl_context_properties,
-        param_name: cl_gl_context_info,
-        param_value_size: size_t,
-        param_value: *mut c_void,
-        param_value_size_ret: *mut size_t,
-    ) -> cl_int,
->;
-
 // cl_khr_gl_event extension
 pub const CL_COMMAND_GL_FENCE_SYNC_OBJECT_KHR: cl_uint = 0x200D;
 
@@ -216,14 +338,3 @@ extern "system" {
         num_texture_formats: *mut cl_uint,
     ) -> cl_int;
 }
-
-pub type clGetSupportedGLTextureFormatsINTEL_fn = Option<
-    unsafe extern "C" fn(
-        context: cl_context,
-        flags: cl_mem_flags,
-        image_type: cl_mem_object_type,
-        num_entries: cl_uint,
-        gl_formats: *mut cl_GLenum,
-        num_texture_formats: *mut cl_uint,
-    ) -> cl_int,
->;

@@ -62,7 +62,7 @@ pub type ID3D10Buffer_ptr = *mut c_void;
 pub type ID3D10Texture2D_ptr = *mut c_void;
 pub type ID3D10Texture3D_ptr = *mut c_void;
 
-pub type clGetDeviceIDsFromD3D10KHR_fn = Option<
+pub type clGetDeviceIDsFromD3D10KHR_t = Option<
     unsafe extern "C" fn(
         platform: cl_platform_id,
         d3d_device_source: cl_d3d10_device_source_khr,
@@ -73,8 +73,9 @@ pub type clGetDeviceIDsFromD3D10KHR_fn = Option<
         num_devices: *mut cl_uint,
     ) -> cl_int,
 >;
+pub type clGetDeviceIDsFromD3D10KHR_fn = clGetDeviceIDsFromD3D10KHR_t;
 
-pub type clCreateFromD3D10BufferKHR_fn = Option<
+pub type clCreateFromD3D10BufferKHR_t = Option<
     unsafe extern "C" fn(
         context: cl_context,
         flags: cl_mem_flags,
@@ -82,8 +83,9 @@ pub type clCreateFromD3D10BufferKHR_fn = Option<
         errcode_ret: *mut cl_int,
     ) -> cl_mem,
 >;
+pub type clCreateFromD3D10BufferKHR_fn = clCreateFromD3D10BufferKHR_t;
 
-pub type clCreateFromD3D10Texture2DKHR_fn = Option<
+pub type clCreateFromD3D10Texture2DKHR_t = Option<
     unsafe extern "C" fn(
         context: cl_context,
         flags: cl_mem_flags,
@@ -92,8 +94,9 @@ pub type clCreateFromD3D10Texture2DKHR_fn = Option<
         errcode_ret: *mut cl_int,
     ) -> cl_mem,
 >;
+pub type clCreateFromD3D10Texture2DKHR_fn = clCreateFromD3D10Texture2DKHR_t;
 
-pub type clCreateFromD3D10Texture3DKHR_fn = Option<
+pub type clCreateFromD3D10Texture3DKHR_t = Option<
     unsafe extern "C" fn(
         context: cl_context,
         flags: cl_mem_flags,
@@ -102,8 +105,9 @@ pub type clCreateFromD3D10Texture3DKHR_fn = Option<
         errcode_ret: *mut cl_int,
     ) -> cl_mem,
 >;
+pub type clCreateFromD3D10Texture3DKHR_fn = clCreateFromD3D10Texture3DKHR_t;
 
-pub type clEnqueueAcquireD3D10ObjectsKHR_fn = Option<
+pub type clEnqueueAcquireD3D10ObjectsKHR_t = Option<
     unsafe extern "C" fn(
         command_queue: cl_command_queue,
         num_objects: cl_uint,
@@ -113,8 +117,9 @@ pub type clEnqueueAcquireD3D10ObjectsKHR_fn = Option<
         event: *mut cl_event,
     ) -> cl_int,
 >;
+pub type clEnqueueAcquireD3D10ObjectsKHR_fn = clEnqueueAcquireD3D10ObjectsKHR_t;
 
-pub type clEnqueueReleaseD3D10ObjectsKHR_fn = Option<
+pub type clEnqueueReleaseD3D10ObjectsKHR_t = Option<
     unsafe extern "C" fn(
         command_queue: cl_command_queue,
         num_objects: cl_uint,
@@ -124,8 +129,22 @@ pub type clEnqueueReleaseD3D10ObjectsKHR_fn = Option<
         event: *mut cl_event,
     ) -> cl_int,
 >;
+pub type clEnqueueReleaseD3D10ObjectsKHR_fn = clEnqueueReleaseD3D10ObjectsKHR_t;
 
 // when cl_khr_d3d10_sharing is supported
+
+pub type clGetSupportedD3D10TextureFormatsINTEL_t = Option<
+    unsafe extern "C" fn(
+        context: cl_context,
+        flags: cl_mem_flags,
+        image_type: cl_mem_object_type,
+        num_entries: cl_uint,
+        d3d10_formats: *mut DXGI_FORMAT,
+        num_surface_formats: *mut cl_uint,
+    ) -> cl_int,
+>;
+
+pub type clGetSupportedD3D10TextureFormatsINTEL_fn = clGetSupportedD3D10TextureFormatsINTEL_t;
 
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
@@ -141,14 +160,3 @@ extern "system" {
         num_surface_formats: *mut cl_uint,
     ) -> cl_int;
 }
-
-pub type clGetSupportedD3D10TextureFormatsINTEL_fn = Option<
-    unsafe extern "C" fn(
-        context: cl_context,
-        flags: cl_mem_flags,
-        image_type: cl_mem_object_type,
-        num_entries: cl_uint,
-        d3d10_formats: *mut DXGI_FORMAT,
-        num_surface_formats: *mut cl_uint,
-    ) -> cl_int,
->;

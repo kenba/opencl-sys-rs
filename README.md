@@ -22,6 +22,10 @@ The Rust FFI files attempt to match the format and layout of the original
 C source files instead of [bindgen](https://rust-lang.github.io/rust-bindgen/)
 output files to ease maintenance.
 
+```
+bindgen ../OpenCL-Headers/CL/opencl.h -o opencl.rs -- -I../OpenCL-Headers/CL
+```
+
 ## Contribution
 
 If you want to contribute through code or documentation, the [Contributing](CONTRIBUTING.md)

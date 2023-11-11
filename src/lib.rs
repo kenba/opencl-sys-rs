@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Via Technology Ltd.
+// Copyright (c) 2022-2023 Via Technology Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -82,3 +82,7 @@ pub mod cl_dx9_media_sharing;
 // Note: Intel DX9 media sharing extensions have been moved into cl_dx9_media_sharing.h.
 // pub mod cl_dx9_media_sharing_intel
 pub mod cl_egl;
+
+pub mod cl_function_types;
+pub mod cl_icd;
+pub mod cl_layer;

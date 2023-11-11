@@ -59,6 +59,8 @@ cl_intel_dx9_media_sharing = []
 cl_khr_d3d10_sharing = []
 cl_khr_d3d11_sharing = []
 
+cl_loader_layers = []
+
 # Default features:
 default = ["CL_VERSION_1_1", "CL_VERSION_1_2"]
 

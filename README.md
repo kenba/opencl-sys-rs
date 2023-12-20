@@ -12,6 +12,9 @@ Rust [FFI](https://doc.rust-lang.org/nomicon/ffi.html) Bindings to the Khronos
 [OpenCL C language headers](https://github.com/KhronosGroup/OpenCL-Headers),
 see the [OpenCL Resource Guide](https://www.khronos.org/opencl/resources).
 
+![OpenCL Packages](docs/images/opencl_context_objects.png)  
+*Figure 1 OpenCL Packages*
+
 The API for OpenCL versions and extensions are controlled by Rust features such as "CL_VERSION_2_0" and "cl_khr_gl_sharing". To enable an OpenCL version, the feature for that version and **all** previous OpenCL versions must be enabled, e.g. for "CL_VERSION_2_0"; "CL_VERSION_1_1" and "CL_VERSION_1_2" must also be enabled.
 
 The default features are "CL_VERSION_1_1" and "CL_VERSION_1_2".

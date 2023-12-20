@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="497px" preserveAspectRatio="none" style="width:620px;height:497px;background:#FFFFFF;" version="1.1" viewBox="0 0 620 497" width="620px" zoomAndPan="magnify"><defs/><g><!--MD5=[50d0381ff95ec6858f38ddd8307c4999]
+cluster opencl--><g id="cluster_opencl"><path d="M39.2272,302 L88.2272,302 A3.75,3.75 0 0 1 90.7272,304.5 L97.7272,325.6094 L209.2272,325.6094 A2.5,2.5 0 0 1 211.7272,328.1094 L211.7272,487.5 A2.5,2.5 0 0 1 209.2272,490 L39.2272,490 A2.5,2.5 0 0 1 36.7272,487.5 L36.7272,304.5 A2.5,2.5 0 0 1 39.2272,302 " fill="none" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="36.7272" x2="97.7272" y1="325.6094" y2="325.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="48" x="40.7272" y="318.5332">opencl</text></g><!--MD5=[9b3b0be7614dc0a3d9f034510769d4a1]
+cluster graphics--><g id="cluster_graphics"><path d="M104.2272,120 L166.2272,120 A3.75,3.75 0 0 1 168.7272,122.5 L175.7272,143.6094 L611.2272,143.6094 A2.5,2.5 0 0 1 613.7272,146.1094 L613.7272,275.5 A2.5,2.5 0 0 1 611.2272,278 L104.2272,278 A2.5,2.5 0 0 1 101.7272,275.5 L101.7272,122.5 A2.5,2.5 0 0 1 104.2272,120 " fill="none" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="101.7272" x2="175.7272" y1="143.6094" y2="143.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="61" x="105.7272" y="136.5332">graphics</text></g><!--MD5=[b3c28d35935f3876a80fe695c843767a]
+cluster windows--><g id="cluster_windows"><path d="M190.2272,164 L252.2272,164 A3.75,3.75 0 0 1 254.7272,166.5 L261.7272,187.6094 L587.2272,187.6094 A2.5,2.5 0 0 1 589.7272,190.1094 L589.7272,251.5 A2.5,2.5 0 0 1 587.2272,254 L190.2272,254 A2.5,2.5 0 0 1 187.7272,251.5 L187.7272,166.5 A2.5,2.5 0 0 1 190.2272,164 " fill="none" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="187.7272" x2="261.7272" y1="187.6094" y2="187.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="61" x="191.7272" y="180.5332">windows</text></g><!--MD5=[efec69d767708f2bf0c80eee1b24ea83]
+cluster loader_layers_extension--><g id="cluster_loader_layers_extension"><path d="M20.2272,6 L194.2272,6 A3.75,3.75 0 0 1 196.7272,8.5 L203.7272,29.6094 L204.2272,29.6094 A2.5,2.5 0 0 1 206.7272,32.1094 L206.7272,93.5 A2.5,2.5 0 0 1 204.2272,96 L20.2272,96 A2.5,2.5 0 0 1 17.7272,93.5 L17.7272,8.5 A2.5,2.5 0 0 1 20.2272,6 " fill="none" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="17.7272" x2="203.7272" y1="29.6094" y2="29.6094"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="173" x="21.7272" y="22.5332">loader_layers_extension</text></g><g id="elem_cl_platform"><rect fill="#F1F1F1" height="37.6094" style="stroke:#181818;stroke-width:0.5;" width="83" x="112.2272" y="436"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="69" x="119.2272" y="452.5332">cl_platform</text><line style="stroke:#181818;stroke-width:0.5;" x1="113.2272" x2="194.2272" y1="457.6094" y2="457.6094"/></g><g id="elem_cl"><rect fill="#F1F1F1" height="37.6094" style="stroke:#181818;stroke-width:0.5;" width="24" x="52.7272" y="436"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="10" x="59.7272" y="452.5332">cl</text><line style="stroke:#181818;stroke-width:0.5;" x1="53.7272" x2="75.7272" y1="457.6094" y2="457.6094"/></g><g id="elem_cl_ext"><rect fill="#F1F1F1" height="37.6094" style="stroke:#181818;stroke-width:0.5;" width="50" x="52.7272" y="338"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="36" x="59.7272" y="354.5332">cl_ext</text><line style="stroke:#181818;stroke-width:0.5;" x1="53.7272" x2="101.7272" y1="359.6094" y2="359.6094"/></g><g id="elem_cl_gl"><rect fill="#F1F1F1" height="37.6094" style="stroke:#181818;stroke-width:0.5;" width="43" x="138.2272" y="338"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="29" x="145.2272" y="354.5332">cl_gl</text><line style="stroke:#181818;stroke-width:0.5;" x1="139.2272" x2="180.2272" y1="359.6094" y2="359.6094"/></g><g id="elem_cl_egl"><rect fill="#F1F1F1" height="37.6094" style="stroke:#181818;stroke-width:0.5;" width="51" x="118.2272" y="200"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="37" x="125.2272" y="216.5332">cl_egl</text><line style="stroke:#181818;stroke-width:0.5;" x1="119.2272" x2="168.2272" y1="221.6094" y2="221.6094"/></g><g id="elem_cl_dx9_media_sharing"><rect fill="#F1F1F1" height="37.6094" style="stroke:#181818;stroke-width:0.5;" width="155" x="204.2272" y="200"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="141" x="211.2272" y="216.5332">cl_dx9_media_sharing</text><line style="stroke:#181818;stroke-width:0.5;" x1="205.2272" x2="358.2272" y1="221.6094" y2="221.6094"/></g><g id="elem_cl_d3d10"><rect fill="#F1F1F1" height="37.6094" style="stroke:#181818;stroke-width:0.5;" width="72" x="394.7272" y="200"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="58" x="401.7272" y="216.5332">cl_d3d10</text><line style="stroke:#181818;stroke-width:0.5;" x1="395.7272" x2="465.7272" y1="221.6094" y2="221.6094"/></g><g id="elem_cl_d3d11"><rect fill="#F1F1F1" height="37.6094" style="stroke:#181818;stroke-width:0.5;" width="72" x="501.7272" y="200"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="58" x="508.7272" y="216.5332">cl_d3d11</text><line style="stroke:#181818;stroke-width:0.5;" x1="502.7272" x2="572.7272" y1="221.6094" y2="221.6094"/></g><g id="elem_cl_icd"><rect fill="#F1F1F1" height="37.6094" style="stroke:#181818;stroke-width:0.5;" width="50" x="136.7272" y="42"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="36" x="143.7272" y="58.5332">cl_icd</text><line style="stroke:#181818;stroke-width:0.5;" x1="137.7272" x2="185.7272" y1="63.6094" y2="63.6094"/></g><g id="elem_cl_layer"><rect fill="#F1F1F1" height="37.6094" style="stroke:#181818;stroke-width:0.5;" width="63" x="38.2272" y="42"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="49" x="45.2272" y="58.5332">cl_layer</text><line style="stroke:#181818;stroke-width:0.5;" x1="39.2272" x2="100.2272" y1="63.6094" y2="63.6094"/></g><!--MD5=[d049a78128fc509b1e6f2083bde224fc]
+link cl_gl to cl--><g id="link_cl_gl_cl"><path codeLine="11" d="M141.8582,376.057 C122.8312,395.284 93.2432,425.1838 76.7937,441.8065 " fill="none" id="cl_gl-cl" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[123b4f512d5b1f643d2c0c4ff3f7d945]
+link cl_ext to cl--><g id="link_cl_ext_cl"><path codeLine="12" d="M75.282,376.057 C72.9725,393.112 69.526,418.5631 67.2056,435.6977 " fill="none" id="cl_ext-cl" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[8ee6bb3880df98ef6dc823aa8067bad8]
+link cl to cl_platform--><g id="link_cl_cl_platform"><path codeLine="13" d="M76.8952,455 C88.6,455 100.3049,455 112.0102,455 " fill="none" id="cl-cl_platform" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[354c6595e0bf0d72376919add9845371]
+link cl_egl to cl_gl--><g id="link_cl_egl_cl_gl"><path codeLine="19" d="M145.8522,238.06 C148.9122,264.072 154.5282,311.812 157.5942,337.866 " fill="none" id="cl_egl-cl_gl" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[86b337dbd7a6f617f600b9cd045615e7]
+link cl_dx9_media_sharing to cl--><g id="link_cl_dx9_media_sharing_cl"><path codeLine="27" d="M275.7522,238.394 C264.7802,269.834 238.8042,334.524 198.7272,376 C161.6472,414.3752 140.7192,408.9382 94.7272,436 C88.8641,439.4499 82.389,443.3264 76.9597,446.596 " fill="none" id="cl_dx9_media_sharing-cl" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[0ca81d8ba59c6bcc9ed00cacdaf0a635]
+link cl_d3d10 to cl--><g id="link_cl_d3d10_cl"><path codeLine="28" d="M417.8962,238.171 C407.6142,252.075 392.3682,271.296 376.7272,286 C326.8502,332.89 311.9832,343.509 251.7272,376 C185.9772,411.4539 161.9012,403.325 94.7272,436 C88.719,438.9225 82.3352,442.6569 77.0078,445.9658 " fill="none" id="cl_d3d10-cl" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[d3fe364a7822529d9381a57771b908a6]
+link cl_d3d11 to cl--><g id="link_cl_d3d11_cl"><path codeLine="29" d="M525.7242,238.26 C515.8422,252.392 500.8742,271.872 484.7272,286 C426.5022,336.943 407.1742,346.323 335.7272,376 C233.7902,418.3418 196.7262,393.809 94.7272,436 C88.5532,438.5538 82.1461,442.2363 76.846,445.606 " fill="none" id="cl_d3d11-cl" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[522f6d5a75ba87fc1de09e9cb39133a4]
+link cl_layer to cl_icd--><g id="link_cl_layer_cl_icd"><path codeLine="36" d="M101.3522,61 C112.9872,61 124.6222,61 136.2562,61 " fill="none" id="cl_layer-cl_icd" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[d90d31c19b3b4abaa3e757aa8d35afff]
+link cl_icd to cl_ext--><g id="link_cl_icd_cl_ext"><path codeLine="37" d="M147.7252,80.28 C140.1112,88.891 129.9602,98.466 118.7272,104 C107.4502,109.556 70.9636,102.503 62.7272,112 C6,177.407 49.2069,293.514 69.1003,337.984 " fill="none" id="cl_icd-cl_ext" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[e3497aafa0b0b357133be7fa5d2aa834]
+link cl_icd to cl_egl--><g id="link_cl_icd_cl_egl"><path codeLine="39" d="M159.6272,80.2 C156.1592,110.26 149.2732,169.932 145.8142,199.915 " fill="none" id="cl_icd-cl_egl" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[d0465f54658bd3a4a383a3200d31d084]
+link cl_icd to cl_gl--><g id="link_cl_icd_cl_gl"><path codeLine="40" d="M145.7352,80.17 C138.0962,88.146 128.5002,97.217 118.7272,104 C111.8672,108.761 106.2012,104.95 101.7272,112 C60.2906,177.295 59.5872,221.157 101.7272,286 C106.4972,293.341 113.0772,288.307 119.7272,294 C133.8372,306.079 144.7952,324.366 151.6462,337.952 " fill="none" id="cl_icd-cl_gl" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[57dd74bff296364230654806b8b1ccf5]
+link cl_icd to cl_dx9_media_sharing--><g id="link_cl_icd_cl_dx9_media_sharing"><path codeLine="41" d="M175.7272,80.2 C198.8502,110.26 244.7522,169.932 267.8162,199.915 " fill="none" id="cl_icd-cl_dx9_media_sharing" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[98f2a5b487a21b2f7c21a192df79217d]
+link cl_icd to cl_d3d10--><g id="link_cl_icd_cl_d3d10"><path codeLine="42" d="M186.8222,61.309 C230.1602,61.413 319.8402,67.478 376.7272,112 C405.3522,134.403 420.1412,176.103 426.5892,199.978 " fill="none" id="cl_icd-cl_d3d10" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[85d41dc5e6fb93480ca59d6be22bcbe3]
+link cl_icd to cl_d3d11--><g id="link_cl_icd_cl_d3d11"><path codeLine="43" d="M186.9932,62.967 C254.5012,66.002 437.1692,77.298 484.7272,112 C513.9792,133.345 528.0612,175.442 534.0052,199.668 " fill="none" id="cl_icd-cl_d3d11" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[6ae073e29bfdc9a541e6867335e5f93d]
+@startuml
+'Copyright (c) 2023 Via Technology Ltd. All Rights Reserved.
+
+'title OpenCL packages
+
+package opencl {
+    object cl_platform
+    object cl
+    object cl_ext
+    object cl_gl
+
+    cl_gl - - cl
+    cl_ext - - cl
+    cl - cl_platform
+}
+
+package graphics {
+    object cl_egl
+
+    cl_egl - - cl_gl
+
+    package windows {
+        object cl_dx9_media_sharing
+        object cl_d3d10
+        object cl_d3d11
+    }
+
+    cl_dx9_media_sharing - - cl
+    cl_d3d10 - - cl
+    cl_d3d11 - - cl
+}
+
+package loader_layers_extension {
+    object cl_icd
+    object cl_layer
+
+    cl_layer - cl_icd
+    cl_icd - - cl_ext
+
+    cl_icd - - cl_egl
+    cl_icd - - cl_gl
+    cl_icd - - cl_dx9_media_sharing
+    cl_icd - - cl_d3d10
+    cl_icd - - cl_d3d11
+}
+@enduml
+
+@startuml
+
+
+package opencl {
+    object cl_platform
+    object cl
+    object cl_ext
+    object cl_gl
+
+    cl_gl - - cl
+    cl_ext - - cl
+    cl - cl_platform
+}
+
+package graphics {
+    object cl_egl
+
+    cl_egl - - cl_gl
+
+    package windows {
+        object cl_dx9_media_sharing
+        object cl_d3d10
+        object cl_d3d11
+    }
+
+    cl_dx9_media_sharing - - cl
+    cl_d3d10 - - cl
+    cl_d3d11 - - cl
+}
+
+package loader_layers_extension {
+    object cl_icd
+    object cl_layer
+
+    cl_layer - cl_icd
+    cl_icd - - cl_ext
+
+    cl_icd - - cl_egl
+    cl_icd - - cl_gl
+    cl_icd - - cl_dx9_media_sharing
+    cl_icd - - cl_d3d10
+    cl_icd - - cl_d3d11
+}
+@enduml
+
+PlantUML version 1.2022.8(Sun Sep 25 10:00:33 BST 2022)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) Client VM
+Default Encoding: Cp1252
+Language: en
+Country: GB
+--></g></svg>

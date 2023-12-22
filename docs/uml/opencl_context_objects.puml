@@ -7,19 +7,19 @@ package opencl {
     object cl_platform
     object cl
     object cl_ext
-    object cl_gl
 
-    cl_gl -- cl
     cl_ext -- cl
-    cl - cl_platform
+    cl -- cl_platform
 }
 
 package graphics {
-    object cl_egl
 
-    cl_egl -- cl_gl
+    package OpenGL {
+        object cl_egl
+        object cl_gl
+    }
 
-    package windows {
+    package DirectX-windows {
         object cl_dx9_media_sharing
         object cl_d3d10
         object cl_d3d11
@@ -29,6 +29,9 @@ package graphics {
     cl_d3d10 -- cl
     cl_d3d11 -- cl
 }
+
+cl_gl -- cl
+cl_egl -- cl
 
 package loader_layers_extension {
     object cl_icd
@@ -43,4 +46,6 @@ package loader_layers_extension {
     cl_icd -- cl_d3d10
     cl_icd -- cl_d3d11
 }
+
+
 @enduml

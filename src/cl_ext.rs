@@ -29,7 +29,7 @@ pub use super::cl::{
 use super::cl_platform::{cl_int, cl_uchar, cl_uint, cl_ulong};
 
 #[allow(unused_imports)]
-use libc::{c_char, c_void, intptr_t, size_t};
+use libc::{c_char, c_int, c_void, intptr_t, size_t};
 
 // cl_khr_command_buffer
 
@@ -644,9 +644,9 @@ pub type clGetMutableCommandInfoKHR_t = Option<
     unsafe extern "C" fn(
         command: cl_mutable_command_khr,
         param_name: cl_mutable_command_info_khr,
-        param_value_size: usize,
-        param_value: *mut ::std::os::raw::c_void,
-        param_value_size_ret: *mut usize,
+        param_value_size: size_t,
+        param_value: *mut c_void,
+        param_value_size_ret: *mut size_t,
     ) -> cl_int,
 >;
 pub type clGetMutableCommandInfoKHR_fn = clGetMutableCommandInfoKHR_t;
@@ -684,7 +684,7 @@ pub type clSetMemObjectDestructorAPPLE_t = Option<
         pfn_notify: ::std::option::Option<
             unsafe extern "C" fn(memobj: cl_mem, user_data: *mut c_void),
         >,
-        user_data: *mut ::std::os::raw::c_void,
+        user_data: *mut c_void,
     ) -> cl_int,
 >;
 pub type clSetMemObjectDestructorAPPLE_fn = clSetMemObjectDestructorAPPLE_t;
@@ -693,7 +693,7 @@ pub type clLogMessagesToSystemLogAPPLE_t = Option<
     unsafe extern "C" fn(
         errstr: *const c_char,
         private_info: *const c_void,
-        cb: usize,
+        cb: size_t,
         user_data: *mut c_void,
     ),
 >;
@@ -703,7 +703,7 @@ pub type clLogMessagesToStdoutAPPLE_t = Option<
     unsafe extern "C" fn(
         errstr: *const c_char,
         private_info: *const c_void,
-        cb: usize,
+        cb: size_t,
         user_data: *mut c_void,
     ),
 >;
@@ -713,7 +713,7 @@ pub type clLogMessagesToStderrAPPLE_t = Option<
     unsafe extern "C" fn(
         errstr: *const c_char,
         private_info: *const c_void,
-        cb: usize,
+        cb: size_t,
         user_data: *mut c_void,
     ),
 >;
@@ -822,7 +822,7 @@ pub type clCreateProgramWithILKHR_t = Option<
     unsafe extern "C" fn(
         context: cl_context,
         il: *const c_void,
-        length: usize,
+        length: size_t,
         errcode_ret: *mut cl_int,
     ) -> cl_program,
 >;
@@ -864,6 +864,11 @@ pub const CL_DEVICE_IMAGE_BASE_ADDRESS_ALIGNMENT_KHR: cl_device_info = 0x104B;
 
 // cl_khr_initialize_memory extension
 pub const CL_CONTEXT_MEMORY_INITIALIZE_KHR: cl_uint = 0x2030;
+
+// cl_context_memory_initialize_khr
+pub type cl_context_memory_initialize_khr = cl_bitfield;
+pub const CL_CONTEXT_MEMORY_INITIALIZE_LOCAL_KHR: cl_context_memory_initialize_khr = 1 << 0;
+pub const CL_CONTEXT_MEMORY_INITIALIZE_PRIVATE_KHR: cl_context_memory_initialize_khr = 1 << 1;
 
 // cl_khr_terminate_context extension
 pub const CL_CONTEXT_TERMINATED_KHR: cl_int = -1121;
@@ -1236,8 +1241,8 @@ pub type clEnqueueGenerateMipmapIMG_t = Option<
         src_image: cl_mem,
         dst_image: cl_mem,
         mipmap_filter_mode: cl_mipmap_filter_mode_img,
-        array_region: *const usize,
-        mip_region: *const usize,
+        array_region: *const size_t,
+        mip_region: *const size_t,
         num_events_in_wait_list: cl_uint,
         event_wait_list: *const cl_event,
         event: *mut cl_event,
@@ -1281,7 +1286,7 @@ pub type clGetKernelSubGroupInfoKHR_t = Option<
         in_kernel: cl_kernel,
         in_device: cl_device_id,
         param_name: cl_kernel_sub_group_info,
-        input_value_size: usize,
+        input_value_size: size_t,
         input_value: *const c_void,
         param_value_size: size_t,
         param_value: *mut c_void,
@@ -1377,7 +1382,7 @@ pub fn make_version_khr(
         | (patch & CL_VERSION_PATCH_MASK_KHR)
 }
 
-pub const CL_NAME_VERSION_MAX_NAME_SIZE_KHR: usize = 64;
+pub const CL_NAME_VERSION_MAX_NAME_SIZE_KHR: size_t = 64;
 
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -1399,8 +1404,8 @@ pub const CL_DEVICE_BUILT_IN_KERNELS_WITH_VERSION_KHR: cl_device_info = 0x1062;
 
 // cl_khr_device_uuid extension
 
-pub const CL_UUID_SIZE_KHR: usize = 16;
-pub const CL_LUID_SIZE_KHR: usize = 8;
+pub const CL_UUID_SIZE_KHR: size_t = 16;
+pub const CL_LUID_SIZE_KHR: size_t = 8;
 
 pub const CL_DEVICE_UUID_KHR: cl_device_info = 0x106A;
 pub const CL_DRIVER_UUID_KHR: cl_device_info = 0x106B;
@@ -1488,8 +1493,8 @@ pub const CL_DEVICE_EXTERNAL_MEMORY_IMPORT_ASSUME_LINEAR_IMAGES_HANDLE_TYPES_KHR
     0x2052;
 
 // cl_mem_properties
-pub const CL_DEVICE_HANDLE_LIST_KHR: cl_ulong = 0x2051;
-pub const CL_DEVICE_HANDLE_LIST_END_KHR: cl_ulong = 0;
+pub const CL_MEM_DEVICE_HANDLE_LIST_KHR: cl_ulong = 0x2051;
+pub const CL_MEM_DEVICE_HANDLE_LIST_END_KHR: cl_ulong = 0;
 
 // cl_command_type
 pub const CL_COMMAND_ACQUIRE_EXTERNAL_MEM_OBJECTS_KHR: cl_command_type = 0x2047;
@@ -1585,6 +1590,9 @@ pub const CL_DEVICE_SEMAPHORE_EXPORT_HANDLE_TYPES_KHR: cl_device_info = 0x204E;
 pub const CL_SEMAPHORE_EXPORT_HANDLE_TYPES_KHR: cl_semaphore_properties_khr = 0x203F;
 pub const CL_SEMAPHORE_EXPORT_HANDLE_TYPES_LIST_END_KHR: cl_semaphore_properties_khr = 0;
 
+// cl_semaphore_info_khr
+pub const CL_SEMAPHORE_EXPORTABLE_KHR: u32 = 0x2054;
+
 pub type clGetSemaphoreHandleForTypeKHR_t = Option<
     unsafe extern "C" fn(
         sema_object: cl_semaphore_khr,
@@ -1592,7 +1600,7 @@ pub type clGetSemaphoreHandleForTypeKHR_t = Option<
         handle_type: cl_external_semaphore_handle_type_khr,
         handle_size: size_t,
         handle_ptr: *mut c_void,
-        handle_size_ret: *mut usize,
+        handle_size_ret: *mut size_t,
     ) -> cl_int,
 >;
 pub type clGetSemaphoreHandleForTypeKHR_fn = clGetSemaphoreHandleForTypeKHR_t;
@@ -1620,7 +1628,30 @@ pub const CL_SEMAPHORE_HANDLE_D3D12_FENCE_KHR: cl_external_semaphore_handle_type
 pub const CL_SEMAPHORE_HANDLE_OPAQUE_FD_KHR: cl_external_semaphore_handle_type_khr = 0x2055;
 
 // cl_khr_external_semaphore_sync_fd
+
+pub type cl_semaphore_reimport_properties_khr = cl_properties;
+
 pub const CL_SEMAPHORE_HANDLE_SYNC_FD_KHR: cl_external_semaphore_handle_type_khr = 0x2058;
+
+pub type clReImportSemaphoreSyncFdKHR_t = Option<
+    unsafe extern "C" fn(
+        sema_object: cl_semaphore_khr,
+        reimport_props: *mut cl_semaphore_reimport_properties_khr,
+        fd: c_int,
+    ) -> cl_int,
+>;
+pub type clReImportSemaphoreSyncFdKHR_fn = clReImportSemaphoreSyncFdKHR_t;
+
+#[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
+#[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
+#[cfg(feature = "cl_external_semaphore_handle_type_khr")]
+extern "system" {
+    pub fn clReImportSemaphoreSyncFdKHR(
+        sema_object: cl_semaphore_khr,
+        reimport_props: *mut cl_semaphore_reimport_properties_khr,
+        fd: c_int,
+    ) -> cl_int;
+}
 
 // cl_khr_external_semaphore_win32
 pub const CL_SEMAPHORE_HANDLE_OPAQUE_WIN32_KHR: cl_external_semaphore_handle_type_khr = 0x2056;
@@ -1650,8 +1681,8 @@ pub const CL_SEMAPHORE_PAYLOAD_KHR: cl_semaphore_info_khr = 0x203C;
 
 // cl_semaphore_info_khr or cl_semaphore_properties_khr
 pub const CL_SEMAPHORE_TYPE_KHR: cl_semaphore_info_khr = 0x203D;
-/* enum CL_DEVICE_HANDLE_LIST_KHR */
-/* enum CL_DEVICE_HANDLE_LIST_END_KHR */
+pub const CL_SEMAPHORE_DEVICE_HANDLE_LIST_KHR: cl_semaphore_info_khr = 0x2053;
+pub const CL_SEMAPHORE_DEVICE_HANDLE_LIST_END_KHR: cl_semaphore_info_khr = 0;
 
 // cl_command_type
 pub const CL_COMMAND_SEMAPHORE_WAIT_KHR: cl_command_type = 0x2042;
@@ -1700,7 +1731,7 @@ pub type clGetSemaphoreInfoKHR_t = Option<
         sema_object: cl_semaphore_khr,
         param_name: cl_semaphore_info_khr,
         param_value_size: size_t,
-        param_value: *mut ::std::os::raw::c_void,
+        param_value: *mut c_void,
         param_value_size_ret: *mut size_t,
     ) -> cl_int,
 >;
@@ -1874,9 +1905,8 @@ pub type clSVMAllocARM_t = Option<
 >;
 pub type clSVMAllocARM_fn = clSVMAllocARM_t;
 
-pub type clSVMFreeARM_t = Option<
-    unsafe extern "C" fn(context: cl_context, svm_pointer: *mut c_void),
->;
+pub type clSVMFreeARM_t =
+    Option<unsafe extern "C" fn(context: cl_context, svm_pointer: *mut c_void)>;
 pub type clSVMFreeARM_fn = clSVMFreeARM_t;
 
 pub type clEnqueueSVMFreeARM_t = Option<
@@ -1954,11 +1984,7 @@ pub type clEnqueueSVMUnmapARM_t = Option<
 pub type clEnqueueSVMUnmapARM_fn = clEnqueueSVMUnmapARM_t;
 
 pub type clSetKernelArgSVMPointerARM_t = Option<
-    unsafe extern "C" fn(
-        kernel: cl_kernel,
-        arg_index: cl_uint,
-        arg_value: *const c_void,
-    ) -> cl_int,
+    unsafe extern "C" fn(kernel: cl_kernel, arg_index: cl_uint, arg_value: *const c_void) -> cl_int,
 >;
 pub type clSetKernelArgSVMPointerARM_fn = clSetKernelArgSVMPointerARM_t;
 
@@ -2089,6 +2115,8 @@ pub const CL_DEVICE_SCHEDULING_WARP_THROTTLING_ARM: cl_device_scheduling_control
     1 << 5;
 pub const CL_DEVICE_SCHEDULING_COMPUTE_UNIT_BATCH_QUEUE_SIZE_ARM:
     cl_device_scheduling_controls_capabilities_arm = 1 << 6;
+pub const CL_DEVICE_SCHEDULING_COMPUTE_UNIT_LIMIT_ARM:
+    cl_device_scheduling_controls_capabilities_arm = 1 << 7;
 
 pub const CL_DEVICE_SUPPORTED_REGISTER_ALLOCATIONS_ARM: cl_device_info = 0x41EB;
 pub const CL_DEVICE_MAX_WARP_COUNT_ARM: cl_device_info = 0x41EA;
@@ -2102,6 +2130,7 @@ pub const CL_KERNEL_EXEC_INFO_COMPUTE_UNIT_MAX_QUEUED_BATCHES_ARM: cl_kernel_exe
 
 pub const CL_QUEUE_KERNEL_BATCHING_ARM: cl_queue_properties = 0x41E7;
 pub const CL_QUEUE_DEFERRED_FLUSH_ARM: cl_queue_properties = 0x41EC;
+pub const CL_QUEUE_COMPUTE_UNIT_LIMIT_ARM: cl_queue_properties = 0x41F3;
 
 // cl_arm_controlled_kernel_termination
 
@@ -2270,7 +2299,7 @@ pub type clGetAcceleratorInfoINTEL_t = Option<
         param_name: cl_accelerator_info_intel,
         param_value_size: size_t,
         param_value: *mut c_void,
-        param_value_size_ret: *mut usize,
+        param_value_size_ret: *mut size_t,
     ) -> cl_int,
 >;
 pub type clGetAcceleratorInfoINTEL_fn = clGetAcceleratorInfoINTEL_t;
@@ -2568,7 +2597,7 @@ pub type clDeviceMemAllocINTEL_t = Option<
 >;
 pub type clDeviceMemAllocINTEL_fn = clDeviceMemAllocINTEL_t;
 
-pub type clSharedMemAllocINTEL_t =Option<
+pub type clSharedMemAllocINTEL_t = Option<
     unsafe extern "C" fn(
         context: cl_context,
         device: cl_device_id,
@@ -2580,14 +2609,12 @@ pub type clSharedMemAllocINTEL_t =Option<
 >;
 pub type clSharedMemAllocINTEL_fn = clSharedMemAllocINTEL_t;
 
-pub type clMemFreeINTEL_t = Option<
-    unsafe extern "C" fn(context: cl_context, ptr: *mut c_void) -> cl_int,
->;
+pub type clMemFreeINTEL_t =
+    Option<unsafe extern "C" fn(context: cl_context, ptr: *mut c_void) -> cl_int>;
 pub type clMemFreeINTEL_fn = clMemFreeINTEL_t;
 
-pub type clMemBlockingFreeINTEL_t = Option<
-    unsafe extern "C" fn(context: cl_context, ptr: *mut c_void) -> cl_int,
->;
+pub type clMemBlockingFreeINTEL_t =
+    Option<unsafe extern "C" fn(context: cl_context, ptr: *mut c_void) -> cl_int>;
 pub type clMemBlockingFreeINTEL_fn = clMemBlockingFreeINTEL_t;
 
 pub type clGetMemAllocInfoINTEL_t = Option<
@@ -2603,11 +2630,7 @@ pub type clGetMemAllocInfoINTEL_t = Option<
 pub type clGetMemAllocInfoINTEL_fn = clGetMemAllocInfoINTEL_t;
 
 pub type clSetKernelArgMemPointerINTEL_t = Option<
-    unsafe extern "C" fn(
-        kernel: cl_kernel,
-        arg_index: cl_uint,
-        arg_value: *const c_void,
-    ) -> cl_int,
+    unsafe extern "C" fn(kernel: cl_kernel, arg_index: cl_uint, arg_value: *const c_void) -> cl_int,
 >;
 pub type clSetKernelArgMemPointerINTEL_fn = clSetKernelArgMemPointerINTEL_t;
 
@@ -2897,7 +2920,7 @@ pub const CL_MEM_FORCE_HOST_MEMORY_INTEL: cl_mem_flags = 1 << 20;
 
 pub type cl_command_queue_capabilities_intel = cl_bitfield;
 
-pub const CL_QUEUE_FAMILY_MAX_NAME_SIZE_INTEL: usize = 64;
+pub const CL_QUEUE_FAMILY_MAX_NAME_SIZE_INTEL: size_t = 64;
 
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -2966,7 +2989,7 @@ pub type clGetImageRequirementsInfoEXT_t = Option<
         param_name: cl_image_requirements_info_ext,
         param_value_size: size_t,
         param_value: *mut c_void,
-        param_value_size_ret: *mut usize,
+        param_value_size_ret: *mut size_t,
     ) -> cl_int,
 >;
 pub type clGetImageRequirementsInfoEXT_fn = clGetImageRequirementsInfoEXT_t;
@@ -3000,9 +3023,9 @@ pub type cl_icdl_info = cl_uint;
 pub type clGetICDLoaderInfoOCLICD_t = Option<
     unsafe extern "C" fn(
         param_name: cl_icdl_info,
-        param_value_size: usize,
+        param_value_size: size_t,
         param_value: *mut c_void,
-        param_value_size_ret: *mut usize,
+        param_value_size_ret: *mut size_t,
     ) -> cl_int,
 >;
 pub type clGetICDLoaderInfoOCLICD_fn = clGetICDLoaderInfoOCLICD_t;
@@ -3023,9 +3046,8 @@ extern "system" {
 
 pub type cl_device_fp_atomic_capabilities_ext = cl_bitfield;
 
-pub type clSetContentSizeBufferPoCL_t = Option<
-    unsafe extern "C" fn(buffer: cl_mem, content_size_buffer: cl_mem) -> cl_int,
->;
+pub type clSetContentSizeBufferPoCL_t =
+    Option<unsafe extern "C" fn(buffer: cl_mem, content_size_buffer: cl_mem) -> cl_int>;
 pub type clSetContentSizeBufferPoCL_fn = clSetContentSizeBufferPoCL_t;
 
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]

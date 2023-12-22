@@ -1644,7 +1644,7 @@ pub type clReImportSemaphoreSyncFdKHR_fn = clReImportSemaphoreSyncFdKHR_t;
 
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
-#[cfg(feature = "cl_external_semaphore_handle_type_khr")]
+#[cfg(feature = "cl_khr_external_semaphore_sync_fd")]
 extern "system" {
     pub fn clReImportSemaphoreSyncFdKHR(
         sema_object: cl_semaphore_khr,

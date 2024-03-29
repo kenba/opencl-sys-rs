@@ -3062,11 +3062,9 @@ pub type clSetContentSizeBufferPoCL_fn = clSetContentSizeBufferPoCL_t;
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_pocl_content_size")]
 extern "system" {
-    pub fn clGetICDLoaderInfoOCLICD(
-        param_name: cl_icdl_info,
-        param_value_size: size_t,
-        param_value: *mut c_void,
-        param_value_size_ret: *mut size_t,
+    pub fn clSetContentSizeBufferPoCL(
+        buffer: cl_mem,
+        content_size_buffer: cl_mem,
     ) -> cl_int;
 }
 

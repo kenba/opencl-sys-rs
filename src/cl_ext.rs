@@ -560,6 +560,7 @@ extern "system" {
 pub type cl_command_buffer_structure_type_khr = cl_uint;
 pub type cl_mutable_dispatch_fields_khr = cl_bitfield;
 pub type cl_mutable_command_info_khr = cl_uint;
+pub type cl_mutable_dispatch_asserts_khr = cl_bitfield;
 
 #[derive(Debug, Copy, Clone)]
 #[repr(C)]
@@ -631,6 +632,13 @@ pub const CL_MUTABLE_DISPATCH_LOCAL_WORK_SIZE_KHR: cl_mutable_command_info_khr =
 
 pub const CL_STRUCTURE_TYPE_MUTABLE_BASE_CONFIG_KHR: cl_command_buffer_structure_type_khr = 0;
 pub const CL_STRUCTURE_TYPE_MUTABLE_DISPATCH_CONFIG_KHR: cl_command_buffer_structure_type_khr = 1;
+
+pub const CL_COMMAND_BUFFER_MUTABLE_DISPATCH_ASSERTS_KHR: cl_command_buffer_properties_khr = 0x1287;
+
+pub const CL_MUTABLE_DISPATCH_ASSERTS_KHR: cl_ndrange_kernel_command_properties_khr = 0x12B8;
+
+pub const CL_MUTABLE_DISPATCH_ASSERT_NO_ADDITIONAL_WORK_GROUPS_KHR:
+    cl_mutable_dispatch_asserts_khr = 1 << 0;
 
 pub type clUpdateMutableCommandsKHR_t = Option<
     unsafe extern "C" fn(

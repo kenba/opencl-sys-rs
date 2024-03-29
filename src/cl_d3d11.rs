@@ -13,8 +13,8 @@
 // limitations under the License.
 
 //! FFI bindings for [cl_d3d11.h](https://github.com/KhronosGroup/OpenCL-Headers/blob/main/CL/cl_d3d11.h)  
-//! cl_d3d11.h contains OpenCL extensions that provide interoperability with Direct3D 11.  
-//! OpenCL extensions are documented in the [OpenCL-Registry](https://github.com/KhronosGroup/OpenCL-Registry)
+//! `cl_d3d11.h` contains `OpenCL` extensions that provide interoperability with `Direct3D` 11.  
+//! `OpenCL` extensions are documented in the [OpenCL-Registry](https://github.com/KhronosGroup/OpenCL-Registry)
 
 #![allow(non_camel_case_types, non_upper_case_globals)]
 

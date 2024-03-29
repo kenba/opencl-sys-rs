@@ -267,7 +267,7 @@ pub const CL_DEVICE_TYPE_GPU: cl_device_type = 1 << 2;
 pub const CL_DEVICE_TYPE_ACCELERATOR: cl_device_type = 1 << 3;
 // #ifdef CL_VERSION_1_2
 pub const CL_DEVICE_TYPE_CUSTOM: cl_device_type = 1 << 4;
-pub const CL_DEVICE_TYPE_ALL: cl_device_type = 0xFFFFFFFF;
+pub const CL_DEVICE_TYPE_ALL: cl_device_type = 0xFFFF_FFFF;
 // #endif
 
 // cl_device_info:
@@ -890,19 +890,23 @@ pub const CL_VERSION_MAJOR_MASK: cl_version = (1 << CL_VERSION_MAJOR_BITS) - 1;
 pub const CL_VERSION_MINOR_MASK: cl_version = (1 << CL_VERSION_MINOR_BITS) - 1;
 pub const CL_VERSION_PATCH_MASK: cl_version = (1 << CL_VERSION_PATCH_BITS) - 1;
 
-pub fn version_major(version: cl_version) -> cl_version {
+#[must_use]
+pub const fn version_major(version: cl_version) -> cl_version {
     version >> (CL_VERSION_MINOR_BITS + CL_VERSION_PATCH_BITS)
 }
 
-pub fn version_minor(version: cl_version) -> cl_version {
+#[must_use]
+pub const fn version_minor(version: cl_version) -> cl_version {
     (version >> CL_VERSION_PATCH_BITS) & CL_VERSION_MINOR_MASK
 }
 
-pub fn version_patch(version: cl_version) -> cl_version {
+#[must_use]
+pub const fn version_patch(version: cl_version) -> cl_version {
     version & CL_VERSION_PATCH_MASK
 }
 
-pub fn make_version(major: cl_version, minor: cl_version, patch: cl_version) -> cl_version {
+#[must_use]
+pub const fn make_version(major: cl_version, minor: cl_version, patch: cl_version) -> cl_version {
     ((major & CL_VERSION_MAJOR_MASK) << (CL_VERSION_MINOR_BITS + CL_VERSION_PATCH_BITS))
         | ((minor & CL_VERSION_MINOR_MASK) << CL_VERSION_PATCH_BITS)
         | (patch & CL_VERSION_PATCH_MASK)

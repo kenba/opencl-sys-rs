@@ -69,3 +69,10 @@ default = ["CL_VERSION_1_1", "CL_VERSION_1_2"]
 
 [dependencies]
 libc = "0.2"
+
+[lints.clippy]
+enum_glob_use = "deny"
+module_name_repetitions = "allow"
+nursery = "deny"
+pedantic = "deny"
+unwrap_used = "deny"

@@ -13,8 +13,8 @@
 // limitations under the License.
 
 //! FFI bindings for [cl_ext.h](https://github.com/KhronosGroup/OpenCL-Headers/blob/main/CL/cl_ext.h)  
-//! cl_ext.h contains OpenCL extensions that don't have external (OpenGL, D3D) dependencies.  
-//! OpenCL extensions are documented in the [OpenCL-Registry](https://github.com/KhronosGroup/OpenCL-Registry)
+//! `cl_ext.h` contains `OpenCL` extensions that don't have external (`OpenGL`, `D3D`) dependencies.  
+//! `OpenCL` extensions are documented in the [OpenCL-Registry](https://github.com/KhronosGroup/OpenCL-Registry)
 
 #![allow(non_camel_case_types, non_upper_case_globals)]
 
@@ -1051,7 +1051,7 @@ pub const CL_AFFINITY_DOMAIN_NEXT_FISSIONABLE_EXT: cl_uint = 0x100;
 // cl_device_partition_property_ext list terminators
 pub const CL_PROPERTIES_LIST_END_EXT: cl_device_partition_property_ext = 0;
 pub const CL_PARTITION_BY_COUNTS_LIST_END_EXT: cl_device_partition_property_ext = 0;
-pub const CL_PARTITION_BY_NAMES_LIST_END_EXT: cl_device_partition_property_ext = 0xFFFFFFFF;
+pub const CL_PARTITION_BY_NAMES_LIST_END_EXT: cl_device_partition_property_ext = 0xFFFF_FFFF;
 
 // cl_ext_migrate_memobject extension definitions
 
@@ -1365,22 +1365,26 @@ pub const CL_VERSION_MINOR_MASK_KHR: cl_version_khr = (1 << CL_VERSION_MINOR_BIT
 pub const CL_VERSION_PATCH_MASK_KHR: cl_version_khr = (1 << CL_VERSION_PATCH_BITS_KHR) - 1;
 
 #[inline]
-pub fn version_major_khr(version: cl_version_khr) -> cl_version_khr {
+#[must_use]
+pub const fn version_major_khr(version: cl_version_khr) -> cl_version_khr {
     version >> (CL_VERSION_MINOR_BITS_KHR + CL_VERSION_PATCH_BITS_KHR)
 }
 
 #[inline]
-pub fn version_minor_khr(version: cl_version_khr) -> cl_version_khr {
+#[must_use]
+pub const fn version_minor_khr(version: cl_version_khr) -> cl_version_khr {
     (version >> CL_VERSION_PATCH_BITS_KHR) & CL_VERSION_MINOR_MASK_KHR
 }
 
 #[inline]
-pub fn version_patch_khr(version: cl_version_khr) -> cl_version_khr {
+#[must_use]
+pub const fn version_patch_khr(version: cl_version_khr) -> cl_version_khr {
     version & CL_VERSION_PATCH_MASK_KHR
 }
 
 #[inline]
-pub fn make_version_khr(
+#[must_use]
+pub const fn make_version_khr(
     major: cl_version_khr,
     minor: cl_version_khr,
     patch: cl_version_khr,
@@ -1800,19 +1804,19 @@ extern "system" {
 
 pub type cl_import_properties_arm = intptr_t;
 
-/// Default and valid properties name for cl_arm_import_memory
+/// Default and valid properties name for `cl_arm_import_memory`
 pub const CL_IMPORT_TYPE_ARM: cl_import_properties_arm = 0x40B2;
 
-/// Host process memory type default value for CL_IMPORT_TYPE_ARM property
+/// Host process memory type default value for `CL_IMPORT_TYPE_ARM` property
 pub const CL_IMPORT_TYPE_HOST_ARM: cl_import_properties_arm = 0x40B3;
 
-/// DMA BUF memory type value for CL_IMPORT_TYPE_ARM property
+/// DMA BUF memory type value for `CL_IMPORT_TYPE_ARM` property
 pub const CL_IMPORT_TYPE_DMA_BUF_ARM: cl_import_properties_arm = 0x40B4;
 
 /// Protected memory property
 pub const CL_IMPORT_TYPE_PROTECTED_ARM: cl_import_properties_arm = 0x40B5;
 
-/// Android hardware buffer type value for CL_IMPORT_TYPE_ARM property
+/// Android hardware buffer type value for `CL_IMPORT_TYPE_ARM` property
 pub const CL_IMPORT_TYPE_ANDROID_HARDWARE_BUFFER_ARM: cl_import_properties_arm = 0x41E2;
 
 /// Data consistency with host property

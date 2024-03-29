@@ -231,7 +231,7 @@ pub type clCreateProgramWithBinary_t = Option<
         num_devices: cl_uint,
         device_list: *const cl_device_id,
         lengths: *const size_t,
-        binaries: *mut *const ::std::os::raw::c_uchar,
+        binaries: *mut *const ::core::ffi::c_uchar,
         binary_status: *mut cl_int,
         errcode_ret: *mut cl_int,
     ) -> cl_program,

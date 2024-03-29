@@ -1970,18 +1970,18 @@ mod tests {
     #[allow(deref_nullptr)]
     fn bindgen_test_layout_cl_image_format() {
         assert_eq!(
-            ::std::mem::size_of::<cl_image_format>(),
+            ::core::mem::size_of::<cl_image_format>(),
             8usize,
             concat!("Size of: ", stringify!(cl_image_format))
         );
         assert_eq!(
-            ::std::mem::align_of::<cl_image_format>(),
+            ::core::mem::align_of::<cl_image_format>(),
             4usize,
             concat!("Alignment of ", stringify!(cl_image_format))
         );
         assert_eq!(
             unsafe {
-                &(*(::std::ptr::null::<cl_image_format>())).image_channel_order as *const _ as usize
+                &(*(::core::ptr::null::<cl_image_format>())).image_channel_order as *const _ as usize
             },
             0usize,
             concat!(
@@ -1993,7 +1993,7 @@ mod tests {
         );
         assert_eq!(
             unsafe {
-                &(*(::std::ptr::null::<cl_image_format>())).image_channel_data_type as *const _
+                &(*(::core::ptr::null::<cl_image_format>())).image_channel_data_type as *const _
                     as usize
             },
             4usize,
@@ -2010,17 +2010,17 @@ mod tests {
     #[allow(deref_nullptr)]
     fn bindgen_test_layout_cl_image_desc() {
         assert_eq!(
-            ::std::mem::size_of::<cl_image_desc>(),
+            ::core::mem::size_of::<cl_image_desc>(),
             72usize,
             concat!("Size of: ", stringify!(cl_image_desc))
         );
         assert_eq!(
-            ::std::mem::align_of::<cl_image_desc>(),
+            ::core::mem::align_of::<cl_image_desc>(),
             8usize,
             concat!("Alignment of ", stringify!(cl_image_desc))
         );
         assert_eq!(
-            unsafe { &(*(::std::ptr::null::<cl_image_desc>())).image_type as *const _ as usize },
+            unsafe { &(*(::core::ptr::null::<cl_image_desc>())).image_type as *const _ as usize },
             0usize,
             concat!(
                 "Offset of field: ",
@@ -2030,7 +2030,7 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe { &(*(::std::ptr::null::<cl_image_desc>())).image_width as *const _ as usize },
+            unsafe { &(*(::core::ptr::null::<cl_image_desc>())).image_width as *const _ as usize },
             8usize,
             concat!(
                 "Offset of field: ",
@@ -2040,7 +2040,7 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe { &(*(::std::ptr::null::<cl_image_desc>())).image_height as *const _ as usize },
+            unsafe { &(*(::core::ptr::null::<cl_image_desc>())).image_height as *const _ as usize },
             16usize,
             concat!(
                 "Offset of field: ",
@@ -2050,7 +2050,7 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe { &(*(::std::ptr::null::<cl_image_desc>())).image_depth as *const _ as usize },
+            unsafe { &(*(::core::ptr::null::<cl_image_desc>())).image_depth as *const _ as usize },
             24usize,
             concat!(
                 "Offset of field: ",
@@ -2061,7 +2061,7 @@ mod tests {
         );
         assert_eq!(
             unsafe {
-                &(*(::std::ptr::null::<cl_image_desc>())).image_array_size as *const _ as usize
+                &(*(::core::ptr::null::<cl_image_desc>())).image_array_size as *const _ as usize
             },
             32usize,
             concat!(
@@ -2073,7 +2073,7 @@ mod tests {
         );
         assert_eq!(
             unsafe {
-                &(*(::std::ptr::null::<cl_image_desc>())).image_row_pitch as *const _ as usize
+                &(*(::core::ptr::null::<cl_image_desc>())).image_row_pitch as *const _ as usize
             },
             40usize,
             concat!(
@@ -2085,7 +2085,7 @@ mod tests {
         );
         assert_eq!(
             unsafe {
-                &(*(::std::ptr::null::<cl_image_desc>())).image_slice_pitch as *const _ as usize
+                &(*(::core::ptr::null::<cl_image_desc>())).image_slice_pitch as *const _ as usize
             },
             48usize,
             concat!(
@@ -2097,7 +2097,7 @@ mod tests {
         );
         assert_eq!(
             unsafe {
-                &(*(::std::ptr::null::<cl_image_desc>())).num_mip_levels as *const _ as usize
+                &(*(::core::ptr::null::<cl_image_desc>())).num_mip_levels as *const _ as usize
             },
             56usize,
             concat!(
@@ -2108,7 +2108,7 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe { &(*(::std::ptr::null::<cl_image_desc>())).num_samples as *const _ as usize },
+            unsafe { &(*(::core::ptr::null::<cl_image_desc>())).num_samples as *const _ as usize },
             60usize,
             concat!(
                 "Offset of field: ",
@@ -2123,17 +2123,17 @@ mod tests {
     #[allow(deref_nullptr)]
     fn bindgen_test_layout_cl_buffer_region() {
         assert_eq!(
-            ::std::mem::size_of::<cl_buffer_region>(),
+            ::core::mem::size_of::<cl_buffer_region>(),
             16usize,
             concat!("Size of: ", stringify!(cl_buffer_region))
         );
         assert_eq!(
-            ::std::mem::align_of::<cl_buffer_region>(),
+            ::core::mem::align_of::<cl_buffer_region>(),
             8usize,
             concat!("Alignment of ", stringify!(cl_buffer_region))
         );
         assert_eq!(
-            unsafe { &(*(::std::ptr::null::<cl_buffer_region>())).origin as *const _ as usize },
+            unsafe { &(*(::core::ptr::null::<cl_buffer_region>())).origin as *const _ as usize },
             0usize,
             concat!(
                 "Offset of field: ",
@@ -2143,7 +2143,7 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe { &(*(::std::ptr::null::<cl_buffer_region>())).size as *const _ as usize },
+            unsafe { &(*(::core::ptr::null::<cl_buffer_region>())).size as *const _ as usize },
             8usize,
             concat!(
                 "Offset of field: ",
@@ -2158,17 +2158,17 @@ mod tests {
     #[allow(deref_nullptr)]
     fn bindgen_test_layout_cl_name_version() {
         assert_eq!(
-            ::std::mem::size_of::<cl_name_version>(),
+            ::core::mem::size_of::<cl_name_version>(),
             68usize,
             concat!("Size of: ", stringify!(cl_name_version))
         );
         assert_eq!(
-            ::std::mem::align_of::<cl_name_version>(),
+            ::core::mem::align_of::<cl_name_version>(),
             4usize,
             concat!("Alignment of ", stringify!(cl_name_version))
         );
         assert_eq!(
-            unsafe { &(*(::std::ptr::null::<cl_name_version>())).version as *const _ as usize },
+            unsafe { &(*(::core::ptr::null::<cl_name_version>())).version as *const _ as usize },
             0usize,
             concat!(
                 "Offset of field: ",
@@ -2178,7 +2178,7 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe { &(*(::std::ptr::null::<cl_name_version>())).name as *const _ as usize },
+            unsafe { &(*(::core::ptr::null::<cl_name_version>())).name as *const _ as usize },
             4usize,
             concat!(
                 "Offset of field: ",

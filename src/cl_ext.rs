@@ -689,7 +689,7 @@ pub const CL_DEVICE_HALF_FP_CONFIG: cl_device_info = 0x1033;
 pub type clSetMemObjectDestructorAPPLE_t = Option<
     unsafe extern "C" fn(
         memobj: cl_mem,
-        pfn_notify: ::std::option::Option<
+        pfn_notify: ::core::option::Option<
             unsafe extern "C" fn(memobj: cl_mem, user_data: *mut c_void),
         >,
         user_data: *mut c_void,
@@ -907,7 +907,7 @@ pub const CL_PROGRAM_BINARY_TYPE_INTERMEDIATE: cl_uint = 0x40E1;
 // cl_khr_create_command_queue extension
 pub type cl_queue_properties_khr = cl_properties;
 
-pub type clCreateCommandQueueWithPropertiesKHR_t = ::std::option::Option<
+pub type clCreateCommandQueueWithPropertiesKHR_t = ::core::option::Option<
     unsafe extern "C" fn(
         context: cl_context,
         device: cl_device_id,
@@ -3085,18 +3085,18 @@ mod tests {
     #[allow(deref_nullptr)]
     fn bindgen_test_layout_cl_mem_ext_host_ptr() {
         assert_eq!(
-            ::std::mem::size_of::<cl_mem_ext_host_ptr>(),
+            ::core::mem::size_of::<cl_mem_ext_host_ptr>(),
             8usize,
             concat!("Size of: ", stringify!(cl_mem_ext_host_ptr))
         );
         assert_eq!(
-            ::std::mem::align_of::<cl_mem_ext_host_ptr>(),
+            ::core::mem::align_of::<cl_mem_ext_host_ptr>(),
             4usize,
             concat!("Alignment of ", stringify!(cl_mem_ext_host_ptr))
         );
         assert_eq!(
             unsafe {
-                &(*(::std::ptr::null::<cl_mem_ext_host_ptr>())).allocation_type as *const _ as usize
+                &(*(::core::ptr::null::<cl_mem_ext_host_ptr>())).allocation_type as *const _ as usize
             },
             0usize,
             concat!(
@@ -3108,7 +3108,7 @@ mod tests {
         );
         assert_eq!(
             unsafe {
-                &(*(::std::ptr::null::<cl_mem_ext_host_ptr>())).host_cache_policy as *const _
+                &(*(::core::ptr::null::<cl_mem_ext_host_ptr>())).host_cache_policy as *const _
                     as usize
             },
             4usize,
@@ -3125,18 +3125,18 @@ mod tests {
     #[allow(deref_nullptr)]
     fn bindgen_test_layout_cl_mem_ion_host_ptr() {
         assert_eq!(
-            ::std::mem::size_of::<cl_mem_ion_host_ptr>(),
+            ::core::mem::size_of::<cl_mem_ion_host_ptr>(),
             24usize,
             concat!("Size of: ", stringify!(cl_mem_ion_host_ptr))
         );
         assert_eq!(
-            ::std::mem::align_of::<cl_mem_ion_host_ptr>(),
+            ::core::mem::align_of::<cl_mem_ion_host_ptr>(),
             8usize,
             concat!("Alignment of ", stringify!(cl_mem_ion_host_ptr))
         );
         assert_eq!(
             unsafe {
-                &(*(::std::ptr::null::<cl_mem_ion_host_ptr>())).ext_host_ptr as *const _ as usize
+                &(*(::core::ptr::null::<cl_mem_ion_host_ptr>())).ext_host_ptr as *const _ as usize
             },
             0usize,
             concat!(
@@ -3148,7 +3148,7 @@ mod tests {
         );
         assert_eq!(
             unsafe {
-                &(*(::std::ptr::null::<cl_mem_ion_host_ptr>())).ion_filedesc as *const _ as usize
+                &(*(::core::ptr::null::<cl_mem_ion_host_ptr>())).ion_filedesc as *const _ as usize
             },
             8usize,
             concat!(
@@ -3160,7 +3160,7 @@ mod tests {
         );
         assert_eq!(
             unsafe {
-                &(*(::std::ptr::null::<cl_mem_ion_host_ptr>())).ion_hostptr as *const _ as usize
+                &(*(::core::ptr::null::<cl_mem_ion_host_ptr>())).ion_hostptr as *const _ as usize
             },
             16usize,
             concat!(
@@ -3176,7 +3176,7 @@ mod tests {
     #[allow(deref_nullptr)]
     fn bindgen_test_layout_cl_mem_android_native_buffer_host_ptr() {
         assert_eq!(
-            ::std::mem::size_of::<cl_mem_android_native_buffer_host_ptr>(),
+            ::core::mem::size_of::<cl_mem_android_native_buffer_host_ptr>(),
             16usize,
             concat!(
                 "Size of: ",
@@ -3184,7 +3184,7 @@ mod tests {
             )
         );
         assert_eq!(
-            ::std::mem::align_of::<cl_mem_android_native_buffer_host_ptr>(),
+            ::core::mem::align_of::<cl_mem_android_native_buffer_host_ptr>(),
             8usize,
             concat!(
                 "Alignment of ",
@@ -3193,7 +3193,7 @@ mod tests {
         );
         assert_eq!(
             unsafe {
-                &(*(::std::ptr::null::<cl_mem_android_native_buffer_host_ptr>())).ext_host_ptr
+                &(*(::core::ptr::null::<cl_mem_android_native_buffer_host_ptr>())).ext_host_ptr
                     as *const _ as usize
             },
             0usize,
@@ -3206,7 +3206,7 @@ mod tests {
         );
         assert_eq!(
             unsafe {
-                &(*(::std::ptr::null::<cl_mem_android_native_buffer_host_ptr>())).anb_ptr
+                &(*(::core::ptr::null::<cl_mem_android_native_buffer_host_ptr>())).anb_ptr
                     as *const _ as usize
             },
             8usize,
@@ -3223,17 +3223,17 @@ mod tests {
     #[allow(deref_nullptr)]
     fn bindgen_test_layout_cl_name_version_khr() {
         assert_eq!(
-            ::std::mem::size_of::<cl_name_version_khr>(),
+            ::core::mem::size_of::<cl_name_version_khr>(),
             68usize,
             concat!("Size of: ", stringify!(cl_name_version_khr))
         );
         assert_eq!(
-            ::std::mem::align_of::<cl_name_version_khr>(),
+            ::core::mem::align_of::<cl_name_version_khr>(),
             4usize,
             concat!("Alignment of ", stringify!(cl_name_version_khr))
         );
         assert_eq!(
-            unsafe { &(*(::std::ptr::null::<cl_name_version_khr>())).version as *const _ as usize },
+            unsafe { &(*(::core::ptr::null::<cl_name_version_khr>())).version as *const _ as usize },
             0usize,
             concat!(
                 "Offset of field: ",
@@ -3243,7 +3243,7 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe { &(*(::std::ptr::null::<cl_name_version_khr>())).name as *const _ as usize },
+            unsafe { &(*(::core::ptr::null::<cl_name_version_khr>())).name as *const _ as usize },
             4usize,
             concat!(
                 "Offset of field: ",
@@ -3258,18 +3258,18 @@ mod tests {
     #[allow(deref_nullptr)]
     fn bindgen_test_layout_cl_device_pci_bus_info_khr() {
         assert_eq!(
-            ::std::mem::size_of::<cl_device_pci_bus_info_khr>(),
+            ::core::mem::size_of::<cl_device_pci_bus_info_khr>(),
             16usize,
             concat!("Size of: ", stringify!(cl_device_pci_bus_info_khr))
         );
         assert_eq!(
-            ::std::mem::align_of::<cl_device_pci_bus_info_khr>(),
+            ::core::mem::align_of::<cl_device_pci_bus_info_khr>(),
             4usize,
             concat!("Alignment of ", stringify!(cl_device_pci_bus_info_khr))
         );
         assert_eq!(
             unsafe {
-                &(*(::std::ptr::null::<cl_device_pci_bus_info_khr>())).pci_domain as *const _
+                &(*(::core::ptr::null::<cl_device_pci_bus_info_khr>())).pci_domain as *const _
                     as usize
             },
             0usize,
@@ -3282,7 +3282,7 @@ mod tests {
         );
         assert_eq!(
             unsafe {
-                &(*(::std::ptr::null::<cl_device_pci_bus_info_khr>())).pci_bus as *const _ as usize
+                &(*(::core::ptr::null::<cl_device_pci_bus_info_khr>())).pci_bus as *const _ as usize
             },
             4usize,
             concat!(
@@ -3294,7 +3294,7 @@ mod tests {
         );
         assert_eq!(
             unsafe {
-                &(*(::std::ptr::null::<cl_device_pci_bus_info_khr>())).pci_device as *const _
+                &(*(::core::ptr::null::<cl_device_pci_bus_info_khr>())).pci_device as *const _
                     as usize
             },
             8usize,
@@ -3307,7 +3307,7 @@ mod tests {
         );
         assert_eq!(
             unsafe {
-                &(*(::std::ptr::null::<cl_device_pci_bus_info_khr>())).pci_function as *const _
+                &(*(::core::ptr::null::<cl_device_pci_bus_info_khr>())).pci_function as *const _
                     as usize
             },
             12usize,
@@ -3324,7 +3324,7 @@ mod tests {
     #[allow(deref_nullptr)]
     fn bindgen_test_layout_cl_device_integer_dot_product_acceleration_properties_khr() {
         assert_eq!(
-            ::std::mem::size_of::<cl_device_integer_dot_product_acceleration_properties_khr>(),
+            ::core::mem::size_of::<cl_device_integer_dot_product_acceleration_properties_khr>(),
             24usize,
             concat!(
                 "Size of: ",
@@ -3332,7 +3332,7 @@ mod tests {
             )
         );
         assert_eq!(
-            ::std::mem::align_of::<cl_device_integer_dot_product_acceleration_properties_khr>(),
+            ::core::mem::align_of::<cl_device_integer_dot_product_acceleration_properties_khr>(),
             4usize,
             concat!(
                 "Alignment of ",
@@ -3341,7 +3341,7 @@ mod tests {
         );
         assert_eq!(
             unsafe {
-                &(*(::std::ptr::null::<cl_device_integer_dot_product_acceleration_properties_khr>(
+                &(*(::core::ptr::null::<cl_device_integer_dot_product_acceleration_properties_khr>(
                 )))
                 .signed_accelerated as *const _ as usize
             },
@@ -3355,7 +3355,7 @@ mod tests {
         );
         assert_eq!(
             unsafe {
-                &(*(::std::ptr::null::<cl_device_integer_dot_product_acceleration_properties_khr>(
+                &(*(::core::ptr::null::<cl_device_integer_dot_product_acceleration_properties_khr>(
                 )))
                 .unsigned_accelerated as *const _ as usize
             },
@@ -3369,7 +3369,7 @@ mod tests {
         );
         assert_eq!(
             unsafe {
-                &(*(::std::ptr::null::<cl_device_integer_dot_product_acceleration_properties_khr>(
+                &(*(::core::ptr::null::<cl_device_integer_dot_product_acceleration_properties_khr>(
                 )))
                 .mixed_signedness_accelerated as *const _ as usize
             },
@@ -3383,7 +3383,7 @@ mod tests {
         );
         assert_eq!(
             unsafe {
-                &(*(::std::ptr::null::<cl_device_integer_dot_product_acceleration_properties_khr>(
+                &(*(::core::ptr::null::<cl_device_integer_dot_product_acceleration_properties_khr>(
                 )))
                 .accumulating_saturating_signed_accelerated as *const _ as usize
             },
@@ -3397,7 +3397,7 @@ mod tests {
         );
         assert_eq!(
             unsafe {
-                &(*(::std::ptr::null::<cl_device_integer_dot_product_acceleration_properties_khr>(
+                &(*(::core::ptr::null::<cl_device_integer_dot_product_acceleration_properties_khr>(
                 )))
                 .accumulating_saturating_unsigned_accelerated as *const _ as usize
             },
@@ -3411,7 +3411,7 @@ mod tests {
         );
         assert_eq!(
             unsafe {
-                &(*(::std::ptr::null::<cl_device_integer_dot_product_acceleration_properties_khr>(
+                &(*(::core::ptr::null::<cl_device_integer_dot_product_acceleration_properties_khr>(
                 )))
                 .accumulating_saturating_mixed_signedness_accelerated as *const _
                     as usize
@@ -3430,18 +3430,18 @@ mod tests {
     #[allow(deref_nullptr)]
     fn bindgen_test_layout_cl_motion_estimation_desc_intel() {
         assert_eq!(
-            ::std::mem::size_of::<cl_motion_estimation_desc_intel>(),
+            ::core::mem::size_of::<cl_motion_estimation_desc_intel>(),
             16usize,
             concat!("Size of: ", stringify!(cl_motion_estimation_desc_intel))
         );
         assert_eq!(
-            ::std::mem::align_of::<cl_motion_estimation_desc_intel>(),
+            ::core::mem::align_of::<cl_motion_estimation_desc_intel>(),
             4usize,
             concat!("Alignment of ", stringify!(cl_motion_estimation_desc_intel))
         );
         assert_eq!(
             unsafe {
-                &(*(::std::ptr::null::<cl_motion_estimation_desc_intel>())).mb_block_type
+                &(*(::core::ptr::null::<cl_motion_estimation_desc_intel>())).mb_block_type
                     as *const _ as usize
             },
             0usize,
@@ -3454,7 +3454,7 @@ mod tests {
         );
         assert_eq!(
             unsafe {
-                &(*(::std::ptr::null::<cl_motion_estimation_desc_intel>())).subpixel_mode
+                &(*(::core::ptr::null::<cl_motion_estimation_desc_intel>())).subpixel_mode
                     as *const _ as usize
             },
             4usize,
@@ -3467,7 +3467,7 @@ mod tests {
         );
         assert_eq!(
             unsafe {
-                &(*(::std::ptr::null::<cl_motion_estimation_desc_intel>())).sad_adjust_mode
+                &(*(::core::ptr::null::<cl_motion_estimation_desc_intel>())).sad_adjust_mode
                     as *const _ as usize
             },
             8usize,
@@ -3480,7 +3480,7 @@ mod tests {
         );
         assert_eq!(
             unsafe {
-                &(*(::std::ptr::null::<cl_motion_estimation_desc_intel>())).search_path_type
+                &(*(::core::ptr::null::<cl_motion_estimation_desc_intel>())).search_path_type
                     as *const _ as usize
             },
             12usize,
@@ -3497,12 +3497,12 @@ mod tests {
     #[allow(deref_nullptr)]
     fn bindgen_test_layout_cl_queue_family_properties_intel() {
         assert_eq!(
-            ::std::mem::size_of::<cl_queue_family_properties_intel>(),
+            ::core::mem::size_of::<cl_queue_family_properties_intel>(),
             88usize,
             concat!("Size of: ", stringify!(cl_queue_family_properties_intel))
         );
         assert_eq!(
-            ::std::mem::align_of::<cl_queue_family_properties_intel>(),
+            ::core::mem::align_of::<cl_queue_family_properties_intel>(),
             8usize,
             concat!(
                 "Alignment of ",
@@ -3511,7 +3511,7 @@ mod tests {
         );
         assert_eq!(
             unsafe {
-                &(*(::std::ptr::null::<cl_queue_family_properties_intel>())).properties as *const _
+                &(*(::core::ptr::null::<cl_queue_family_properties_intel>())).properties as *const _
                     as usize
             },
             0usize,
@@ -3524,7 +3524,7 @@ mod tests {
         );
         assert_eq!(
             unsafe {
-                &(*(::std::ptr::null::<cl_queue_family_properties_intel>())).capabilities
+                &(*(::core::ptr::null::<cl_queue_family_properties_intel>())).capabilities
                     as *const _ as usize
             },
             8usize,
@@ -3537,7 +3537,7 @@ mod tests {
         );
         assert_eq!(
             unsafe {
-                &(*(::std::ptr::null::<cl_queue_family_properties_intel>())).count as *const _
+                &(*(::core::ptr::null::<cl_queue_family_properties_intel>())).count as *const _
                     as usize
             },
             16usize,
@@ -3550,7 +3550,7 @@ mod tests {
         );
         assert_eq!(
             unsafe {
-                &(*(::std::ptr::null::<cl_queue_family_properties_intel>())).name as *const _
+                &(*(::core::ptr::null::<cl_queue_family_properties_intel>())).name as *const _
                     as usize
             },
             20usize,

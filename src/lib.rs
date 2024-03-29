@@ -40,6 +40,8 @@
 //! The Rust FFI files attempt to match the format and layout of the original
 //! C source files instead of [bindgen](https://rust-lang.github.io/rust-bindgen/)
 //! output files to ease maintenance.
+//! 
+//! The library is declared [no_std](https://docs.rust-embedded.org/book/intro/no-std.html).
 //!
 //! ## Contribution
 //!
@@ -58,6 +60,8 @@
 //! shall be licensed as above, without any additional terms or conditions.
 //!
 //! `OpenCL` and the `OpenCL` logo are trademarks of Apple Inc. used under license by Khronos.
+
+#![no_std]
 
 extern crate libc;
 

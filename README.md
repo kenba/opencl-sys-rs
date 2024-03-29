@@ -29,6 +29,8 @@ output files to ease maintenance.
 bindgen ../OpenCL-Headers/CL/opencl.h -o opencl.rs -- -I ../OpenCL-Headers/CL
 ```
 
+The library is declared [no_std](https://docs.rust-embedded.org/book/intro/no-std.html).
+
 ## Contribution
 
 If you want to contribute through code or documentation, the [Contributing](CONTRIBUTING.md)

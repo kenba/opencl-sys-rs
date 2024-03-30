@@ -54,7 +54,7 @@ Your patch should follow the same conventions & pass the same code quality check
 I recommend installing and running `clippy`:
 
 ```shell
-cargo clippy
+cargo clippy --all-features
 ```
 
 and `fmt`:

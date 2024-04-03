@@ -1981,7 +1981,8 @@ mod tests {
         );
         assert_eq!(
             unsafe {
-                &(*(::core::ptr::null::<cl_image_format>())).image_channel_order as *const _ as usize
+                &(*(::core::ptr::null::<cl_image_format>())).image_channel_order as *const _
+                    as usize
             },
             0usize,
             concat!(

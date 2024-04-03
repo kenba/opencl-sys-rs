@@ -37,22 +37,22 @@
 //! The Rust FFI files attempt to match the format and layout of the original
 //! C source files instead of [bindgen](https://rust-lang.github.io/rust-bindgen/)
 //! output files to ease maintenance.
-//! 
+//!
 //! The library is declared [no_std](https://docs.rust-embedded.org/book/intro/no-std.html).
 //!
 //! ## Use
-//! 
-//! OpenCL requires that an appropriate OpenCL hardware driver(s) and an OpenCL Installable Client Driver (ICD) are installed.  
-//! OpenCL GPU hardware driver(s) are installed with graphics drivers by the main manufacturers: Nvidia, AMD and Intel.  
-//! However, an OpenCL ICD must usually be installed manually by:
-//! 
+//!
+//! `OpenCL` requires that an appropriate `OpenCL` hardware driver(s) and an `OpenCL` Installable Client Driver (ICD) are installed.  
+//! `OpenCL` GPU hardware driver(s) are installed with graphics drivers by the main manufacturers: Nvidia, AMD and Intel.  
+//! However, an `OpenCL` ICD must usually be installed manually by:
+//!
 //! - a Linux package manager, e.g., `sudo apt-get install intel-opencl-icd`
 //! - or a Windows download from <https://www.intel.com/content/www/us/en/developer/articles/technical/intel-cpu-runtime-for-opencl-applications-with-sycl-support.html> followed by installing
 //! and setting the `OPENCL_LIB_PATH` environment variable to `C:\Program Files (x86)\Common Files\Intel\Shared Libraries\`
-//! 
-//! Note: you do *not* need to install an OpenCL ICD from the same manufacturer as your hardware.  
-//! In general, the more up to date the OpenCL ICD, the better.
-//! 
+//!
+//! Note: you do *not* need to install an `OpenCL` ICD from the same manufacturer as your hardware.  
+//! In general, the more up to date the `OpenCL` ICD, the better.
+//!
 //! ## Contribution
 //!
 //! If you want to contribute through code or documentation, the [Contributing](CONTRIBUTING.md)

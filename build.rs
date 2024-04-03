@@ -12,11 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/// Add an OpenCL ICD library path to the rust library search path on Windows.
+/// Add an `OpenCL` ICD library path to the rust library search path on Windows.
 ///
-/// Searches for an OpenCL ICD library in $(OPENCL_LIB_PATH)lib or
-/// $(OPENCL_ROOT)x64 / $(OPENCL_ROOT)x64 before searching for 
-/// Intel, AMD and Nvidia OpenCL vendor SDK environment variables.
+/// Searches for an `OpenCL` ICD library in `$(OPENCL_LIB_PATH)lib` or
+/// `$(OPENCL_ROOT)x64` / `$(OPENCL_ROOT)x64` before searching for
+/// Intel, AMD and Nvidia `OpenCL` vendor SDK environment variables.
 fn main() {
     if cfg!(windows) {
         let known_sdk = [
@@ -40,10 +40,8 @@ fn main() {
                     if !info.1.is_empty() {
                         path.push(info.1);
                     }
-                } else {
-                    if !info.2.is_empty() {
-                        path.push(info.2);
-                    }
+                } else if !info.2.is_empty() {
+                    path.push(info.2);
                 }
                 println!("cargo:rustc-link-search=native={}", path.display());
                 break;

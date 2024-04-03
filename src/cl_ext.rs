@@ -3066,10 +3066,7 @@ pub type clSetContentSizeBufferPoCL_fn = clSetContentSizeBufferPoCL_t;
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_pocl_content_size")]
 extern "system" {
-    pub fn clSetContentSizeBufferPoCL(
-        buffer: cl_mem,
-        content_size_buffer: cl_mem,
-    ) -> cl_int;
+    pub fn clSetContentSizeBufferPoCL(buffer: cl_mem, content_size_buffer: cl_mem) -> cl_int;
 }
 
 // cl_ext_image_raw10_raw12
@@ -3096,7 +3093,8 @@ mod tests {
         );
         assert_eq!(
             unsafe {
-                &(*(::core::ptr::null::<cl_mem_ext_host_ptr>())).allocation_type as *const _ as usize
+                &(*(::core::ptr::null::<cl_mem_ext_host_ptr>())).allocation_type as *const _
+                    as usize
             },
             0usize,
             concat!(
@@ -3233,7 +3231,9 @@ mod tests {
             concat!("Alignment of ", stringify!(cl_name_version_khr))
         );
         assert_eq!(
-            unsafe { &(*(::core::ptr::null::<cl_name_version_khr>())).version as *const _ as usize },
+            unsafe {
+                &(*(::core::ptr::null::<cl_name_version_khr>())).version as *const _ as usize
+            },
             0usize,
             concat!(
                 "Offset of field: ",

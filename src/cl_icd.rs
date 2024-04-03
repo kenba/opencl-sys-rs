@@ -22,8 +22,8 @@ pub use super::cl_function_types::*;
 pub use super::cl_gl::*;
 
 // Windows
-pub use super::cl_d3d11::*;
 pub use super::cl_d3d10::*;
+pub use super::cl_d3d11::*;
 pub use super::cl_dx9_media_sharing::*;
 
 #[repr(C)]

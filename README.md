@@ -15,11 +15,10 @@ see the [OpenCL Resource Guide](https://www.khronos.org/opencl/resources).
 ![OpenCL Packages](docs/images/opencl_context_objects.svg)  
 *OpenCL Packages*
 
-The API for OpenCL versions and extensions are controlled by Rust features such as "CL_VERSION_2_0" and "cl_khr_gl_sharing". To enable an OpenCL version, the feature for that version and **all** previous OpenCL versions must be enabled, e.g. for "CL_VERSION_2_0"; "CL_VERSION_1_1" and "CL_VERSION_1_2" must also be enabled.
-
+The API for OpenCL versions and extensions are controlled by Rust features such as "CL_VERSION_2_0" and "cl_khr_gl_sharing".  
 The default features are "CL_VERSION_1_1" and "CL_VERSION_1_2".
 
-Rust deprecation warnings are given for OpenCL API functions that are deprecated by an enabled OpenCL version e.g., `clCreateCommandQueue` is deprecated whenever "CL_VERSION_2_0" is enabled.
+Rust deprecation warnings are given for OpenCL API functions that are deprecated by an enabled OpenCL version e.g., `clCreateCommandQueue` is deprecated whenever "CL_VERSION_2_0" (or above) is enabled.
 
 The Rust FFI files attempt to match the format and layout of the original
 C source files instead of [bindgen](https://rust-lang.github.io/rust-bindgen/)
@@ -30,6 +29,19 @@ bindgen ../OpenCL-Headers/CL/opencl.h -o opencl.rs -- -I ../OpenCL-Headers/CL
 ```
 
 The library is declared [no_std](https://docs.rust-embedded.org/book/intro/no-std.html).
+
+## Use
+
+OpenCL requires that an appropriate OpenCL hardware driver(s) and an OpenCL Installable Client Driver (ICD) are installed.  
+OpenCL GPU hardware driver(s) are installed with graphics drivers by the main manufacturers: Nvidia, AMD and Intel.  
+However, an OpenCL ICD must usually be installed manually by:
+
+- a Linux package manager, e.g., `sudo apt-get install intel-opencl-icd`
+- or a Windows download from <https://www.intel.com/content/www/us/en/developer/articles/technical/intel-cpu-runtime-for-opencl-applications-with-sycl-support.html> followed by installing
+and setting the `OPENCL_LIB_PATH` environment variable to `C:\Program Files (x86)\Common Files\Intel\Shared Libraries\`
+
+Note: you do *not* need to install an OpenCL ICD from the same manufacturer as your hardware.  
+In general, the more up to date the OpenCL ICD, the better.
 
 ## Contribution
 

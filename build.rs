@@ -14,14 +14,14 @@
 
 /// Add an `OpenCL` ICD library path to the rust library search path on Windows.
 ///
-/// Searches for an `OpenCL` ICD library in `$(OPENCL_LIB_PATH)lib` or
+/// Searches for an `OpenCL` ICD library in `$(OPENCL_PATH)lib` or
 /// `$(OPENCL_ROOT)x64` / `$(OPENCL_ROOT)x64` before searching for
 /// Intel, AMD and Nvidia `OpenCL` vendor SDK environment variables.
 fn main() {
     if cfg!(windows) {
         let known_sdk = [
             // E.g. "C:\Program Files (x86)\Common Files\Intel\Shared Libraries\lib\"
-            ("OPENCL_LIB_PATH", "", ""),
+            ("OPENCL_PATH", "", ""),
             // E.g. "$OPENCL_ROOT\lib\x64\"
             ("OPENCL_ROOT", "x64", "x86"),
             // E.g. "C:\Intel\OpenCL\sdk\lib\x64\"

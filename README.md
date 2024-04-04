@@ -37,11 +37,11 @@ OpenCL GPU hardware driver(s) are installed with graphics drivers by the main ma
 However, an OpenCL ICD must usually be installed manually by:
 
 - a Linux package manager, e.g., `sudo apt-get install intel-opencl-icd`
-- or a Windows download from <https://www.intel.com/content/www/us/en/developer/articles/technical/intel-cpu-runtime-for-opencl-applications-with-sycl-support.html> followed by installing
-and setting the `OPENCL_LIB_PATH` environment variable to `C:\Program Files (x86)\Common Files\Intel\Shared Libraries\`
+- or a Windows download and install from
+<https://www.intel.com/content/www/us/en/developer/articles/technical/intel-cpu-runtime-for-opencl-applications-with-sycl-support.html>
 
 Note: you do *not* need to install an OpenCL ICD from the same manufacturer as your hardware.  
-In general, the more up to date the OpenCL ICD, the better.
+In general the more up to date the OpenCL ICD, the better.
 
 ## Contribution
 

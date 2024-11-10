@@ -17,6 +17,8 @@
 /// Searches for an `OpenCL` ICD library in `$(OPENCL_PATH)lib` or
 /// `$(OPENCL_ROOT)x64` / `$(OPENCL_ROOT)x64` before searching for
 /// Intel, AMD and Nvidia `OpenCL` vendor SDK environment variables.
+extern crate pkg_config;
+
 fn main() {
     if cfg!(windows) {
         let known_sdk = [
@@ -47,5 +49,7 @@ fn main() {
                 break;
             }
         }
+    } else {
+        pkg_config::probe_library("OpenCL").unwrap();
     }
 }

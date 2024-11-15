@@ -67,9 +67,6 @@ cl_loader_layers = []
 # Default features:
 default = ["CL_VERSION_1_1", "CL_VERSION_1_2"]
 
-[build-dependencies]
-pkg-config = "0.3"
-
 [dependencies]
 libc = "0.2"
 

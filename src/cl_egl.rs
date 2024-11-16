@@ -90,6 +90,7 @@ pub type clCreateEventFromEGLSyncKHR_fn = clCreateEventFromEGLSyncKHR_t;
 
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
+#[cfg(feature = "static")]
 extern "system" {
 
     pub fn clCreateFromEGLImageKHR(

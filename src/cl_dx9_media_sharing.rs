@@ -224,9 +224,9 @@ pub type clGetSupportedDX9MediaSurfaceFormatsINTEL_fn = clGetSupportedDX9MediaSu
 
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
+#[cfg(feature = "cl_intel_dx9_media_sharing")]
 extern "system" {
 
-    #[cfg(feature = "cl_intel_dx9_media_sharing")]
     pub fn clGetDeviceIDsFromDX9INTEL(
         platform: cl_platform_id,
         dx9_device_source: cl_dx9_device_source_intel,
@@ -237,7 +237,6 @@ extern "system" {
         num_devices: *mut cl_uint,
     ) -> cl_int;
 
-    #[cfg(feature = "cl_intel_dx9_media_sharing")]
     pub fn clCreateFromDX9MediaSurfaceINTEL(
         context: cl_context,
         flags: cl_mem_flags,
@@ -247,7 +246,6 @@ extern "system" {
         errcode_ret: *mut cl_int,
     ) -> cl_mem;
 
-    #[cfg(feature = "cl_intel_dx9_media_sharing")]
     pub fn clEnqueueAcquireDX9ObjectsINTEL(
         command_queue: cl_command_queue,
         num_objects: cl_uint,
@@ -257,7 +255,6 @@ extern "system" {
         event: *mut cl_event,
     ) -> cl_int;
 
-    #[cfg(feature = "cl_intel_dx9_media_sharing")]
     pub fn clEnqueueReleaseDX9ObjectsINTEL(
         command_queue: cl_command_queue,
         num_objects: cl_uint,
@@ -266,13 +263,18 @@ extern "system" {
         event_wait_list: *const cl_event,
         event: *mut cl_event,
     ) -> cl_int;
+}
 
-    // cl_intel_sharing_format_query_dx9
+// cl_intel_sharing_format_query_dx9
 
-    #[cfg(any(
-        feature = "cl_khr_dx9_media_sharing",
-        feature = "cl_intel_dx9_media_sharing"
-    ))]
+#[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
+#[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
+#[cfg(any(
+    feature = "cl_khr_dx9_media_sharing",
+    feature = "cl_intel_dx9_media_sharing"
+))]
+extern "system" {
+
     pub fn clGetSupportedDX9MediaSurfaceFormatsINTEL(
         context: cl_context,
         flags: cl_mem_flags,

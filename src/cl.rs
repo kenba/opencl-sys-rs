@@ -17,6 +17,7 @@
 #![allow(non_camel_case_types, non_upper_case_globals)]
 
 use super::cl_platform::{cl_int, cl_uchar, cl_uint, cl_ulong};
+#[allow(unused_imports)]
 use libc::{c_char, c_uchar, c_void, intptr_t, size_t};
 
 pub type cl_platform_id = *mut c_void;
@@ -916,6 +917,7 @@ pub const fn make_version(major: cl_version, minor: cl_version, patch: cl_versio
 
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
+#[cfg(feature = "static")]
 extern "system" {
     // Platform API
     pub fn clGetPlatformIDs(

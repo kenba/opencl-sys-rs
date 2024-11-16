@@ -729,6 +729,7 @@ pub type clLogMessagesToStderrAPPLE_fn = clLogMessagesToStderrAPPLE_t;
 
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
+#[cfg(feature = "static")]
 extern "system" {
 
     /* Memory object destruction

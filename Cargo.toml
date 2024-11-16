@@ -14,6 +14,9 @@ edition = "2021"
 build = "build.rs"
 
 [features]
+static = []
+dynamic = []
+
 CL_VERSION_1_1 = []
 CL_VERSION_1_2 = []
 CL_VERSION_2_0 = []
@@ -63,9 +66,6 @@ cl_khr_d3d11_sharing = []
 cl_loader_info = []
 cl_pocl_content_size = []
 cl_loader_layers = []
-
-# Default features:
-default = ["CL_VERSION_1_1", "CL_VERSION_1_2"]
 
 [dependencies]
 libc = "0.2"

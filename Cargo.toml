@@ -12,6 +12,7 @@ categories = ["api-bindings", "asynchronous", "external-ffi-bindings", "no-std"]
 license = "Apache-2.0"
 edition = "2021"
 build = "build.rs"
+links = "OpenCL"
 
 [features]
 static = []
@@ -73,6 +74,6 @@ libc = "0.2"
 [lints.clippy]
 enum_glob_use = "deny"
 module_name_repetitions = "allow"
-nursery = "deny"
-pedantic = "deny"
+nursery = { level = "deny", priority = -1 }
+pedantic = { level = "deny", priority = -1 }
 unwrap_used = "deny"

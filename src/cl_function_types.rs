@@ -32,7 +32,7 @@ use super::cl_platform::{cl_int, cl_uint, cl_ulong};
 use libc::{c_char, c_void, size_t};
 
 pub type clGetPlatformIDs_t = Option<
-    unsafe extern "C" fn(
+    fn(
         num_entries: cl_uint,
         platforms: *mut cl_platform_id,
         num_platforms: *mut cl_uint,

@@ -54,6 +54,7 @@ pub type pfn_clInitLayer = clInitLayer_t;
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_loader_layers")]
+#[cfg(feature = "static")]
 extern "system" {
     pub fn clGetLayerInfo(
         param_name: cl_layer_info,

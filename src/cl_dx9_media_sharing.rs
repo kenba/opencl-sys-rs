@@ -14,7 +14,7 @@
 
 //! FFI bindings for [cl_dx9_media_sharing.h](https://github.com/KhronosGroup/OpenCL-Headers/blob/main/CL/cl_dx9_media_sharing.h)
 //!
-//! `cl_dx9_media_sharing.h` contains `OpenCL` extensions that provide interoperability with `Direct3D` 9.  
+//! `cl_dx9_media_sharing.h` contains `OpenCL` extensions that provide interoperability with `Direct3D` 9.
 //! `OpenCL` extensions are documented in the [OpenCL-Registry](https://github.com/KhronosGroup/OpenCL-Registry)
 
 #![allow(non_camel_case_types, non_upper_case_globals)]
@@ -226,6 +226,7 @@ pub type clGetSupportedDX9MediaSurfaceFormatsINTEL_fn = clGetSupportedDX9MediaSu
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_intel_dx9_media_sharing")]
+#[cfg(feature = "static")]
 extern "system" {
 
     pub fn clGetDeviceIDsFromDX9INTEL(
@@ -274,6 +275,7 @@ extern "system" {
     feature = "cl_khr_dx9_media_sharing",
     feature = "cl_intel_dx9_media_sharing"
 ))]
+#[cfg(feature = "static")]
 extern "system" {
 
     pub fn clGetSupportedDX9MediaSurfaceFormatsINTEL(

@@ -14,7 +14,7 @@
 
 //! FFI bindings for [cl_d3d11.h](https://github.com/KhronosGroup/OpenCL-Headers/blob/main/CL/cl_d3d11.h)
 //!
-//! `cl_d3d11.h` contains `OpenCL` extensions that provide interoperability with `Direct3D` 11.  
+//! `cl_d3d11.h` contains `OpenCL` extensions that provide interoperability with `Direct3D` 11.
 //! `OpenCL` extensions are documented in the [OpenCL-Registry](https://github.com/KhronosGroup/OpenCL-Registry)
 
 #![allow(non_camel_case_types, non_upper_case_globals)]
@@ -147,6 +147,7 @@ pub type clGetSupportedD3D11TextureFormatsINTEL_fn = clGetSupportedD3D11TextureF
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_khr_d3d11_sharing")]
+#[cfg(feature = "static")]
 extern "system" {
 
     pub fn clGetSupportedD3D11TextureFormatsINTEL(

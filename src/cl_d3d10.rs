@@ -13,8 +13,8 @@
 // limitations under the License.
 
 //! FFI bindings for [cl_d3d10.h](https://github.com/KhronosGroup/OpenCL-Headers/blob/main/CL/cl_d3d10.h).
-//!  
-//! `cl_d3d10.h` contains `OpenCL` extensions that provide interoperability with `Direct3D` 10.  
+//!
+//! `cl_d3d10.h` contains `OpenCL` extensions that provide interoperability with `Direct3D` 10.
 //! `OpenCL` extensions are documented in the [OpenCL-Registry](https://github.com/KhronosGroup/OpenCL-Registry)
 
 #![allow(non_camel_case_types, non_upper_case_globals)]
@@ -150,6 +150,7 @@ pub type clGetSupportedD3D10TextureFormatsINTEL_fn = clGetSupportedD3D10TextureF
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_khr_d3d10_sharing")]
+#[cfg(feature = "static")]
 extern "system" {
 
     pub fn clGetSupportedD3D10TextureFormatsINTEL(

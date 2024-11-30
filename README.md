@@ -15,10 +15,12 @@ see the [OpenCL Resource Guide](https://www.khronos.org/opencl/resources).
 ![OpenCL Packages](docs/images/opencl_context_objects.svg)  
 *OpenCL Packages*
 
-The API for OpenCL versions and extensions are controlled by Rust features such as "CL_VERSION_2_0" and "cl_khr_gl_sharing".  
-The default features are "CL_VERSION_1_1" and "CL_VERSION_1_2".
+The static API for OpenCL versions and extensions is controlled by Rust features
+such as "static", "CL_VERSION_2_0" and "cl_khr_gl_sharing".  
 
-Rust deprecation warnings are given for OpenCL API functions that are deprecated by an enabled OpenCL version e.g., `clCreateCommandQueue` is deprecated whenever "CL_VERSION_2_0" (or above) is enabled.
+Rust deprecation warnings are given for OpenCL API functions that are deprecated
+by an enabled OpenCL version e.g., `clCreateCommandQueue` is deprecated whenever
+"CL_VERSION_2_0" (or above) is enabled.
 
 The Rust FFI files attempt to match the format and layout of the original
 C source files instead of [bindgen](https://rust-lang.github.io/rust-bindgen/)

@@ -16,7 +16,6 @@ links = "OpenCL"
 
 [features]
 static = []
-dynamic = []
 
 CL_VERSION_1_1 = []
 CL_VERSION_1_2 = []

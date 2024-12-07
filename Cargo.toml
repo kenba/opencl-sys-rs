@@ -1,6 +1,6 @@
 [package]
 name = "opencl-sys"
-version = "0.3.1"
+version = "0.4.0"
 authors = ["Ken Barker <ken.barker@via-technology.aero>"]
 description = "OpenCL C FFI bindings for the Rust programming language."
 documentation = "https://docs.rs/opencl-sys/"

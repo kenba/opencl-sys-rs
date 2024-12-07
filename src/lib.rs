@@ -26,7 +26,7 @@
 //! [OpenCL C language headers](https://github.com/KhronosGroup/OpenCL-Headers),
 //! see the [OpenCL Resource Guide](https://www.khronos.org/opencl/resources).
 //!
-//! The static API for OpenCL versions and extensions is controlled by Rust features
+//! The static API for `OpenCL` versions and extensions is controlled by Rust features
 //! such as "`static`", "`CL_VERSION_2_0`" and "`cl_khr_gl_sharing`".  
 //!
 //! Rust deprecation warnings are given for `OpenCL` API functions that are

@@ -622,8 +622,7 @@ pub const CL_INVALID_MUTABLE_COMMAND_KHR: cl_int = -1141;
 
 pub const CL_DEVICE_MUTABLE_DISPATCH_CAPABILITIES_KHR: cl_device_info = 0x12B0;
 
-pub const CL_MUTABLE_DISPATCH_UPDATABLE_FIELDS_KHR: cl_command_properties_khr =
-    0x12B1;
+pub const CL_MUTABLE_DISPATCH_UPDATABLE_FIELDS_KHR: cl_command_properties_khr = 0x12B1;
 
 pub const CL_MUTABLE_DISPATCH_GLOBAL_OFFSET_KHR: cl_mutable_dispatch_fields_khr = 1 << 0;
 pub const CL_MUTABLE_DISPATCH_GLOBAL_SIZE_KHR: cl_mutable_dispatch_fields_khr = 1 << 1;
@@ -1698,6 +1697,7 @@ extern "system" {
 // cl_khr_external_semaphore_win32
 pub const CL_SEMAPHORE_HANDLE_OPAQUE_WIN32_KHR: cl_external_semaphore_handle_type_khr = 0x2056;
 pub const CL_SEMAPHORE_HANDLE_OPAQUE_WIN32_KMT_KHR: cl_external_semaphore_handle_type_khr = 0x2057;
+pub const CL_SEMAPHORE_HANDLE_OPAQUE_WIN32_NAME_KHR: cl_external_semaphore_handle_type_khr = 0x2058;
 
 // cl_khr_semaphore
 
@@ -2404,11 +2404,11 @@ pub const CL_KERNEL_COMPILE_SUB_GROUP_SIZE_INTEL: cl_uint = 0x410A;
 // cl_intel_driver_diagnostics extension
 pub const CL_CONTEXT_SHOW_DIAGNOSTICS_INTEL: cl_uint = 0x4106;
 
-pub type cl_diagnostics_verbose_level = cl_uint;
-pub const CL_CONTEXT_DIAGNOSTICS_LEVEL_ALL_INTEL: cl_diagnostics_verbose_level = 0xff;
-pub const CL_CONTEXT_DIAGNOSTICS_LEVEL_GOOD_INTEL: cl_diagnostics_verbose_level = 1;
-pub const CL_CONTEXT_DIAGNOSTICS_LEVEL_BAD_INTEL: cl_diagnostics_verbose_level = 1 << 1;
-pub const CL_CONTEXT_DIAGNOSTICS_LEVEL_NEUTRAL_INTEL: cl_diagnostics_verbose_level = 1 << 2;
+pub type cl_diagnostic_verbose_level_intel = cl_bitfield;
+pub const CL_CONTEXT_DIAGNOSTICS_LEVEL_ALL_INTEL: cl_diagnostic_verbose_level_intel = 0xff;
+pub const CL_CONTEXT_DIAGNOSTICS_LEVEL_GOOD_INTEL: cl_diagnostic_verbose_level_intel = 1;
+pub const CL_CONTEXT_DIAGNOSTICS_LEVEL_BAD_INTEL: cl_diagnostic_verbose_level_intel = 1 << 1;
+pub const CL_CONTEXT_DIAGNOSTICS_LEVEL_NEUTRAL_INTEL: cl_diagnostic_verbose_level_intel = 1 << 2;
 
 // cl_intel_planar_yuv extension
 pub const CL_NV12_INTEL: cl_uint = 0x410E;
@@ -3121,16 +3121,21 @@ pub const CL_DEVICE_KERNEL_CLOCK_CAPABILITIES_KHR: cl_device_info = 0x1076;
 pub type cl_device_kernel_clock_capabilities_khr = cl_bitfield;
 
 pub const CL_DEVICE_KERNEL_CLOCK_SCOPE_DEVICE_KHR: cl_device_kernel_clock_capabilities_khr = 1 << 0;
-pub const CL_DEVICE_KERNEL_CLOCK_SCOPE_WORK_GROUP_KHR: cl_device_kernel_clock_capabilities_khr = 1 << 1;
-pub const CL_DEVICE_KERNEL_CLOCK_SCOPE_SUB_GROUP_KHR: cl_device_kernel_clock_capabilities_khr = 1 << 2;
+pub const CL_DEVICE_KERNEL_CLOCK_SCOPE_WORK_GROUP_KHR: cl_device_kernel_clock_capabilities_khr =
+    1 << 1;
+pub const CL_DEVICE_KERNEL_CLOCK_SCOPE_SUB_GROUP_KHR: cl_device_kernel_clock_capabilities_khr =
+    1 << 2;
+
+// cl_ext_image_unorm_int_2_101010
+
+pub const CL_UNORM_INT_2_101010_EXT: cl_channel_type = 0x10E5;
 
 // cl_img_cancel_command
 
 pub const CL_CANCELLED_IMG: cl_int = -1126;
 
-pub type clCancelCommandsIMG_t = Option<
-    unsafe extern "C" fn(event_list: *const cl_event, num_events_in_list: usize) -> cl_int,
->;
+pub type clCancelCommandsIMG_t =
+    Option<unsafe extern "C" fn(event_list: *const cl_event, num_events_in_list: usize) -> cl_int>;
 pub type clCancelCommandsIMG_fn = clCancelCommandsIMG_t;
 
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]

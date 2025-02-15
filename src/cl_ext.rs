@@ -41,7 +41,7 @@ pub type cl_command_buffer_info_khr = cl_uint;
 pub type cl_command_buffer_state_khr = cl_uint;
 pub type cl_command_buffer_properties_khr = cl_properties;
 pub type cl_command_buffer_flags_khr = cl_bitfield;
-pub type cl_ndrange_kernel_command_properties_khr = cl_properties;
+pub type cl_command_properties_khr = cl_properties;
 pub type cl_mutable_command_khr = *mut c_void;
 
 // cl_device_info
@@ -123,6 +123,7 @@ pub type clCommandBarrierWithWaitListKHR_t = Option<
     unsafe extern "C" fn(
         command_buffer: cl_command_buffer_khr,
         command_queue: cl_command_queue,
+        properties: *const cl_command_properties_khr,
         num_sync_points_in_wait_list: cl_uint,
         sync_point_wait_list: *const cl_sync_point_khr,
         sync_point: *mut cl_sync_point_khr,
@@ -135,6 +136,7 @@ pub type clCommandCopyBufferKHR_t = Option<
     unsafe extern "C" fn(
         command_buffer: cl_command_buffer_khr,
         command_queue: cl_command_queue,
+        properties: *const cl_command_properties_khr,
         src_buffer: cl_mem,
         dst_buffer: cl_mem,
         src_offset: size_t,
@@ -152,6 +154,7 @@ pub type clCommandCopyBufferRectKHR_t = Option<
     unsafe extern "C" fn(
         command_buffer: cl_command_buffer_khr,
         command_queue: cl_command_queue,
+        properties: *const cl_command_properties_khr,
         src_buffer: cl_mem,
         dst_buffer: cl_mem,
         src_origin: *const size_t,
@@ -173,6 +176,7 @@ pub type clCommandCopyBufferToImageKHR_t = Option<
     unsafe extern "C" fn(
         command_buffer: cl_command_buffer_khr,
         command_queue: cl_command_queue,
+        properties: *const cl_command_properties_khr,
         src_buffer: cl_mem,
         dst_image: cl_mem,
         src_offset: size_t,
@@ -190,6 +194,7 @@ pub type clCommandCopyImageKHR_t = Option<
     unsafe extern "C" fn(
         command_buffer: cl_command_buffer_khr,
         command_queue: cl_command_queue,
+        properties: *const cl_command_properties_khr,
         src_image: cl_mem,
         dst_image: cl_mem,
         src_origin: *const size_t,
@@ -207,6 +212,7 @@ pub type clCommandCopyImageToBufferKHR_t = Option<
     unsafe extern "C" fn(
         command_buffer: cl_command_buffer_khr,
         command_queue: cl_command_queue,
+        properties: *const cl_command_properties_khr,
         src_image: cl_mem,
         dst_buffer: cl_mem,
         src_origin: *const size_t,
@@ -224,6 +230,7 @@ pub type clCommandFillBufferKHR_t = Option<
     unsafe extern "C" fn(
         command_buffer: cl_command_buffer_khr,
         command_queue: cl_command_queue,
+        properties: *const cl_command_properties_khr,
         buffer: cl_mem,
         pattern: *const c_void,
         pattern_size: size_t,
@@ -241,6 +248,7 @@ pub type clCommandFillImageKHR_t = Option<
     unsafe extern "C" fn(
         command_buffer: cl_command_buffer_khr,
         command_queue: cl_command_queue,
+        properties: *const cl_command_properties_khr,
         image: cl_mem,
         fill_color: *const c_void,
         origin: *const size_t,
@@ -257,7 +265,7 @@ pub type clCommandNDRangeKernelKHR_t = Option<
     unsafe extern "C" fn(
         command_buffer: cl_command_buffer_khr,
         command_queue: cl_command_queue,
-        properties: *const cl_ndrange_kernel_command_properties_khr,
+        properties: *const cl_command_properties_khr,
         kernel: cl_kernel,
         work_dim: cl_uint,
         global_work_offset: *const size_t,
@@ -286,6 +294,7 @@ pub type clCommandSVMMemcpyKHR_t = Option<
     unsafe extern "C" fn(
         command_buffer: cl_command_buffer_khr,
         command_queue: cl_command_queue,
+        properties: *const cl_command_properties_khr,
         dst_ptr: *mut c_void,
         src_ptr: *const c_void,
         size: size_t,
@@ -301,6 +310,7 @@ pub type clCommandSVMMemFillKHR_t = Option<
     unsafe extern "C" fn(
         command_buffer: cl_command_buffer_khr,
         command_queue: cl_command_queue,
+        properties: *const cl_command_properties_khr,
         svm_ptr: *mut c_void,
         pattern: *const c_void,
         pattern_size: size_t,
@@ -344,6 +354,7 @@ extern "system" {
     pub fn clCommandBarrierWithWaitListKHR(
         command_buffer: cl_command_buffer_khr,
         command_queue: cl_command_queue,
+        properties: *const cl_command_properties_khr,
         num_sync_points_in_wait_list: cl_uint,
         sync_point_wait_list: *const cl_sync_point_khr,
         sync_point: *mut cl_sync_point_khr,
@@ -353,6 +364,7 @@ extern "system" {
     pub fn clCommandCopyBufferKHR(
         command_buffer: cl_command_buffer_khr,
         command_queue: cl_command_queue,
+        properties: *const cl_command_properties_khr,
         src_buffer: cl_mem,
         dst_buffer: cl_mem,
         src_offset: size_t,
@@ -367,6 +379,7 @@ extern "system" {
     pub fn clCommandCopyBufferRectKHR(
         command_buffer: cl_command_buffer_khr,
         command_queue: cl_command_queue,
+        properties: *const cl_command_properties_khr,
         src_buffer: cl_mem,
         dst_buffer: cl_mem,
         src_origin: *const size_t,
@@ -385,6 +398,7 @@ extern "system" {
     pub fn clCommandCopyBufferToImageKHR(
         command_buffer: cl_command_buffer_khr,
         command_queue: cl_command_queue,
+        properties: *const cl_command_properties_khr,
         src_buffer: cl_mem,
         dst_image: cl_mem,
         src_offset: size_t,
@@ -399,6 +413,7 @@ extern "system" {
     pub fn clCommandCopyImageKHR(
         command_buffer: cl_command_buffer_khr,
         command_queue: cl_command_queue,
+        properties: *const cl_command_properties_khr,
         src_image: cl_mem,
         dst_image: cl_mem,
         src_origin: *const size_t,
@@ -413,6 +428,7 @@ extern "system" {
     pub fn clCommandCopyImageToBufferKHR(
         command_buffer: cl_command_buffer_khr,
         command_queue: cl_command_queue,
+        properties: *const cl_command_properties_khr,
         src_image: cl_mem,
         dst_buffer: cl_mem,
         src_origin: *const size_t,
@@ -427,6 +443,7 @@ extern "system" {
     pub fn clCommandFillBufferKHR(
         command_buffer: cl_command_buffer_khr,
         command_queue: cl_command_queue,
+        properties: *const cl_command_properties_khr,
         buffer: cl_mem,
         pattern: *const c_void,
         pattern_size: size_t,
@@ -441,6 +458,7 @@ extern "system" {
     pub fn clCommandFillImageKHR(
         command_buffer: cl_command_buffer_khr,
         command_queue: cl_command_queue,
+        properties: *const cl_command_properties_khr,
         image: cl_mem,
         fill_color: *const c_void,
         origin: *const size_t,
@@ -454,7 +472,7 @@ extern "system" {
     pub fn clCommandNDRangeKernelKHR(
         command_buffer: cl_command_buffer_khr,
         command_queue: cl_command_queue,
-        properties: *const cl_ndrange_kernel_command_properties_khr,
+        properties: *const cl_command_properties_khr,
         kernel: cl_kernel,
         work_dim: cl_uint,
         global_work_offset: *const size_t,
@@ -477,6 +495,7 @@ extern "system" {
     pub fn clCommandSVMMemcpyKHR(
         command_buffer: cl_command_buffer_khr,
         command_queue: cl_command_queue,
+        properties: *const cl_command_properties_khr,
         dst_ptr: *mut c_void,
         src_ptr: *const c_void,
         size: size_t,
@@ -489,6 +508,7 @@ extern "system" {
     pub fn clCommandSVMMemFillKHR(
         command_buffer: cl_command_buffer_khr,
         command_queue: cl_command_queue,
+        properties: *const cl_command_properties_khr,
         svm_ptr: *mut c_void,
         pattern: *const c_void,
         pattern_size: size_t,
@@ -559,7 +579,7 @@ extern "system" {
 
 // cl_khr_command_buffer_mutable_dispatch
 
-pub type cl_command_buffer_structure_type_khr = cl_uint;
+pub type cl_command_buffer_update_type_khr = cl_uint;
 pub type cl_mutable_dispatch_fields_khr = cl_bitfield;
 pub type cl_mutable_command_info_khr = cl_uint;
 pub type cl_mutable_dispatch_asserts_khr = cl_bitfield;
@@ -583,8 +603,6 @@ pub struct cl_mutable_dispatch_exec_info_khr {
 #[derive(Debug, Copy, Clone)]
 #[repr(C)]
 pub struct cl_mutable_dispatch_config_khr {
-    pub t_type: cl_command_buffer_structure_type_khr,
-    pub next: *const c_void,
     pub command: cl_mutable_command_khr,
     pub num_args: cl_uint,
     pub num_svm_args: cl_uint,
@@ -598,22 +616,13 @@ pub struct cl_mutable_dispatch_config_khr {
     pub local_work_size: *const size_t,
 }
 
-#[derive(Debug, Copy, Clone)]
-#[repr(C)]
-pub struct cl_mutable_base_config_khr {
-    pub t_type: cl_command_buffer_structure_type_khr,
-    pub next: *const c_void,
-    pub num_mutable_dispatch: cl_uint,
-    pub mutable_dispatch_list: *const cl_mutable_dispatch_config_khr,
-}
-
 pub const CL_COMMAND_BUFFER_MUTABLE_KHR: cl_command_buffer_flags_khr = 1 << 1;
 
 pub const CL_INVALID_MUTABLE_COMMAND_KHR: cl_int = -1141;
 
 pub const CL_DEVICE_MUTABLE_DISPATCH_CAPABILITIES_KHR: cl_device_info = 0x12B0;
 
-pub const CL_MUTABLE_DISPATCH_UPDATABLE_FIELDS_KHR: cl_ndrange_kernel_command_properties_khr =
+pub const CL_MUTABLE_DISPATCH_UPDATABLE_FIELDS_KHR: cl_command_properties_khr =
     0x12B1;
 
 pub const CL_MUTABLE_DISPATCH_GLOBAL_OFFSET_KHR: cl_mutable_dispatch_fields_khr = 1 << 0;
@@ -625,19 +634,18 @@ pub const CL_MUTABLE_DISPATCH_EXEC_INFO_KHR: cl_mutable_dispatch_fields_khr = 1 
 pub const CL_MUTABLE_COMMAND_COMMAND_QUEUE_KHR: cl_mutable_command_info_khr = 0x12A0;
 pub const CL_MUTABLE_COMMAND_COMMAND_BUFFER_KHR: cl_mutable_command_info_khr = 0x12A1;
 pub const CL_MUTABLE_COMMAND_COMMAND_TYPE_KHR: cl_mutable_command_info_khr = 0x12AD;
-pub const CL_MUTABLE_DISPATCH_PROPERTIES_ARRAY_KHR: cl_mutable_command_info_khr = 0x12A2;
+pub const CL_MUTABLE_COMMAND_PROPERTIES_ARRAY_KHR: cl_mutable_command_info_khr = 0x12A2;
 pub const CL_MUTABLE_DISPATCH_KERNEL_KHR: cl_mutable_command_info_khr = 0x12A3;
 pub const CL_MUTABLE_DISPATCH_DIMENSIONS_KHR: cl_mutable_command_info_khr = 0x12A4;
 pub const CL_MUTABLE_DISPATCH_GLOBAL_WORK_OFFSET_KHR: cl_mutable_command_info_khr = 0x12A5;
 pub const CL_MUTABLE_DISPATCH_GLOBAL_WORK_SIZE_KHR: cl_mutable_command_info_khr = 0x12A6;
 pub const CL_MUTABLE_DISPATCH_LOCAL_WORK_SIZE_KHR: cl_mutable_command_info_khr = 0x12A7;
 
-pub const CL_STRUCTURE_TYPE_MUTABLE_BASE_CONFIG_KHR: cl_command_buffer_structure_type_khr = 0;
-pub const CL_STRUCTURE_TYPE_MUTABLE_DISPATCH_CONFIG_KHR: cl_command_buffer_structure_type_khr = 1;
+pub const CL_STRUCTURE_TYPE_MUTABLE_DISPATCH_CONFIG_KHR: cl_command_buffer_update_type_khr = 0;
 
 pub const CL_COMMAND_BUFFER_MUTABLE_DISPATCH_ASSERTS_KHR: cl_command_buffer_properties_khr = 0x1287;
 
-pub const CL_MUTABLE_DISPATCH_ASSERTS_KHR: cl_ndrange_kernel_command_properties_khr = 0x12B8;
+pub const CL_MUTABLE_DISPATCH_ASSERTS_KHR: cl_command_properties_khr = 0x12B8;
 
 pub const CL_MUTABLE_DISPATCH_ASSERT_NO_ADDITIONAL_WORK_GROUPS_KHR:
     cl_mutable_dispatch_asserts_khr = 1 << 0;
@@ -645,7 +653,9 @@ pub const CL_MUTABLE_DISPATCH_ASSERT_NO_ADDITIONAL_WORK_GROUPS_KHR:
 pub type clUpdateMutableCommandsKHR_t = Option<
     unsafe extern "C" fn(
         command_buffer: cl_command_buffer_khr,
-        mutable_config: *const cl_mutable_base_config_khr,
+        num_configs: cl_uint,
+        config_types: *const cl_command_buffer_update_type_khr,
+        configs: *mut *const c_void,
     ) -> cl_int,
 >;
 pub type clUpdateMutableCommandsKHR_fn = clUpdateMutableCommandsKHR_t;
@@ -669,7 +679,9 @@ extern "system" {
 
     pub fn clUpdateMutableCommandsKHR(
         command_buffer: cl_command_buffer_khr,
-        mutable_config: *const cl_mutable_base_config_khr,
+        num_configs: cl_uint,
+        config_types: *const cl_command_buffer_update_type_khr,
+        configs: *mut *const c_void,
     ) -> cl_int;
 
     pub fn clGetMutableCommandInfoKHR(

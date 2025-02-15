@@ -1589,13 +1589,6 @@ pub const CL_EXTERNAL_MEMORY_HANDLE_DMA_BUF_KHR: cl_external_memory_handle_type_
 
 // cl_khr_external_memory_dx
 
-// cl_external_memory_handle_type_khr
-pub const CL_EXTERNAL_MEMORY_HANDLE_D3D11_TEXTURE_KHR: cl_external_memory_handle_type_khr = 0x2063;
-pub const CL_EXTERNAL_MEMORY_HANDLE_D3D11_TEXTURE_KMT_KHR: cl_external_memory_handle_type_khr =
-    0x2064;
-pub const CL_EXTERNAL_MEMORY_HANDLE_D3D12_HEAP_KHR: cl_external_memory_handle_type_khr = 0x2065;
-pub const CL_EXTERNAL_MEMORY_HANDLE_D3D12_RESOURCE_KHR: cl_external_memory_handle_type_khr = 0x2066;
-
 // cl_khr_external_memory_opaque_fd
 
 // cl_external_memory_handle_type_khr

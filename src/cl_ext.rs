@@ -46,6 +46,7 @@ pub type cl_mutable_command_khr = *mut c_void;
 
 // cl_device_info
 pub const CL_DEVICE_COMMAND_BUFFER_CAPABILITIES_KHR: cl_device_info = 0x12A9;
+pub const CL_DEVICE_COMMAND_BUFFER_SUPPORTED_QUEUE_PROPERTIES_KHR: cl_device_info = 0x129A;
 pub const CL_DEVICE_COMMAND_BUFFER_REQUIRED_QUEUE_PROPERTIES_KHR: cl_device_info = 0x12AA;
 
 // cl_device_command_buffer_capabilities_khr - bitfield
@@ -55,8 +56,6 @@ pub const CL_COMMAND_BUFFER_CAPABILITY_DEVICE_SIDE_ENQUEUE_KHR:
     cl_device_command_buffer_capabilities_khr = 1 << 1;
 pub const CL_COMMAND_BUFFER_CAPABILITY_SIMULTANEOUS_USE_KHR:
     cl_device_command_buffer_capabilities_khr = 1 << 2;
-pub const CL_COMMAND_BUFFER_CAPABILITY_OUT_OF_ORDER_KHR: cl_device_command_buffer_capabilities_khr =
-    1 << 3;
 
 // cl_command_buffer_properties_khr
 pub const CL_COMMAND_BUFFER_FLAGS_KHR: cl_command_buffer_properties_khr = 0x1293;

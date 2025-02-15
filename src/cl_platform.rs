@@ -29,7 +29,4 @@ pub type cl_half = u16;
 pub type cl_float = f32;
 pub type cl_double = f64;
 
-pub type cl_GLuint = u32;
-pub type cl_GLint = i32;
-pub type cl_GLenum = u32;
 pub type DXGI_FORMAT = u32;

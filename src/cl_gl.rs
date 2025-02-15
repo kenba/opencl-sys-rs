@@ -23,12 +23,18 @@ use super::cl::{
 };
 use libc::{c_void, size_t};
 
-use super::cl_platform::{cl_GLenum, cl_GLint, cl_GLuint, cl_int, cl_uint};
+use super::cl_platform::{cl_int, cl_uint};
 
 pub type cl_gl_object_type = cl_uint;
 pub type cl_gl_texture_info = cl_uint;
 pub type cl_gl_platform_info = cl_uint;
 pub type cl_GLsync = *mut c_void;
+
+pub type cl_GLuint = u32;
+pub type cl_GLint = i32;
+pub type cl_GLenum = u32;
+
+pub type cl_gl_context_info = cl_uint;
 
 // cl_gl_object_type = 0x2000 - 0x200F enum values are currently taken
 pub const CL_GL_OBJECT_BUFFER: cl_gl_object_type = 0x2000;
@@ -292,8 +298,6 @@ extern "system" {
 // cl_khr_gl_sharing extension
 // * NOTE: Originally lower case: `cl_kgr_gl_sharing`
 pub const CL_KHR_GL_SHARING: cl_int = 1;
-
-pub type cl_gl_context_info = cl_uint;
 
 // Additional Error Codes
 pub const CL_INVALID_GL_SHAREGROUP_REFERENCE_KHR: cl_int = -1000;

@@ -271,6 +271,17 @@ pub type clCommandNDRangeKernelKHR_t = Option<
 >;
 pub type clCommandNDRangeKernelKHR_fn = clCommandNDRangeKernelKHR_t;
 
+pub type clGetCommandBufferInfoKHR_t = Option<
+    unsafe extern "C" fn(
+        command_buffer: cl_command_buffer_khr,
+        param_name: cl_command_buffer_info_khr,
+        param_value_size: size_t,
+        param_value: *mut c_void,
+        param_value_size_ret: *mut size_t,
+    ) -> cl_int,
+>;
+pub type clGetCommandBufferInfoKHR_fn = clGetCommandBufferInfoKHR_t;
+
 pub type clCommandSVMMemcpyKHR_t = Option<
     unsafe extern "C" fn(
         command_buffer: cl_command_buffer_khr,
@@ -301,17 +312,6 @@ pub type clCommandSVMMemFillKHR_t = Option<
     ) -> cl_int,
 >;
 pub type clCommandSVMMemFillKHR_fn = clCommandSVMMemFillKHR_t;
-
-pub type clGetCommandBufferInfoKHR_t = Option<
-    unsafe extern "C" fn(
-        command_buffer: cl_command_buffer_khr,
-        param_name: cl_command_buffer_info_khr,
-        param_value_size: size_t,
-        param_value: *mut c_void,
-        param_value_size_ret: *mut size_t,
-    ) -> cl_int,
->;
-pub type clGetCommandBufferInfoKHR_fn = clGetCommandBufferInfoKHR_t;
 
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
@@ -466,6 +466,14 @@ extern "system" {
         mutable_handle: *mut cl_mutable_command_khr,
     ) -> cl_int;
 
+    pub fn clGetCommandBufferInfoKHR(
+        command_buffer: cl_command_buffer_khr,
+        param_name: cl_command_buffer_info_khr,
+        param_value_size: size_t,
+        param_value: *mut c_void,
+        param_value_size_ret: *mut size_t,
+    ) -> cl_int;
+
     pub fn clCommandSVMMemcpyKHR(
         command_buffer: cl_command_buffer_khr,
         command_queue: cl_command_queue,
@@ -489,14 +497,6 @@ extern "system" {
         sync_point_wait_list: *const cl_sync_point_khr,
         sync_point: *mut cl_sync_point_khr,
         mutable_handle: *mut cl_mutable_command_khr,
-    ) -> cl_int;
-
-    pub fn clGetCommandBufferInfoKHR(
-        command_buffer: cl_command_buffer_khr,
-        param_name: cl_command_buffer_info_khr,
-        param_value_size: size_t,
-        param_value: *mut c_void,
-        param_value_size_ret: *mut size_t,
     ) -> cl_int;
 
 }
@@ -1297,6 +1297,13 @@ pub type cl_mem_alloc_flags_img = cl_bitfield;
 
 // To be used with cl_mem_alloc_flags_img
 pub const CL_MEM_ALLOC_RELAX_REQUIREMENTS_IMG: cl_mem_alloc_flags_img = 1 << 0;
+pub const CL_MEM_ALLOC_GPU_WRITE_COMBINE_IMG: cl_mem_alloc_flags_img = 1 << 1;
+pub const CL_MEM_ALLOC_GPU_CACHED_IMG: cl_mem_alloc_flags_img = 1 << 2;
+pub const CL_MEM_ALLOC_CPU_LOCAL_IMG: cl_mem_alloc_flags_img = 1 << 3;
+pub const CL_MEM_ALLOC_GPU_LOCAL_IMG: cl_mem_alloc_flags_img = 1 << 4;
+pub const CL_MEM_ALLOC_GPU_PRIVATE_IMG: cl_mem_alloc_flags_img = 1 << 5;
+
+pub const CL_DEVICE_MEMORY_CAPABILITIES_IMG: cl_device_info = 0x40D8;
 
 // cl_khr_subgroups extension
 pub const CL_KERNEL_MAX_SUB_GROUP_SIZE_FOR_NDRANGE_KHR: cl_kernel_sub_group_info = 0x2033;
@@ -3101,6 +3108,33 @@ extern "system" {
 
 pub const CL_UNSIGNED_INT_RAW10_EXT: cl_uint = 0x10E3;
 pub const CL_UNSIGNED_INT_RAW12_EXT: cl_uint = 0x10E4;
+
+// cl_khr_kernel_clock
+
+pub const CL_DEVICE_KERNEL_CLOCK_CAPABILITIES_KHR: cl_device_info = 0x1076;
+
+pub type cl_device_kernel_clock_capabilities_khr = cl_bitfield;
+
+pub const CL_DEVICE_KERNEL_CLOCK_SCOPE_DEVICE_KHR: cl_device_kernel_clock_capabilities_khr = 1 << 0;
+pub const CL_DEVICE_KERNEL_CLOCK_SCOPE_WORK_GROUP_KHR: cl_device_kernel_clock_capabilities_khr = 1 << 1;
+pub const CL_DEVICE_KERNEL_CLOCK_SCOPE_SUB_GROUP_KHR: cl_device_kernel_clock_capabilities_khr = 1 << 2;
+
+// cl_img_cancel_command
+
+pub const CL_CANCELLED_IMG: cl_int = -1126;
+
+pub type clCancelCommandsIMG_t = Option<
+    unsafe extern "C" fn(event_list: *const cl_event, num_events_in_list: usize) -> cl_int,
+>;
+pub type clCancelCommandsIMG_fn = clCancelCommandsIMG_t;
+
+#[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
+#[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
+#[cfg(feature = "cl_img_cancel_command")]
+#[cfg(feature = "static")]
+unsafe extern "C" {
+    pub fn clCancelCommandsIMG(event_list: *const cl_event, num_events_in_list: usize) -> cl_int;
+}
 
 #[cfg(test)]
 mod tests {

@@ -3141,7 +3141,7 @@ pub type clCancelCommandsIMG_fn = clCancelCommandsIMG_t;
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_img_cancel_command")]
 #[cfg(feature = "static")]
-unsafe extern "C" {
+extern "C" {
     pub fn clCancelCommandsIMG(event_list: *const cl_event, num_events_in_list: usize) -> cl_int;
 }
 

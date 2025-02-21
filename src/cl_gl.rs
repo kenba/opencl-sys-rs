@@ -190,7 +190,7 @@ pub type clGetSupportedGLTextureFormatsINTEL_fn = clGetSupportedGLTextureFormats
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "static")]
-extern "system" {
+unsafe extern "system" {
 
     pub fn clCreateFromGLBuffer(
         context: cl_context,
@@ -319,7 +319,7 @@ pub const CL_COMMAND_GL_FENCE_SYNC_OBJECT_KHR: cl_uint = 0x200D;
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "static")]
-extern "system" {
+unsafe extern "system" {
 
     pub fn clGetGLContextInfoKHR(
         properties: *const cl_context_properties,

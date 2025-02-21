@@ -23,7 +23,7 @@ use super::cl::{
     cl_command_queue, cl_command_type, cl_context, cl_context_info, cl_device_id, cl_event,
     cl_image_info, cl_mem, cl_mem_flags, cl_mem_info, cl_mem_object_type, cl_platform_id,
 };
-use super::cl_platform::{cl_int, cl_uint, DXGI_FORMAT};
+use super::cl_platform::{DXGI_FORMAT, cl_int, cl_uint};
 use libc::c_void;
 
 // cl_khr_d3d11_sharing
@@ -148,7 +148,7 @@ pub type clGetSupportedD3D11TextureFormatsINTEL_fn = clGetSupportedD3D11TextureF
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_khr_d3d11_sharing")]
 #[cfg(feature = "static")]
-extern "system" {
+unsafe extern "system" {
 
     pub fn clGetSupportedD3D11TextureFormatsINTEL(
         context: cl_context,

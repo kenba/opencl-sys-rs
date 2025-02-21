@@ -227,7 +227,7 @@ pub type clGetSupportedDX9MediaSurfaceFormatsINTEL_fn = clGetSupportedDX9MediaSu
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_intel_dx9_media_sharing")]
 #[cfg(feature = "static")]
-extern "system" {
+unsafe extern "system" {
 
     pub fn clGetDeviceIDsFromDX9INTEL(
         platform: cl_platform_id,
@@ -276,7 +276,7 @@ extern "system" {
     feature = "cl_intel_dx9_media_sharing"
 ))]
 #[cfg(feature = "static")]
-extern "system" {
+unsafe extern "system" {
 
     pub fn clGetSupportedDX9MediaSurfaceFormatsINTEL(
         context: cl_context,

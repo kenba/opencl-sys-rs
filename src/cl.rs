@@ -315,7 +315,7 @@ pub const CL_DEVICE_AVAILABLE: cl_device_info = 0x1027;
 pub const CL_DEVICE_COMPILER_AVAILABLE: cl_device_info = 0x1028;
 pub const CL_DEVICE_EXECUTION_CAPABILITIES: cl_device_info = 0x1029;
 pub const CL_DEVICE_QUEUE_PROPERTIES: cl_device_info = 0x102A; // deprecated
-                                                               // #ifdef CL_VERSION_2_0
+// #ifdef CL_VERSION_2_0
 pub const CL_DEVICE_QUEUE_ON_HOST_PROPERTIES: cl_device_info = 0x102A;
 // #endif
 pub const CL_DEVICE_NAME: cl_device_info = 0x102B;
@@ -918,7 +918,7 @@ pub const fn make_version(major: cl_version, minor: cl_version, patch: cl_versio
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "static")]
-extern "system" {
+unsafe extern "system" {
     // Platform API
     pub fn clGetPlatformIDs(
         num_entries: cl_uint,

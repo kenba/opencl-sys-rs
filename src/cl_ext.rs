@@ -326,7 +326,7 @@ pub type clCommandSVMMemFillKHR_fn = clCommandSVMMemFillKHR_t;
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_khr_command_buffer")]
 #[cfg(feature = "static")]
-extern "system" {
+unsafe extern "system" {
 
     pub fn clCreateCommandBufferKHR(
         num_queues: cl_uint,
@@ -562,7 +562,7 @@ pub type clRemapCommandBufferKHR_fn = clRemapCommandBufferKHR_t;
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_khr_command_buffer_multi_device")]
 #[cfg(feature = "static")]
-extern "system" {
+unsafe extern "system" {
 
     pub fn clRemapCommandBufferKHR(
         command_buffer: cl_command_buffer_khr,
@@ -673,7 +673,7 @@ pub type clGetMutableCommandInfoKHR_fn = clGetMutableCommandInfoKHR_t;
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_khr_command_buffer_mutable_dispatch")]
 #[cfg(feature = "static")]
-extern "system" {
+unsafe extern "system" {
 
     pub fn clUpdateMutableCommandsKHR(
         command_buffer: cl_command_buffer_khr,
@@ -743,7 +743,7 @@ pub type clLogMessagesToStderrAPPLE_fn = clLogMessagesToStderrAPPLE_t;
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "static")]
-extern "system" {
+unsafe extern "system" {
 
     /* Memory object destruction
      *
@@ -825,7 +825,7 @@ pub type clIcdGetPlatformIDsKHR_fn = clIcdGetPlatformIDsKHR_t;
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_khr_icd")]
 #[cfg(feature = "static")]
-extern "system" {
+unsafe extern "system" {
     pub fn clIcdGetPlatformIDsKHR(
         num_entries: cl_uint,
         platforms: *mut cl_platform_id,
@@ -855,7 +855,7 @@ pub type clCreateProgramWithILKHR_fn = clCreateProgramWithILKHR_t;
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_khr_il_program")]
 #[cfg(feature = "static")]
-extern "system" {
+unsafe extern "system" {
     pub fn clCreateProgramWithILKHR(
         context: cl_context,
         il: *const c_void,
@@ -907,7 +907,7 @@ pub type clTerminateContextKHR_fn = clTerminateContextKHR_t;
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_khr_terminate_context")]
 #[cfg(feature = "static")]
-extern "system" {
+unsafe extern "system" {
     pub fn clTerminateContextKHR(context: cl_context) -> cl_int;
 }
 
@@ -938,7 +938,7 @@ pub type clCreateCommandQueueWithPropertiesKHR_fn = clCreateCommandQueueWithProp
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_khr_create_command_queue")]
 #[cfg(feature = "static")]
-extern "system" {
+unsafe extern "system" {
     pub fn clCreateCommandQueueWithPropertiesKHR(
         context: cl_context,
         device: cl_device_id,
@@ -1027,7 +1027,7 @@ pub type clCreateSubDevicesEXT_fn = clCreateSubDevicesEXT_t;
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_ext_device_fission")]
 #[cfg(feature = "static")]
-extern "system" {
+unsafe extern "system" {
     pub fn clReleaseDeviceEXT(device: cl_device_id) -> cl_int;
 
     pub fn clRetainDeviceEXT(device: cl_device_id) -> cl_int;
@@ -1095,7 +1095,7 @@ pub type clEnqueueMigrateMemObjectEXT_fn = clEnqueueMigrateMemObjectEXT_t;
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_ext_migrate_memobject")]
 #[cfg(feature = "static")]
-extern "system" {
+unsafe extern "system" {
     pub fn clEnqueueMigrateMemObjectEXT(
         command_queue: cl_command_queue,
         num_mem_objects: cl_uint,
@@ -1143,7 +1143,7 @@ pub type clGetDeviceImageInfoQCOM_fn = clGetDeviceImageInfoQCOM_t;
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_qcom_ext_host_ptr")]
 #[cfg(feature = "static")]
-extern "system" {
+unsafe extern "system" {
     pub fn clGetDeviceImageInfoQCOM(
         device: cl_device_id,
         image_width: size_t,
@@ -1235,7 +1235,7 @@ pub type clEnqueueReleaseGrallocObjectsIMG_fn = clEnqueueReleaseGrallocObjectsIM
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_img_use_gralloc_ptr")]
 #[cfg(feature = "static")]
-extern "system" {
+unsafe extern "system" {
     pub fn clEnqueueAcquireGrallocObjectsIMG(
         command_queue: cl_command_queue,
         num_objects: cl_uint,
@@ -1284,7 +1284,7 @@ pub type clEnqueueGenerateMipmapIMG_fn = clEnqueueGenerateMipmapIMG_t;
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_img_generate_mipmap")]
 #[cfg(feature = "static")]
-extern "system" {
+unsafe extern "system" {
     pub fn clEnqueueGenerateMipmapIMG(
         command_queue: cl_command_queue,
         src_image: cl_mem,
@@ -1337,7 +1337,7 @@ pub type clGetKernelSubGroupInfoKHR_fn = clGetKernelSubGroupInfoKHR_t;
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_khr_subgroups")]
 #[cfg(feature = "static")]
-extern "system" {
+unsafe extern "system" {
     pub fn clGetKernelSubGroupInfoKHR(
         in_kernel: cl_kernel,
         in_device: cl_device_id,
@@ -1487,7 +1487,7 @@ pub type clGetKernelSuggestedLocalWorkSizeKHR_fn = clGetKernelSuggestedLocalWork
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_khr_suggested_local_work_size")]
 #[cfg(feature = "static")]
-extern "system" {
+unsafe extern "system" {
     pub fn clGetKernelSuggestedLocalWorkSizeKHR(
         command_queue: cl_command_queue,
         kernel: cl_kernel,
@@ -1572,7 +1572,7 @@ pub type clEnqueueReleaseExternalMemObjectsKHR_fn = clEnqueueReleaseExternalMemO
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_khr_external_memory")]
 #[cfg(feature = "static")]
-extern "system" {
+unsafe extern "system" {
     pub fn clEnqueueAcquireExternalMemObjectsKHR(
         command_queue: cl_command_queue,
         num_mem_objects: cl_uint,
@@ -1647,7 +1647,7 @@ pub type clGetSemaphoreHandleForTypeKHR_fn = clGetSemaphoreHandleForTypeKHR_t;
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_khr_external_semaphore")]
 #[cfg(feature = "static")]
-extern "system" {
+unsafe extern "system" {
     pub fn clGetSemaphoreHandleForTypeKHR(
         sema_object: cl_semaphore_khr,
         device: cl_device_id,
@@ -1685,7 +1685,7 @@ pub type clReImportSemaphoreSyncFdKHR_fn = clReImportSemaphoreSyncFdKHR_t;
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_khr_external_semaphore_sync_fd")]
 #[cfg(feature = "static")]
-extern "system" {
+unsafe extern "system" {
     pub fn clReImportSemaphoreSyncFdKHR(
         sema_object: cl_semaphore_khr,
         reimport_props: *mut cl_semaphore_reimport_properties_khr,
@@ -1790,7 +1790,7 @@ pub type clRetainSemaphoreKHR_fn = clRetainSemaphoreKHR_t;
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_khr_semaphore")]
 #[cfg(feature = "static")]
-extern "system" {
+unsafe extern "system" {
     pub fn clCreateSemaphoreWithPropertiesKHR(
         context: cl_context,
         sema_props: *const cl_semaphore_properties_khr,
@@ -1895,7 +1895,7 @@ pub type clImportMemoryARM_fn = clImportMemoryARM_t;
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_arm_import_memory")]
 #[cfg(feature = "static")]
-extern "system" {
+unsafe extern "system" {
     pub fn clImportMemoryARM(
         context: cl_context,
         flags: cl_mem_flags,
@@ -2045,7 +2045,7 @@ pub type clSetKernelExecInfoARM_fn = clSetKernelExecInfoARM_t;
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_arm_shared_virtual_memory")]
 #[cfg(feature = "static")]
-extern "system" {
+unsafe extern "system" {
     pub fn clSVMAllocARM(
         context: cl_context,
         flags: cl_svm_mem_flags_arm,
@@ -2360,7 +2360,7 @@ pub type clReleaseAcceleratorINTEL_fn = clReleaseAcceleratorINTEL_t;
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_intel_accelerator")]
 #[cfg(feature = "static")]
-extern "system" {
+unsafe extern "system" {
     pub fn clCreateAcceleratorINTEL(
         context: cl_context,
         accelerator_type: cl_accelerator_type_intel,
@@ -2750,7 +2750,7 @@ pub type clEnqueueMemsetINTEL_fn = clEnqueueMemsetINTEL_t;
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_intel_unified_shared_memory")]
 #[cfg(feature = "static")]
-extern "system" {
+unsafe extern "system" {
     pub fn clHostMemAllocINTEL(
         context: cl_context,
         properties: *const cl_mem_properties_intel,
@@ -2872,7 +2872,7 @@ pub type clCreateBufferWithPropertiesINTEL_fn = clCreateBufferWithPropertiesINTE
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_intel_create_buffer_with_properties")]
 #[cfg(feature = "static")]
-extern "system" {
+unsafe extern "system" {
 
     pub fn clCreateBufferWithPropertiesINTEL(
         context: cl_context,
@@ -2928,7 +2928,7 @@ pub type clEnqueueWriteHostPipeINTEL_fn = clEnqueueWriteHostPipeINTEL_t;
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_intel_program_scope_host_pipe")]
 #[cfg(feature = "static")]
-extern "system" {
+unsafe extern "system" {
 
     pub fn clEnqueueReadHostPipeINTEL(
         queue: cl_command_queue,
@@ -3046,7 +3046,7 @@ pub type clGetImageRequirementsInfoEXT_fn = clGetImageRequirementsInfoEXT_t;
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_ext_image_requirements_info")]
 #[cfg(feature = "static")]
-extern "system" {
+unsafe extern "system" {
 
     pub fn clGetImageRequirementsInfoEXT(
         context: cl_context,
@@ -3083,7 +3083,7 @@ pub type clGetICDLoaderInfoOCLICD_fn = clGetICDLoaderInfoOCLICD_t;
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_loader_info")]
 #[cfg(feature = "static")]
-extern "system" {
+unsafe extern "system" {
     pub fn clGetICDLoaderInfoOCLICD(
         param_name: cl_icdl_info,
         param_value_size: size_t,
@@ -3104,7 +3104,7 @@ pub type clSetContentSizeBufferPoCL_fn = clSetContentSizeBufferPoCL_t;
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_pocl_content_size")]
 #[cfg(feature = "static")]
-extern "system" {
+unsafe extern "system" {
     pub fn clSetContentSizeBufferPoCL(buffer: cl_mem, content_size_buffer: cl_mem) -> cl_int;
 }
 
@@ -3141,7 +3141,7 @@ pub type clCancelCommandsIMG_fn = clCancelCommandsIMG_t;
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_img_cancel_command")]
 #[cfg(feature = "static")]
-extern "C" {
+unsafe extern "C" {
     pub fn clCancelCommandsIMG(event_list: *const cl_event, num_events_in_list: usize) -> cl_int;
 }
 

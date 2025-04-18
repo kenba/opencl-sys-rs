@@ -3163,10 +3163,7 @@ mod tests {
             concat!("Alignment of ", stringify!(cl_mem_ext_host_ptr))
         );
         assert_eq!(
-            unsafe {
-                &(*(::core::ptr::null::<cl_mem_ext_host_ptr>())).allocation_type as *const _
-                    as usize
-            },
+            ::core::mem::offset_of!(cl_mem_ext_host_ptr, allocation_type),
             0usize,
             concat!(
                 "Offset of field: ",
@@ -3176,10 +3173,7 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe {
-                &(*(::core::ptr::null::<cl_mem_ext_host_ptr>())).host_cache_policy as *const _
-                    as usize
-            },
+            ::core::mem::offset_of!(cl_mem_ext_host_ptr, host_cache_policy),
             4usize,
             concat!(
                 "Offset of field: ",
@@ -3204,9 +3198,7 @@ mod tests {
             concat!("Alignment of ", stringify!(cl_mem_ion_host_ptr))
         );
         assert_eq!(
-            unsafe {
-                &(*(::core::ptr::null::<cl_mem_ion_host_ptr>())).ext_host_ptr as *const _ as usize
-            },
+            ::core::mem::offset_of!(cl_mem_ion_host_ptr, ext_host_ptr),
             0usize,
             concat!(
                 "Offset of field: ",
@@ -3216,9 +3208,7 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe {
-                &(*(::core::ptr::null::<cl_mem_ion_host_ptr>())).ion_filedesc as *const _ as usize
-            },
+            ::core::mem::offset_of!(cl_mem_ion_host_ptr, ion_filedesc),
             8usize,
             concat!(
                 "Offset of field: ",
@@ -3228,9 +3218,7 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe {
-                &(*(::core::ptr::null::<cl_mem_ion_host_ptr>())).ion_hostptr as *const _ as usize
-            },
+            ::core::mem::offset_of!(cl_mem_ion_host_ptr, ion_hostptr),
             16usize,
             concat!(
                 "Offset of field: ",
@@ -3261,10 +3249,7 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe {
-                &(*(::core::ptr::null::<cl_mem_android_native_buffer_host_ptr>())).ext_host_ptr
-                    as *const _ as usize
-            },
+            ::core::mem::offset_of!(cl_mem_android_native_buffer_host_ptr, ext_host_ptr),
             0usize,
             concat!(
                 "Offset of field: ",
@@ -3274,10 +3259,7 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe {
-                &(*(::core::ptr::null::<cl_mem_android_native_buffer_host_ptr>())).anb_ptr
-                    as *const _ as usize
-            },
+            ::core::mem::offset_of!(cl_mem_android_native_buffer_host_ptr, anb_ptr),
             8usize,
             concat!(
                 "Offset of field: ",
@@ -3302,9 +3284,7 @@ mod tests {
             concat!("Alignment of ", stringify!(cl_name_version_khr))
         );
         assert_eq!(
-            unsafe {
-                &(*(::core::ptr::null::<cl_name_version_khr>())).version as *const _ as usize
-            },
+            ::core::mem::offset_of!(cl_name_version_khr, version),
             0usize,
             concat!(
                 "Offset of field: ",
@@ -3314,7 +3294,7 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe { &(*(::core::ptr::null::<cl_name_version_khr>())).name as *const _ as usize },
+            ::core::mem::offset_of!(cl_name_version_khr, name),
             4usize,
             concat!(
                 "Offset of field: ",
@@ -3339,10 +3319,7 @@ mod tests {
             concat!("Alignment of ", stringify!(cl_device_pci_bus_info_khr))
         );
         assert_eq!(
-            unsafe {
-                &(*(::core::ptr::null::<cl_device_pci_bus_info_khr>())).pci_domain as *const _
-                    as usize
-            },
+            ::core::mem::offset_of!(cl_device_pci_bus_info_khr, pci_domain),
             0usize,
             concat!(
                 "Offset of field: ",
@@ -3352,9 +3329,7 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe {
-                &(*(::core::ptr::null::<cl_device_pci_bus_info_khr>())).pci_bus as *const _ as usize
-            },
+            ::core::mem::offset_of!(cl_device_pci_bus_info_khr, pci_bus),
             4usize,
             concat!(
                 "Offset of field: ",
@@ -3364,10 +3339,7 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe {
-                &(*(::core::ptr::null::<cl_device_pci_bus_info_khr>())).pci_device as *const _
-                    as usize
-            },
+            ::core::mem::offset_of!(cl_device_pci_bus_info_khr, pci_device),
             8usize,
             concat!(
                 "Offset of field: ",
@@ -3377,10 +3349,7 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe {
-                &(*(::core::ptr::null::<cl_device_pci_bus_info_khr>())).pci_function as *const _
-                    as usize
-            },
+            ::core::mem::offset_of!(cl_device_pci_bus_info_khr, pci_function),
             12usize,
             concat!(
                 "Offset of field: ",
@@ -3411,11 +3380,10 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe {
-                &(*(::core::ptr::null::<cl_device_integer_dot_product_acceleration_properties_khr>(
-                )))
-                .signed_accelerated as *const _ as usize
-            },
+            ::core::mem::offset_of!(
+                cl_device_integer_dot_product_acceleration_properties_khr,
+                signed_accelerated
+            ),
             0usize,
             concat!(
                 "Offset of field: ",
@@ -3425,11 +3393,10 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe {
-                &(*(::core::ptr::null::<cl_device_integer_dot_product_acceleration_properties_khr>(
-                )))
-                .unsigned_accelerated as *const _ as usize
-            },
+            ::core::mem::offset_of!(
+                cl_device_integer_dot_product_acceleration_properties_khr,
+                unsigned_accelerated
+            ),
             4usize,
             concat!(
                 "Offset of field: ",
@@ -3439,11 +3406,10 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe {
-                &(*(::core::ptr::null::<cl_device_integer_dot_product_acceleration_properties_khr>(
-                )))
-                .mixed_signedness_accelerated as *const _ as usize
-            },
+            ::core::mem::offset_of!(
+                cl_device_integer_dot_product_acceleration_properties_khr,
+                mixed_signedness_accelerated
+            ),
             8usize,
             concat!(
                 "Offset of field: ",
@@ -3453,11 +3419,10 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe {
-                &(*(::core::ptr::null::<cl_device_integer_dot_product_acceleration_properties_khr>(
-                )))
-                .accumulating_saturating_signed_accelerated as *const _ as usize
-            },
+            ::core::mem::offset_of!(
+                cl_device_integer_dot_product_acceleration_properties_khr,
+                accumulating_saturating_signed_accelerated
+            ),
             12usize,
             concat!(
                 "Offset of field: ",
@@ -3467,11 +3432,10 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe {
-                &(*(::core::ptr::null::<cl_device_integer_dot_product_acceleration_properties_khr>(
-                )))
-                .accumulating_saturating_unsigned_accelerated as *const _ as usize
-            },
+            ::core::mem::offset_of!(
+                cl_device_integer_dot_product_acceleration_properties_khr,
+                accumulating_saturating_unsigned_accelerated
+            ),
             16usize,
             concat!(
                 "Offset of field: ",
@@ -3481,12 +3445,10 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe {
-                &(*(::core::ptr::null::<cl_device_integer_dot_product_acceleration_properties_khr>(
-                )))
-                .accumulating_saturating_mixed_signedness_accelerated as *const _
-                    as usize
-            },
+            ::core::mem::offset_of!(
+                cl_device_integer_dot_product_acceleration_properties_khr,
+                accumulating_saturating_mixed_signedness_accelerated
+            ),
             20usize,
             concat!(
                 "Offset of field: ",
@@ -3511,10 +3473,7 @@ mod tests {
             concat!("Alignment of ", stringify!(cl_motion_estimation_desc_intel))
         );
         assert_eq!(
-            unsafe {
-                &(*(::core::ptr::null::<cl_motion_estimation_desc_intel>())).mb_block_type
-                    as *const _ as usize
-            },
+            ::core::mem::offset_of!(cl_motion_estimation_desc_intel, mb_block_type),
             0usize,
             concat!(
                 "Offset of field: ",
@@ -3524,10 +3483,7 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe {
-                &(*(::core::ptr::null::<cl_motion_estimation_desc_intel>())).subpixel_mode
-                    as *const _ as usize
-            },
+            ::core::mem::offset_of!(cl_motion_estimation_desc_intel, subpixel_mode),
             4usize,
             concat!(
                 "Offset of field: ",
@@ -3537,10 +3493,7 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe {
-                &(*(::core::ptr::null::<cl_motion_estimation_desc_intel>())).sad_adjust_mode
-                    as *const _ as usize
-            },
+            ::core::mem::offset_of!(cl_motion_estimation_desc_intel, sad_adjust_mode),
             8usize,
             concat!(
                 "Offset of field: ",
@@ -3550,10 +3503,7 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe {
-                &(*(::core::ptr::null::<cl_motion_estimation_desc_intel>())).search_path_type
-                    as *const _ as usize
-            },
+            ::core::mem::offset_of!(cl_motion_estimation_desc_intel, search_path_type),
             12usize,
             concat!(
                 "Offset of field: ",
@@ -3581,10 +3531,7 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe {
-                &(*(::core::ptr::null::<cl_queue_family_properties_intel>())).properties as *const _
-                    as usize
-            },
+            ::core::mem::offset_of!(cl_queue_family_properties_intel, properties),
             0usize,
             concat!(
                 "Offset of field: ",
@@ -3594,10 +3541,7 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe {
-                &(*(::core::ptr::null::<cl_queue_family_properties_intel>())).capabilities
-                    as *const _ as usize
-            },
+            ::core::mem::offset_of!(cl_queue_family_properties_intel, capabilities),
             8usize,
             concat!(
                 "Offset of field: ",
@@ -3607,10 +3551,7 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe {
-                &(*(::core::ptr::null::<cl_queue_family_properties_intel>())).count as *const _
-                    as usize
-            },
+            ::core::mem::offset_of!(cl_queue_family_properties_intel, count),
             16usize,
             concat!(
                 "Offset of field: ",
@@ -3620,10 +3561,7 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe {
-                &(*(::core::ptr::null::<cl_queue_family_properties_intel>())).name as *const _
-                    as usize
-            },
+            ::core::mem::offset_of!(cl_queue_family_properties_intel, name),
             20usize,
             concat!(
                 "Offset of field: ",

@@ -1982,10 +1982,7 @@ mod tests {
             concat!("Alignment of ", stringify!(cl_image_format))
         );
         assert_eq!(
-            unsafe {
-                &(*(::core::ptr::null::<cl_image_format>())).image_channel_order as *const _
-                    as usize
-            },
+            ::core::mem::offset_of!(cl_image_format, image_channel_order),
             0usize,
             concat!(
                 "Offset of field: ",
@@ -1995,10 +1992,7 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe {
-                &(*(::core::ptr::null::<cl_image_format>())).image_channel_data_type as *const _
-                    as usize
-            },
+            ::core::mem::offset_of!(cl_image_format, image_channel_data_type),
             4usize,
             concat!(
                 "Offset of field: ",
@@ -2023,7 +2017,7 @@ mod tests {
             concat!("Alignment of ", stringify!(cl_image_desc))
         );
         assert_eq!(
-            unsafe { &(*(::core::ptr::null::<cl_image_desc>())).image_type as *const _ as usize },
+            ::core::mem::offset_of!(cl_image_desc, image_type),
             0usize,
             concat!(
                 "Offset of field: ",
@@ -2033,7 +2027,7 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe { &(*(::core::ptr::null::<cl_image_desc>())).image_width as *const _ as usize },
+            ::core::mem::offset_of!(cl_image_desc, image_width),
             8usize,
             concat!(
                 "Offset of field: ",
@@ -2043,7 +2037,7 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe { &(*(::core::ptr::null::<cl_image_desc>())).image_height as *const _ as usize },
+            ::core::mem::offset_of!(cl_image_desc, image_height),
             16usize,
             concat!(
                 "Offset of field: ",
@@ -2053,7 +2047,7 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe { &(*(::core::ptr::null::<cl_image_desc>())).image_depth as *const _ as usize },
+            ::core::mem::offset_of!(cl_image_desc, image_depth),
             24usize,
             concat!(
                 "Offset of field: ",
@@ -2063,9 +2057,7 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe {
-                &(*(::core::ptr::null::<cl_image_desc>())).image_array_size as *const _ as usize
-            },
+            ::core::mem::offset_of!(cl_image_desc, image_array_size),
             32usize,
             concat!(
                 "Offset of field: ",
@@ -2075,9 +2067,7 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe {
-                &(*(::core::ptr::null::<cl_image_desc>())).image_row_pitch as *const _ as usize
-            },
+            ::core::mem::offset_of!(cl_image_desc, image_row_pitch),
             40usize,
             concat!(
                 "Offset of field: ",
@@ -2087,9 +2077,7 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe {
-                &(*(::core::ptr::null::<cl_image_desc>())).image_slice_pitch as *const _ as usize
-            },
+            ::core::mem::offset_of!(cl_image_desc, image_slice_pitch),
             48usize,
             concat!(
                 "Offset of field: ",
@@ -2099,9 +2087,7 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe {
-                &(*(::core::ptr::null::<cl_image_desc>())).num_mip_levels as *const _ as usize
-            },
+            ::core::mem::offset_of!(cl_image_desc, num_mip_levels),
             56usize,
             concat!(
                 "Offset of field: ",
@@ -2111,7 +2097,7 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe { &(*(::core::ptr::null::<cl_image_desc>())).num_samples as *const _ as usize },
+            ::core::mem::offset_of!(cl_image_desc, num_samples),
             60usize,
             concat!(
                 "Offset of field: ",
@@ -2136,7 +2122,7 @@ mod tests {
             concat!("Alignment of ", stringify!(cl_buffer_region))
         );
         assert_eq!(
-            unsafe { &(*(::core::ptr::null::<cl_buffer_region>())).origin as *const _ as usize },
+            ::core::mem::offset_of!(cl_buffer_region, origin),
             0usize,
             concat!(
                 "Offset of field: ",
@@ -2146,7 +2132,7 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe { &(*(::core::ptr::null::<cl_buffer_region>())).size as *const _ as usize },
+            ::core::mem::offset_of!(cl_buffer_region, size),
             8usize,
             concat!(
                 "Offset of field: ",
@@ -2171,7 +2157,7 @@ mod tests {
             concat!("Alignment of ", stringify!(cl_name_version))
         );
         assert_eq!(
-            unsafe { &(*(::core::ptr::null::<cl_name_version>())).version as *const _ as usize },
+            ::core::mem::offset_of!(cl_name_version, version),
             0usize,
             concat!(
                 "Offset of field: ",
@@ -2181,7 +2167,7 @@ mod tests {
             )
         );
         assert_eq!(
-            unsafe { &(*(::core::ptr::null::<cl_name_version>())).name as *const _ as usize },
+            ::core::mem::offset_of!(cl_name_version, name),
             4usize,
             concat!(
                 "Offset of field: ",

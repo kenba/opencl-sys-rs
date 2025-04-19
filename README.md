@@ -27,7 +27,7 @@ C source files instead of [bindgen](https://rust-lang.github.io/rust-bindgen/)
 output files to ease maintenance.
 
 ```
-bindgen ../OpenCL-Headers/CL/opencl.h -o opencl.rs -- -I ../OpenCL-Headers/CL
+bindgen ../OpenCL-Headers/CL/opencl.h -o opencl.rs -- -I ../OpenCL-Headers
 ```
 
 The library is declared [no_std](https://docs.rust-embedded.org/book/intro/no-std.html).

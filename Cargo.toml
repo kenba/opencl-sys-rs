@@ -65,8 +65,10 @@ cl_khr_d3d11_sharing = []
 
 cl_loader_info = []
 cl_pocl_content_size = []
+cl_ext_buffer_device_address = []
 cl_loader_layers = []
 cl_img_cancel_command = []
+cl_qcom_perf_hint = []
 
 [dependencies]
 libc = "0.2"

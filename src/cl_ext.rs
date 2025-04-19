@@ -1,4 +1,4 @@
-// Copyright (c) 2022-2023 Via Technology Ltd.
+// Copyright (c) 2022-2025 Via Technology Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -20,8 +20,8 @@
 
 pub use super::cl::{
     cl_bitfield, cl_bool, cl_channel_type, cl_command_queue, cl_command_queue_properties,
-    cl_command_type, cl_context, cl_device_id, cl_device_info, cl_event, cl_event_info,
-    cl_image_desc, cl_image_format, cl_kernel, cl_kernel_exec_info, cl_kernel_info,
+    cl_command_type, cl_context, cl_context_info, cl_device_id, cl_device_info, cl_event,
+    cl_event_info, cl_image_desc, cl_image_format, cl_kernel, cl_kernel_exec_info, cl_kernel_info,
     cl_kernel_sub_group_info, cl_map_flags, cl_mem, cl_mem_flags, cl_mem_info,
     cl_mem_migration_flags, cl_mem_properties, cl_platform_id, cl_platform_info, cl_program,
     cl_program_info, cl_properties, cl_queue_properties, cl_sampler_properties,
@@ -821,6 +821,14 @@ pub type clIcdGetPlatformIDsKHR_t = Option<
 >;
 pub type clIcdGetPlatformIDsKHR_fn = clIcdGetPlatformIDsKHR_t;
 
+pub type clIcdGetFunctionAddressForPlatformKHR_t =
+    Option<unsafe extern "C" fn(platform: cl_platform_id, func_name: *const c_char) -> *mut c_void>;
+pub type clIcdGetFunctionAddressForPlatformKHR_fn = clIcdGetFunctionAddressForPlatformKHR_t;
+
+pub type clIcdSetPlatformDispatchDataKHR_t =
+    Option<unsafe extern "C" fn(platform: cl_platform_id, dispatch_data: *mut c_void) -> cl_int>;
+pub type clIcdSetPlatformDispatchDataKHR_fn = clIcdSetPlatformDispatchDataKHR_t;
+
 #[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_khr_icd")]
@@ -830,6 +838,16 @@ unsafe extern "system" {
         num_entries: cl_uint,
         platforms: *mut cl_platform_id,
         num_platforms: *mut cl_uint,
+    ) -> cl_int;
+
+    pub fn clIcdGetFunctionAddressForPlatformKHR(
+        platform: cl_platform_id,
+        func_name: *const c_char,
+    ) -> *mut c_void;
+
+    pub fn clIcdSetPlatformDispatchDataKHR(
+        platform: cl_platform_id,
+        dispatch_data: *mut c_void,
     ) -> cl_int;
 }
 
@@ -3125,9 +3143,42 @@ pub const CL_DEVICE_KERNEL_CLOCK_SCOPE_WORK_GROUP_KHR: cl_device_kernel_clock_ca
 pub const CL_DEVICE_KERNEL_CLOCK_SCOPE_SUB_GROUP_KHR: cl_device_kernel_clock_capabilities_khr =
     1 << 2;
 
+// cl_ext_buffer_device_address
+
+pub type cl_mem_device_address_ext = cl_ulong;
+pub type clSetKernelArgDevicePointerEXT_t = Option<
+    unsafe extern "C" fn(
+        kernel: cl_kernel,
+        arg_index: cl_uint,
+        arg_value: cl_mem_device_address_ext,
+    ) -> cl_int,
+>;
+
+pub type clSetKernelArgDevicePointerEXT_fn = clSetKernelArgDevicePointerEXT_t;
+
+#[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
+#[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
+#[cfg(feature = "cl_ext_buffer_device_address")]
+#[cfg(feature = "static")]
+unsafe extern "system" {
+    pub fn clSetKernelArgDevicePointerEXT(
+        kernel: cl_kernel,
+        arg_index: cl_uint,
+        arg_value: cl_mem_device_address_ext,
+    ) -> cl_int;
+}
+
+pub const CL_MEM_DEVICE_PRIVATE_ADDRESS_EXT: cl_mem_properties = 0x5000;
+pub const CL_MEM_DEVICE_ADDRESS_EXT: cl_mem_info = 0x5001;
+pub const CL_KERNEL_EXEC_INFO_DEVICE_PTRS_EXT: cl_kernel_exec_info = 0x5002;
+
 // cl_ext_image_unorm_int_2_101010
 
 pub const CL_UNORM_INT_2_101010_EXT: cl_channel_type = 0x10E5;
+
+// cl_ext_immutable_memory_objects
+
+pub const CL_MEM_IMMUTABLE_EXT: cl_mem_flags = 1 << 6;
 
 // cl_img_cancel_command
 
@@ -3141,8 +3192,30 @@ pub type clCancelCommandsIMG_fn = clCancelCommandsIMG_t;
 #[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
 #[cfg(feature = "cl_img_cancel_command")]
 #[cfg(feature = "static")]
-unsafe extern "C" {
+unsafe extern "system" {
     pub fn clCancelCommandsIMG(event_list: *const cl_event, num_events_in_list: usize) -> cl_int;
+}
+
+// cl_qcom_perf_hint
+
+pub type cl_perf_hint_qcom = cl_uint;
+
+pub const CL_PERF_HINT_HIGH_QCOM: cl_perf_hint_qcom = 0x40C3;
+pub const CL_PERF_HINT_NORMAL_QCOM: cl_perf_hint_qcom = 0x40C4;
+pub const CL_PERF_HINT_LOW_QCOM: cl_perf_hint_qcom = 0x40C5;
+
+pub const CL_CONTEXT_PERF_HINT_QCOM: cl_context_info = 0x40C2;
+
+pub type clSetPerfHintQCOM_t =
+    Option<unsafe extern "C" fn(context: cl_context, perf_hint: cl_perf_hint_qcom) -> cl_int>;
+pub type clSetPerfHintQCOM_fn = clSetPerfHintQCOM_t;
+
+#[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
+#[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
+#[cfg(feature = "cl_qcom_perf_hint")]
+#[cfg(feature = "static")]
+unsafe extern "system" {
+    pub fn clSetPerfHintQCOM(context: cl_context, perf_hint: cl_perf_hint_qcom) -> cl_int;
 }
 
 #[cfg(test)]

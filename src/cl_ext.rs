@@ -3176,6 +3176,15 @@ pub const CL_KERNEL_EXEC_INFO_DEVICE_PTRS_EXT: cl_kernel_exec_info = 0x5002;
 
 pub const CL_UNORM_INT_2_101010_EXT: cl_channel_type = 0x10E5;
 
+// cl_ext_image_unsigned_10x6_12x4_14x2
+
+pub const CL_UNSIGNED_INT10X6_EXT: cl_channel_type = 0x10E6;
+pub const CL_UNSIGNED_INT12X4_EXT: cl_channel_type = 0x10E7;
+pub const CL_UNSIGNED_INT14X2_EXT: cl_channel_type = 0x10E8;
+pub const CL_UNORM_INT10X6_EXT: cl_channel_type = 0x10E1;
+pub const CL_UNORM_INT12X4_EXT: cl_channel_type = 0x10E9;
+pub const CL_UNORM_INT14X2_EXT: cl_channel_type = 0x10EA;
+
 // cl_ext_immutable_memory_objects
 
 pub const CL_MEM_IMMUTABLE_EXT: cl_mem_flags = 1 << 6;

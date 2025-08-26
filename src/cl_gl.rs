@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-//! FFI bindings for [cl_gl.h](https://github.com/KhronosGroup/OpenCL-Headers/blob/main/CL/cl_gl.h)  
+//! FFI bindings for [cl_gl.h](https://github.com/KhronosGroup/OpenCL-Headers/blob/main/CL/cl_gl.h)\
 //! `OpenCL` extensions are documented in the [OpenCL-Registry](https://github.com/KhronosGroup/OpenCL-Registry)
 
 #![allow(non_camel_case_types, non_upper_case_globals)]

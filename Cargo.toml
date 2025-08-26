@@ -75,7 +75,6 @@ libc = "0.2"
 
 [lints.clippy]
 enum_glob_use = "deny"
-module_name_repetitions = "allow"
-nursery = { level = "deny", priority = -1 }
-pedantic = { level = "deny", priority = -1 }
+nursery = "deny"
+pedantic = "deny"
 unwrap_used = "deny"

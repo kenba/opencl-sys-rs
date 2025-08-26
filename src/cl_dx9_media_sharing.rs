@@ -179,7 +179,7 @@ pub type clCreateFromDX9MediaSurfaceINTEL_t = Option<
         context: cl_context,
         flags: cl_mem_flags,
         resource: IDirect3DSurface9_ptr,
-        sharedHandle: HANDLE,
+        shared_handle: HANDLE,
         plane: cl_uint,
         errcode_ret: *mut cl_int,
     ) -> cl_mem,

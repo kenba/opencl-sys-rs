@@ -3143,6 +3143,12 @@ pub const CL_DEVICE_KERNEL_CLOCK_SCOPE_WORK_GROUP_KHR: cl_device_kernel_clock_ca
 pub const CL_DEVICE_KERNEL_CLOCK_SCOPE_SUB_GROUP_KHR: cl_device_kernel_clock_capabilities_khr =
     1 << 2;
 
+// cl_khr_spirv_queries
+
+pub const CL_DEVICE_SPIRV_EXTENDED_INSTRUCTION_SETS_KHR: cl_device_info = 0x12B9;
+pub const CL_DEVICE_SPIRV_EXTENSIONS_KHR: cl_device_info = 0x12BA;
+pub const CL_DEVICE_SPIRV_CAPABILITIES_KHR: cl_device_info = 0x12BB;
+
 // cl_ext_buffer_device_address
 
 pub type cl_mem_device_address_ext = cl_ulong;

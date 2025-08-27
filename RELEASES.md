@@ -1,5 +1,18 @@
 # Releases
 
+## Version 0.6.1 (2025-08-27)
+
+### Changes
+
+* Up to date with OpenCL-Headers tag v2025.06.13.
+
+### New Features
+
+* Add `cl_ext_image_unsigned_10x6_12x4_14x2` definitions.
+* Add `cl_khr_spirv_queries` definitions.
+* Add `cl_khr_external_semaphore_dx_fence` definitions.
+
+
 ## Version 0.6.0 (2025-04-19)
 
 ### Changes
@@ -9,7 +22,7 @@
 ### New Features
 
 * Add `cl_qcom_perf_hint` definitions.
-* Add `cl_ext_buffer_device_address ` definitions.
+* Add `cl_ext_buffer_device_address` definitions.
 
 ## Version 0.5.0 (2025-02-19)
 

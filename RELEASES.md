@@ -1,5 +1,16 @@
 # Releases
 
+## Version 0.6.2 (2026-10-10)
+
+### Changes
+
+* Up to date with OpenCL-Headers tag v2025.07.22.
+
+### New Features
+
+* Add unions for ICD2 tags in cl_icd_dispatch.
+* Add `cl_khr_external_memory_android_hardware_buffer` definitions.
+
 ## Version 0.6.1 (2025-08-27)
 
 ### Changes

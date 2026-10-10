@@ -1,4 +1,4 @@
-// Copyright (c) 2022-2023 Via Technology Ltd.
+// Copyright (c) 2022-2026 Via Technology Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -121,7 +121,7 @@ pub struct cl_image_format {
 
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct cl_image_desc {
+pub struct _cl_image_desc {
     pub image_type: cl_mem_object_type,
     pub image_width: size_t,
     pub image_height: size_t,
@@ -131,9 +131,36 @@ pub struct cl_image_desc {
     pub image_slice_pitch: size_t,
     pub num_mip_levels: cl_uint,
     pub num_samples: cl_uint,
-    // AKA `mem_object` in CL_VERSION_2_0+
     pub buffer: cl_mem,
 }
+
+#[allow(clippy::pub_underscore_fields)]
+#[repr(C)]
+#[derive(Copy, Clone)]
+pub struct _cl_image_desc_anon_union {
+    pub image_type: cl_mem_object_type,
+    pub image_width: usize,
+    pub image_height: usize,
+    pub image_depth: usize,
+    pub image_array_size: usize,
+    pub image_row_pitch: usize,
+    pub image_slice_pitch: usize,
+    pub num_mip_levels: cl_uint,
+    pub num_samples: cl_uint,
+    pub __bindgen_anon_1: _cl_image_desc__bindgen_ty_1,
+}
+
+#[repr(C)]
+#[derive(Copy, Clone)]
+pub union _cl_image_desc__bindgen_ty_1 {
+    pub buffer: cl_mem,
+    pub mem_object: cl_mem,
+}
+
+#[cfg(feature = "CL_HAS_ANON_STRUCT")]
+pub type cl_image_desc = _cl_image_desc_anon_union;
+#[cfg(not(feature = "CL_HAS_ANON_STRUCT"))]
+pub type cl_image_desc = _cl_image_desc;
 
 // #endif
 

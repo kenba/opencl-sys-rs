@@ -24,6 +24,8 @@ CL_VERSION_2_1 = []
 CL_VERSION_2_2 = []
 CL_VERSION_3_0 = []
 
+CL_HAS_ANON_STRUCT = []
+
 cl_apple_setmemobjectdestructor = []
 cl_apple_contextloggingfunctions = []
 

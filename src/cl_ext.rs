@@ -1,4 +1,4 @@
-// Copyright (c) 2022-2025 Via Technology Ltd.
+// Copyright (c) 2022-2026 Via Technology Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -3130,6 +3130,10 @@ unsafe extern "system" {
 
 pub const CL_UNSIGNED_INT_RAW10_EXT: cl_uint = 0x10E3;
 pub const CL_UNSIGNED_INT_RAW12_EXT: cl_uint = 0x10E4;
+
+// cl_khr_external_memory_android_hardware_buffer (beta)
+
+pub const CL_EXTERNAL_MEMORY_HANDLE_ANDROID_HARDWARE_BUFFER_KHR: cl_uint = 0x2070;
 
 // cl_khr_kernel_clock
 

@@ -25,6 +25,8 @@ CL_VERSION_2_2 = []
 CL_VERSION_3_0 = []
 
 CL_HAS_ANON_STRUCT = []
+CL_ENABLE_BETA_EXTENSIONS = []
+CL_NO_NON_ICD_DISPATCH_EXTENSION_PROTOTYPES = []
 
 cl_apple_setmemobjectdestructor = []
 cl_apple_contextloggingfunctions = []

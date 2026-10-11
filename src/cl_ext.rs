@@ -54,14 +54,9 @@ pub const CL_COMMAND_BUFFER_CAPABILITY_KERNEL_PRINTF_KHR:
     cl_device_command_buffer_capabilities_khr = 1 << 0;
 pub const CL_COMMAND_BUFFER_CAPABILITY_DEVICE_SIDE_ENQUEUE_KHR:
     cl_device_command_buffer_capabilities_khr = 1 << 1;
-pub const CL_COMMAND_BUFFER_CAPABILITY_SIMULTANEOUS_USE_KHR:
-    cl_device_command_buffer_capabilities_khr = 1 << 2;
 
 // cl_command_buffer_properties_khr
 pub const CL_COMMAND_BUFFER_FLAGS_KHR: cl_command_buffer_properties_khr = 0x1293;
-
-// cl_command_buffer_flags_khr
-pub const CL_COMMAND_BUFFER_SIMULTANEOUS_USE_KHR: cl_command_buffer_flags_khr = 1 << 0;
 
 // Error codes
 pub const CL_INVALID_COMMAND_BUFFER_KHR: cl_int = -1138;
@@ -79,7 +74,6 @@ pub const CL_COMMAND_BUFFER_CONTEXT_KHR: cl_command_buffer_info_khr = 0x1299;
 // cl_command_buffer_state_khr
 pub const CL_COMMAND_BUFFER_STATE_RECORDING_KHR: cl_command_buffer_state_khr = 0;
 pub const CL_COMMAND_BUFFER_STATE_EXECUTABLE_KHR: cl_command_buffer_state_khr = 1;
-pub const CL_COMMAND_BUFFER_STATE_PENDING_KHR: cl_command_buffer_state_khr = 2;
 
 // cl_command_type
 pub const CL_COMMAND_COMMAND_BUFFER_KHR: cl_command_type = 0x12A8;
@@ -615,7 +609,13 @@ pub struct cl_mutable_dispatch_config_khr {
     pub local_work_size: *const size_t,
 }
 
+// cl_command_buffer_flags_khr - bitfield
+pub const CL_COMMAND_BUFFER_SIMULTANEOUS_USE_KHR: cl_command_buffer_flags_khr = 1 << 0;
 pub const CL_COMMAND_BUFFER_MUTABLE_KHR: cl_command_buffer_flags_khr = 1 << 1;
+
+// cl_device_command_buffer_capabilities_khr - bitfield
+pub const CL_COMMAND_BUFFER_CAPABILITY_SIMULTANEOUS_USE_KHR:
+    cl_device_command_buffer_capabilities_khr = 1 << 2;
 
 pub const CL_INVALID_MUTABLE_COMMAND_KHR: cl_int = -1141;
 
@@ -690,6 +690,8 @@ unsafe extern "system" {
         param_value_size_ret: *mut size_t,
     ) -> cl_int;
 }
+
+pub const CL_COMMAND_BUFFER_STATE_FINALIZED_KHR: cl_command_buffer_state_khr = 2;
 
 // cl_khr_fp64 extension
 
@@ -3153,6 +3155,197 @@ pub const CL_DEVICE_SPIRV_EXTENDED_INSTRUCTION_SETS_KHR: cl_device_info = 0x12B9
 pub const CL_DEVICE_SPIRV_EXTENSIONS_KHR: cl_device_info = 0x12BA;
 pub const CL_DEVICE_SPIRV_CAPABILITIES_KHR: cl_device_info = 0x12BB;
 
+// cl_khr_unified_svm (beta)
+
+pub const CL_PLATFORM_SVM_TYPE_CAPABILITIES_KHR: cl_platform_info = 0x0909;
+
+pub const CL_DEVICE_SVM_TYPE_CAPABILITIES_KHR: cl_device_info = 0x1077;
+
+pub type cl_svm_capabilities_khr = cl_bitfield;
+
+pub const CL_SVM_CAPABILITY_SINGLE_ADDRESS_SPACE_KHR: cl_svm_capabilities_khr = 1 << 0;
+pub const CL_SVM_CAPABILITY_SYSTEM_ALLOCATED_KHR: cl_svm_capabilities_khr = 1 << 1;
+pub const CL_SVM_CAPABILITY_DEVICE_OWNED_KHR: cl_svm_capabilities_khr = 1 << 2;
+pub const CL_SVM_CAPABILITY_DEVICE_UNASSOCIATED_KHR: cl_svm_capabilities_khr = 1 << 3;
+pub const CL_SVM_CAPABILITY_CONTEXT_ACCESS_KHR: cl_svm_capabilities_khr = 1 << 4;
+pub const CL_SVM_CAPABILITY_HOST_OWNED_KHR: cl_svm_capabilities_khr = 1 << 5;
+pub const CL_SVM_CAPABILITY_HOST_READ_KHR: cl_svm_capabilities_khr = 1 << 6;
+pub const CL_SVM_CAPABILITY_HOST_WRITE_KHR: cl_svm_capabilities_khr = 1 << 7;
+pub const CL_SVM_CAPABILITY_HOST_MAP_KHR: cl_svm_capabilities_khr = 1 << 8;
+pub const CL_SVM_CAPABILITY_DEVICE_READ_KHR: cl_svm_capabilities_khr = 1 << 9;
+pub const CL_SVM_CAPABILITY_DEVICE_WRITE_KHR: cl_svm_capabilities_khr = 1 << 10;
+pub const CL_SVM_CAPABILITY_DEVICE_ATOMIC_ACCESS_KHR: cl_svm_capabilities_khr = 1 << 11;
+pub const CL_SVM_CAPABILITY_CONCURRENT_ACCESS_KHR: cl_svm_capabilities_khr = 1 << 12;
+pub const CL_SVM_CAPABILITY_CONCURRENT_ATOMIC_ACCESS_KHR: cl_svm_capabilities_khr = 1 << 13;
+pub const CL_SVM_CAPABILITY_INDIRECT_ACCESS_KHR: cl_svm_capabilities_khr = 1 << 14;
+
+pub type cl_svm_alloc_properties_khr = cl_properties;
+pub type cl_svm_alloc_access_flags_khr = cl_bitfield;
+pub type cl_svm_free_properties_khr = cl_properties;
+pub type cl_svm_free_flags_khr = cl_bitfield;
+pub type cl_svm_pointer_info_khr = cl_uint;
+
+pub const CL_SVM_ALLOC_ASSOCIATED_DEVICE_HANDLE_KHR: cl_svm_alloc_properties_khr = 0x2078;
+pub const CL_SVM_ALLOC_ACCESS_FLAGS_KHR: cl_svm_alloc_properties_khr = 0x2079;
+pub const CL_SVM_ALLOC_ALIGNMENT_KHR: cl_svm_alloc_properties_khr = 0x207A;
+
+pub const CL_SVM_ALLOC_ACCESS_HOST_NOREAD_KHR: cl_svm_alloc_access_flags_khr = 1 << 0;
+pub const CL_SVM_ALLOC_ACCESS_HOST_NOWRITE_KHR: cl_svm_alloc_access_flags_khr = 1 << 1;
+pub const CL_SVM_ALLOC_ACCESS_DEVICE_NOREAD_KHR: cl_svm_alloc_access_flags_khr = 1 << 8;
+pub const CL_SVM_ALLOC_ACCESS_DEVICE_NOWRITE_KHR: cl_svm_alloc_access_flags_khr = 1 << 9;
+
+pub const CL_SVM_INFO_TYPE_INDEX_KHR: cl_svm_pointer_info_khr = 0x2088;
+pub const CL_SVM_INFO_CAPABILITIES_KHR: cl_svm_pointer_info_khr = 0x2089;
+pub const CL_SVM_INFO_PROPERTIES_KHR: cl_svm_pointer_info_khr = 0x208A;
+pub const CL_SVM_INFO_ACCESS_FLAGS_KHR: cl_svm_pointer_info_khr = 0x208B;
+pub const CL_SVM_INFO_BASE_PTR_KHR: cl_svm_pointer_info_khr = 0x419B;
+pub const CL_SVM_INFO_SIZE_KHR: cl_svm_pointer_info_khr = 0x419C;
+pub const CL_SVM_INFO_ASSOCIATED_DEVICE_HANDLE_KHR: cl_svm_pointer_info_khr = 0x419D;
+
+pub const CL_KERNEL_EXEC_INFO_SVM_INDIRECT_ACCESS_KHR: cl_kernel_exec_info = 0x11BB;
+
+// SVM type convenience macros
+pub const CL_SVM_TYPE_MACRO_COARSE_GRAIN_BUFFER_KHR: cl_svm_capabilities_khr =
+    CL_SVM_CAPABILITY_SINGLE_ADDRESS_SPACE_KHR
+        | CL_SVM_CAPABILITY_DEVICE_UNASSOCIATED_KHR
+        | CL_SVM_CAPABILITY_CONTEXT_ACCESS_KHR
+        | CL_SVM_CAPABILITY_HOST_MAP_KHR
+        | CL_SVM_CAPABILITY_DEVICE_READ_KHR
+        | CL_SVM_CAPABILITY_DEVICE_WRITE_KHR
+        | CL_SVM_CAPABILITY_DEVICE_ATOMIC_ACCESS_KHR;
+pub const CL_SVM_TYPE_MACRO_FINE_GRAIN_BUFFER_KHR: cl_svm_capabilities_khr =
+    CL_SVM_CAPABILITY_SINGLE_ADDRESS_SPACE_KHR
+        | CL_SVM_CAPABILITY_DEVICE_UNASSOCIATED_KHR
+        | CL_SVM_CAPABILITY_CONTEXT_ACCESS_KHR
+        | CL_SVM_CAPABILITY_HOST_READ_KHR
+        | CL_SVM_CAPABILITY_HOST_WRITE_KHR
+        | CL_SVM_CAPABILITY_HOST_MAP_KHR
+        | CL_SVM_CAPABILITY_DEVICE_READ_KHR
+        | CL_SVM_CAPABILITY_DEVICE_WRITE_KHR
+        | CL_SVM_CAPABILITY_DEVICE_ATOMIC_ACCESS_KHR
+        | CL_SVM_CAPABILITY_CONCURRENT_ACCESS_KHR;
+pub const CL_SVM_TYPE_MACRO_DEVICE_KHR: cl_svm_capabilities_khr =
+    CL_SVM_CAPABILITY_SINGLE_ADDRESS_SPACE_KHR
+        | CL_SVM_CAPABILITY_DEVICE_OWNED_KHR
+        | CL_SVM_CAPABILITY_DEVICE_READ_KHR
+        | CL_SVM_CAPABILITY_DEVICE_WRITE_KHR
+        | CL_SVM_CAPABILITY_DEVICE_ATOMIC_ACCESS_KHR
+        | CL_SVM_CAPABILITY_INDIRECT_ACCESS_KHR;
+pub const CL_SVM_TYPE_MACRO_HOST_KHR: cl_svm_capabilities_khr =
+    CL_SVM_CAPABILITY_SINGLE_ADDRESS_SPACE_KHR
+        | CL_SVM_CAPABILITY_DEVICE_UNASSOCIATED_KHR
+        | CL_SVM_CAPABILITY_CONTEXT_ACCESS_KHR
+        | CL_SVM_CAPABILITY_HOST_OWNED_KHR
+        | CL_SVM_CAPABILITY_HOST_READ_KHR
+        | CL_SVM_CAPABILITY_HOST_WRITE_KHR
+        | CL_SVM_CAPABILITY_DEVICE_READ_KHR
+        | CL_SVM_CAPABILITY_DEVICE_WRITE_KHR
+        | CL_SVM_CAPABILITY_INDIRECT_ACCESS_KHR;
+pub const CL_SVM_TYPE_MACRO_SINGLE_DEVICE_SHARED_KHR: cl_svm_capabilities_khr =
+    CL_SVM_CAPABILITY_SINGLE_ADDRESS_SPACE_KHR
+        | CL_SVM_CAPABILITY_HOST_READ_KHR
+        | CL_SVM_CAPABILITY_HOST_WRITE_KHR
+        | CL_SVM_CAPABILITY_DEVICE_READ_KHR
+        | CL_SVM_CAPABILITY_DEVICE_WRITE_KHR
+        | CL_SVM_CAPABILITY_INDIRECT_ACCESS_KHR;
+pub const CL_SVM_TYPE_MACRO_SYSTEM_KHR: cl_svm_capabilities_khr =
+    CL_SVM_CAPABILITY_SINGLE_ADDRESS_SPACE_KHR
+        | CL_SVM_CAPABILITY_SYSTEM_ALLOCATED_KHR
+        | CL_SVM_CAPABILITY_DEVICE_UNASSOCIATED_KHR
+        | CL_SVM_CAPABILITY_CONTEXT_ACCESS_KHR
+        | CL_SVM_CAPABILITY_HOST_READ_KHR
+        | CL_SVM_CAPABILITY_HOST_WRITE_KHR
+        | CL_SVM_CAPABILITY_HOST_MAP_KHR
+        | CL_SVM_CAPABILITY_DEVICE_READ_KHR
+        | CL_SVM_CAPABILITY_DEVICE_WRITE_KHR
+        | CL_SVM_CAPABILITY_DEVICE_ATOMIC_ACCESS_KHR
+        | CL_SVM_CAPABILITY_CONCURRENT_ACCESS_KHR
+        | CL_SVM_CAPABILITY_CONCURRENT_ATOMIC_ACCESS_KHR
+        | CL_SVM_CAPABILITY_INDIRECT_ACCESS_KHR;
+
+pub type clSVMAllocWithPropertiesKHR_t = Option<
+    unsafe extern "C" fn(
+        context: cl_context,
+        properties: *const cl_svm_alloc_properties_khr,
+        svm_type_index: cl_uint,
+        size: usize,
+        errcode_ret: *mut cl_int,
+    ) -> *mut c_void,
+>;
+pub type clSVMAllocWithPropertiesKHR_fn = clSVMAllocWithPropertiesKHR_t;
+
+pub type clSVMFreeWithPropertiesKHR_t = Option<
+    unsafe extern "C" fn(
+        context: cl_context,
+        properties: *const cl_svm_free_properties_khr,
+        flags: cl_svm_free_flags_khr,
+        ptr: *mut c_void,
+    ) -> cl_int,
+>;
+pub type clSVMFreeWithPropertiesKHR_fn = clSVMFreeWithPropertiesKHR_t;
+
+pub type clGetSVMPointerInfoKHR_t = Option<
+    unsafe extern "C" fn(
+        context: cl_context,
+        device: cl_device_id,
+        ptr: *const c_void,
+        param_name: cl_svm_pointer_info_khr,
+        param_value_size: usize,
+        param_value: *mut c_void,
+        param_value_size_ret: *mut usize,
+    ) -> cl_int,
+>;
+pub type clGetSVMPointerInfoKHR_fn = clGetSVMPointerInfoKHR_t;
+pub type clGetSVMSuggestedTypeIndexKHR_t = Option<
+    unsafe extern "C" fn(
+        context: cl_context,
+        required_capabilities: cl_svm_capabilities_khr,
+        desired_capabilities: cl_svm_capabilities_khr,
+        properties: *const cl_svm_alloc_properties_khr,
+        size: usize,
+        suggested_svm_type_index: *mut cl_uint,
+    ) -> cl_int,
+>;
+pub type clGetSVMSuggestedTypeIndexKHR_fn = clGetSVMSuggestedTypeIndexKHR_t;
+
+#[cfg(feature = "CL_ENABLE_BETA_EXTENSIONS")]
+#[cfg(not(feature = "CL_NO_NON_ICD_DISPATCH_EXTENSION_PROTOTYPES"))]
+unsafe extern "C" {
+    pub fn clSVMAllocWithPropertiesKHR(
+        context: cl_context,
+        properties: *const cl_svm_alloc_properties_khr,
+        svm_type_index: cl_uint,
+        size: usize,
+        errcode_ret: *mut cl_int,
+    ) -> *mut c_void;
+
+    pub fn clSVMFreeWithPropertiesKHR(
+        context: cl_context,
+        properties: *const cl_svm_free_properties_khr,
+        flags: cl_svm_free_flags_khr,
+        ptr: *mut c_void,
+    ) -> cl_int;
+
+    pub fn clGetSVMPointerInfoKHR(
+        context: cl_context,
+        device: cl_device_id,
+        ptr: *const c_void,
+        param_name: cl_svm_pointer_info_khr,
+        param_value_size: usize,
+        param_value: *mut c_void,
+        param_value_size_ret: *mut usize,
+    ) -> cl_int;
+
+    pub fn clGetSVMSuggestedTypeIndexKHR(
+        context: cl_context,
+        required_capabilities: cl_svm_capabilities_khr,
+        desired_capabilities: cl_svm_capabilities_khr,
+        properties: *const cl_svm_alloc_properties_khr,
+        size: usize,
+        suggested_svm_type_index: *mut cl_uint,
+    ) -> cl_int;
+}
+
 // cl_ext_buffer_device_address
 
 pub type cl_mem_device_address_ext = cl_ulong;
@@ -3214,6 +3407,31 @@ pub type clCancelCommandsIMG_fn = clCancelCommandsIMG_t;
 unsafe extern "system" {
     pub fn clCancelCommandsIMG(event_list: *const cl_event, num_events_in_list: usize) -> cl_int;
 }
+
+// cl_img_safety_mechanisms
+
+pub const CL_CONTEXT_SAFETY_PROPERTIES_IMG: cl_uint = 0x40D9;
+
+pub type cl_context_safety_properties_img = cl_bitfield;
+
+pub const CL_CONTEXT_WORKGROUP_PROTECTION_IMG: cl_context_safety_properties_img = 1 << 0;
+pub const CL_CONTEXT_ENHANCED_EVENT_EXECUTION_STATUS_IMG: cl_context_safety_properties_img = 1 << 1;
+
+pub const CL_DEVICE_WORKGROUP_PROTECTION_SVM_CAPABILITIES_IMG: cl_device_info = 0x40DA;
+pub const CL_DEVICE_WORKGROUP_PROTECTION_DEVICE_ENQUEUE_CAPABILITIES_IMG: cl_device_info = 0x40DB;
+pub const CL_DEVICE_SAFETY_MEM_SIZE_IMG: cl_device_info = 0x40DC;
+
+pub const CL_ECC_RECOVERED_IMG: u32 = 0x40DD;
+pub const CL_PAGE_FAULT_IMG: i32 = -1127;
+pub const CL_SAFETY_FAULT_IMG: i32 = -1128;
+pub const CL_GENERAL_FAULT_IMG: i32 = -1129;
+pub const CL_ECC_UNRECOVERED_IMG: i32 = -1130;
+
+// cl_img_unified_svm_external_memory_dma_buf (beta)
+
+pub const CL_SVM_ALLOC_EXTERNAL_MEMORY_DMA_BUF_VIRTUAL_ADDRESS_IMG: cl_svm_alloc_properties_khr =
+    0x4220;
+pub const CL_SVM_ALLOC_EXTERNAL_MEMORY_DMA_BUF_IMG: cl_svm_alloc_properties_khr = 0x4221;
 
 // cl_qcom_perf_hint
 

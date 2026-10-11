@@ -3437,6 +3437,20 @@ pub const CL_SVM_ALLOC_EXTERNAL_MEMORY_DMA_BUF_VIRTUAL_ADDRESS_IMG: cl_svm_alloc
     0x4220;
 pub const CL_SVM_ALLOC_EXTERNAL_MEMORY_DMA_BUF_IMG: cl_svm_alloc_properties_khr = 0x4221;
 
+// cl_intel_kernel_allocations_info
+
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct _cl_kernel_allocation_info_intel {
+    pub base: *mut c_void,
+    pub size: usize,
+    pub type_: cl_unified_shared_memory_type_intel,
+    pub arg_index: cl_int,
+}
+
+// cl_kernel_workgroup_info
+pub const CL_KERNEL_ALLOCATIONS_INFO_INTEL: u32 = 0x425A;
+
 // cl_qcom_perf_hint
 
 pub type cl_perf_hint_qcom = cl_uint;

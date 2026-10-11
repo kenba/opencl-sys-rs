@@ -853,6 +853,10 @@ unsafe extern "system" {
     ) -> cl_int;
 }
 
+// cl_khr_icd_unloadable
+
+pub const CL_PLATFORM_UNLOADABLE_KHR: cl_platform_info = 0x0921;
+
 // cl_khr_il_program extension
 
 /// New property to clGetDeviceInfo for retrieving supported intermediate languages.

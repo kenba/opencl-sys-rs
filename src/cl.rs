@@ -157,9 +157,9 @@ pub union _cl_image_desc__bindgen_ty_1 {
     pub mem_object: cl_mem,
 }
 
-#[cfg(feature = "CL_HAS_ANON_STRUCT")]
+#[cfg(feature = "CL_HAS_ANON_UNION")]
 pub type cl_image_desc = _cl_image_desc_anon_union;
-#[cfg(not(feature = "CL_HAS_ANON_STRUCT"))]
+#[cfg(not(feature = "CL_HAS_ANON_UNION"))]
 pub type cl_image_desc = _cl_image_desc;
 
 // #endif

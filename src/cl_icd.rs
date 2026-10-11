@@ -32,9 +32,9 @@ use libc::intptr_t;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct _cl_icd_dispatch {
-    #[cfg(not(feature = "CL_HAS_ANON_STRUCT"))]
+    #[cfg(not(feature = "CL_HAS_ANON_UNION"))]
     pub clGetPlatformIDs: clGetPlatformIDs_t,
-    #[cfg(feature = "CL_HAS_ANON_STRUCT")]
+    #[cfg(feature = "CL_HAS_ANON_UNION")]
     pub clGetPlatformIDs_icd2_tag: intptr_t,
     pub clGetPlatformInfo: clGetPlatformInfo_t,
     pub clGetDeviceIDs: clGetDeviceIDs_t,
@@ -66,9 +66,9 @@ pub struct _cl_icd_dispatch {
     pub clRetainProgram: clRetainProgram_t,
     pub clReleaseProgram: clReleaseProgram_t,
     pub clBuildProgram: clBuildProgram_t,
-    #[cfg(not(feature = "CL_HAS_ANON_STRUCT"))]
+    #[cfg(not(feature = "CL_HAS_ANON_UNION"))]
     pub clUnloadCompiler: clUnloadCompiler_t,
-    #[cfg(feature = "CL_HAS_ANON_STRUCT")]
+    #[cfg(feature = "CL_HAS_ANON_UNION")]
     pub clUnloadCompiler_icd2_tag: intptr_t,
     pub clGetProgramInfo: clGetProgramInfo_t,
     pub clGetProgramBuildInfo: clGetProgramBuildInfo_t,

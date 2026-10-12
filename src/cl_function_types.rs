@@ -1187,3 +1187,16 @@ pub type clCreateImageWithProperties_t = Option<
     ) -> cl_mem,
 >;
 pub type clCreateImageWithProperties_fn = clCreateImageWithProperties_t;
+
+// CL_VERSION_3_1
+pub type clGetKernelSuggestedLocalWorkSize_t = Option<
+    unsafe extern "C" fn(
+        command_queue: cl_command_queue,
+        kernel: cl_kernel,
+        work_dim: cl_uint,
+        global_work_offset: *const usize,
+        global_work_size: *const usize,
+        suggested_local_work_size: *mut usize,
+    ) -> cl_int,
+>;
+pub type clGetKernelSuggestedLocalWorkSize_fn = clGetKernelSuggestedLocalWorkSize_t;

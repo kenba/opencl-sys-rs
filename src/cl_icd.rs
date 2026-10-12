@@ -212,5 +212,11 @@ pub struct _cl_icd_dispatch {
     pub clCreateBufferWithProperties: clCreateBufferWithProperties_t,
     pub clCreateImageWithProperties: clCreateImageWithProperties_t,
     pub clSetContextDestructorCallback: clSetContextDestructorCallback_t,
+
+    // OpenCL 3.1
+    #[cfg(feature = "CL_VERSION_3_1")]
+    pub clGetKernelSuggestedLocalWorkSize: clGetKernelSuggestedLocalWorkSize_t,
+    #[cfg(not(feature = "CL_VERSION_3_1"))]
+    pub clGetKernelSuggestedLocalWorkSize: intptr_t,
 }
 pub type cl_icd_dispatch = _cl_icd_dispatch;

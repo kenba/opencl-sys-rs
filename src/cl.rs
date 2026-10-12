@@ -109,6 +109,9 @@ pub type cl_khronos_vendor_id = cl_uint;
 pub type cl_mem_properties = cl_properties;
 pub type cl_version = cl_uint;
 // #endif
+// #ifdef CL_VERSION_3_1
+pub type cl_device_integer_dot_product_capabilities = cl_bitfield;
+// #endif
 
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -184,6 +187,21 @@ pub struct cl_name_version {
     pub name: [cl_uchar; CL_NAME_VERSION_MAX_NAME_SIZE],
 }
 
+// #endif
+
+// #ifdef CL_VERSION_3_1
+#[repr(C)]
+#[derive(Debug, Copy, Clone)]
+pub struct _cl_device_integer_dot_product_acceleration_properties {
+    pub signed_accelerated: cl_bool,
+    pub unsigned_accelerated: cl_bool,
+    pub mixed_signedness_accelerated: cl_bool,
+    pub accumulating_saturating_signed_accelerated: cl_bool,
+    pub accumulating_saturating_unsigned_accelerated: cl_bool,
+    pub accumulating_saturating_mixed_signedness_accelerated: cl_bool,
+}
+pub type cl_device_integer_dot_product_acceleration_properties =
+    _cl_device_integer_dot_product_acceleration_properties;
 // #endif
 
 /******************************************************************************/
@@ -304,7 +322,10 @@ pub const CL_DEVICE_VENDOR_ID: cl_device_info = 0x1001;
 pub const CL_DEVICE_MAX_COMPUTE_UNITS: cl_device_info = 0x1002;
 pub const CL_DEVICE_MAX_WORK_ITEM_DIMENSIONS: cl_device_info = 0x1003;
 pub const CL_DEVICE_MAX_WORK_GROUP_SIZE: cl_device_info = 0x1004;
-pub const CL_DEVICE_MAX_WORK_ITEM_SIZES: cl_device_info = 0x1005;
+pub const CL_DEVICE_MAX_WORK_ITEM_SIZES: cl_device_info = 0x1005; // deprecated
+// #ifdef CL_VERSION_3_1
+pub const CL_DEVICE_MAX_WORK_GROUP_SIZES: cl_device_info = 0x1005;
+// #endif
 pub const CL_DEVICE_PREFERRED_VECTOR_WIDTH_CHAR: cl_device_info = 0x1006;
 pub const CL_DEVICE_PREFERRED_VECTOR_WIDTH_SHORT: cl_device_info = 0x1007;
 pub const CL_DEVICE_PREFERRED_VECTOR_WIDTH_INT: cl_device_info = 0x1008;
@@ -358,7 +379,7 @@ pub const CL_DEVICE_PLATFORM: cl_device_info = 0x1031;
 // 0x1033 reserved for CL_DEVICE_HALF_FP_CONFIG which is already defined in "cl_ext.h"
 // #ifdef CL_VERSION_1_1
 pub const CL_DEVICE_PREFERRED_VECTOR_WIDTH_HALF: cl_device_info = 0x1034;
-pub const CL_DEVICE_HOST_UNIFIED_MEMORY: cl_device_info = 0x1035; // deprecated
+pub const CL_DEVICE_HOST_UNIFIED_MEMORY: cl_device_info = 0x1035;
 pub const CL_DEVICE_NATIVE_VECTOR_WIDTH_CHAR: cl_device_info = 0x1036;
 pub const CL_DEVICE_NATIVE_VECTOR_WIDTH_SHORT: cl_device_info = 0x1037;
 pub const CL_DEVICE_NATIVE_VECTOR_WIDTH_INT: cl_device_info = 0x1038;
@@ -418,11 +439,28 @@ pub const CL_DEVICE_OPENCL_C_ALL_VERSIONS: cl_device_info = 0x1066;
 pub const CL_DEVICE_PREFERRED_WORK_GROUP_SIZE_MULTIPLE: cl_device_info = 0x1067;
 pub const CL_DEVICE_WORK_GROUP_COLLECTIVE_FUNCTIONS_SUPPORT: cl_device_info = 0x1068;
 pub const CL_DEVICE_GENERIC_ADDRESS_SPACE_SUPPORT: cl_device_info = 0x1069;
-// 0x106A to 0x106E - Reserved for KHR extension, cl_khr_device_uuid
+// #endif
+// #ifdef CL_VERSION_3_1
+pub const CL_DEVICE_UUID: cl_device_info = 0x106A;
+pub const CL_DRIVER_UUID: cl_device_info = 0x106B;
+pub const CL_DEVICE_LUID_VALID: cl_device_info = 0x106C;
+pub const CL_DEVICE_LUID: cl_device_info = 0x106D;
+pub const CL_DEVICE_NODE_MASK: cl_device_info = 0x106E;
+// #endif
+// #ifdef CL_VERSION_3_0
 pub const CL_DEVICE_OPENCL_C_FEATURES: cl_device_info = 0x106F;
 pub const CL_DEVICE_DEVICE_ENQUEUE_CAPABILITIES: cl_device_info = 0x1070;
 pub const CL_DEVICE_PIPE_SUPPORT: cl_device_info = 0x1071;
 pub const CL_DEVICE_LATEST_CONFORMANCE_VERSION_PASSED: cl_device_info = 0x1072;
+// #endif
+// #ifdef CL_VERSION_3_1
+pub const CL_DEVICE_INTEGER_DOT_PRODUCT_CAPABILITIES: cl_device_info = 0x1073;
+pub const CL_DEVICE_INTEGER_DOT_PRODUCT_ACCELERATION_PROPERTIES_8BIT: cl_device_info = 0x1074;
+pub const CL_DEVICE_INTEGER_DOT_PRODUCT_ACCELERATION_PROPERTIES_4x8BIT_PACKED: cl_device_info =
+    0x1075;
+pub const CL_DEVICE_SPIRV_EXTENDED_INSTRUCTION_SETS: cl_device_info = 0x12B9;
+pub const CL_DEVICE_SPIRV_EXTENSIONS: cl_device_info = 0x12BA;
+pub const CL_DEVICE_SPIRV_CAPABILITIES: cl_device_info = 0x12BB;
 // #endif
 
 // cl_device_fp_config - bitfield:
@@ -939,6 +977,18 @@ pub const fn make_version(major: cl_version, minor: cl_version, patch: cl_versio
         | ((minor & CL_VERSION_MINOR_MASK) << CL_VERSION_PATCH_BITS)
         | (patch & CL_VERSION_PATCH_MASK)
 }
+
+// #endif
+
+// #ifdef CL_VERSION_3_1
+
+// Size Constants
+pub const CL_UUID_SIZE: u32 = 16;
+pub const CL_LUID_SIZE: u32 = 8;
+
+// cl_device_integer_dot_product_capabilities - bitfield
+pub const CL_DEVICE_INTEGER_DOT_PRODUCT_INPUT_4x8BIT_PACKED: cl_bitfield = 1 << 0;
+pub const CL_DEVICE_INTEGER_DOT_PRODUCT_INPUT_4x8BIT: cl_bitfield = 1 << 1;
 
 // #endif
 
@@ -1807,6 +1857,16 @@ unsafe extern "system" {
         num_events_in_wait_list: cl_uint,
         event_wait_list: *const cl_event,
         event: *mut cl_event,
+    ) -> cl_int;
+
+    #[cfg(feature = "CL_VERSION_3_1")]
+    pub fn clGetKernelSuggestedLocalWorkSize(
+        command_queue: cl_command_queue,
+        kernel: cl_kernel,
+        work_dim: cl_uint,
+        global_work_offset: *const usize,
+        global_work_size: *const usize,
+        suggested_local_work_size: *mut usize,
     ) -> cl_int;
 
     #[cfg(feature = "CL_VERSION_1_2")]

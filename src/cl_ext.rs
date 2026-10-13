@@ -3448,7 +3448,7 @@ pub struct _cl_kernel_allocation_info_intel {
     pub arg_index: cl_int,
 }
 
-// cl_kernel_workgroup_info
+// cl_kernel_work_group_info
 pub const CL_KERNEL_ALLOCATIONS_INFO_INTEL: u32 = 0x425A;
 
 // cl_qcom_perf_hint

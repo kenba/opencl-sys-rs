@@ -1438,7 +1438,7 @@ unsafe extern "system" {
     #[cfg(feature = "CL_VERSION_1_2")]
     pub fn clGetKernelArgInfo(
         kernel: cl_kernel,
-        arg_indx: cl_uint,
+        arg_index: cl_uint,
         param_name: cl_kernel_arg_info,
         param_value_size: size_t,
         param_value: *mut c_void,

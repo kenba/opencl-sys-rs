@@ -23,7 +23,6 @@ use super::cl_platform::{cl_int, cl_uint};
 use libc::{c_void, intptr_t};
 
 // Command type for events created with clEnqueueAcquireEGLObjectsKHR
-pub const CL_COMMAND_EGL_FENCE_SYNC_OBJECT_KHR: cl_command_type = 0x202F;
 pub const CL_COMMAND_ACQUIRE_EGL_OBJECTS_KHR: cl_command_type = 0x202D;
 pub const CL_COMMAND_RELEASE_EGL_OBJECTS_KHR: cl_command_type = 0x202E;
 
@@ -78,6 +77,8 @@ pub type clEnqueueReleaseEGLObjectsKHR_t = Option<
     ) -> cl_int,
 >;
 pub type clEnqueueReleaseEGLObjectsKHR_fn = clEnqueueReleaseEGLObjectsKHR_t;
+
+pub const CL_COMMAND_EGL_FENCE_SYNC_OBJECT_KHR: cl_command_type = 0x202F;
 
 pub type clCreateEventFromEGLSyncKHR_t = Option<
     unsafe extern "C" fn(

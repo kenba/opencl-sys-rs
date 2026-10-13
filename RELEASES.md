@@ -1,5 +1,19 @@
 # Releases
 
+## Version 0.6.3 (2026-10-13)
+
+### Changes
+
+* Up to date with OpenCL-Headers tag v2026.05.29.
+
+### New Features
+
+* Add headers for OpenCL 3.1.
+* Add `cl_intel_kernel_allocations`_info.
+* OpenCL ICD Loader Deinitialization Support.
+* Change feature for anonymous union support.
+* Add `cl_img_safety_mechanisms` and `cl_img_unified_svm_external_memory_dma_buf` extension headers.
+
 ## Version 0.6.2 (2026-10-10)
 
 ### Changes

@@ -1,5 +1,15 @@
 # Releases
 
+## Version 0.6.4 (2026-10-14)
+
+### Changes
+
+* Incorporate latest OpenCL-Headers changes.
+
+### Bug fixes
+
+* Fix `arg_index` name in `clGetKernelArgInfo`.
+
 ## Version 0.6.3 (2026-10-13)
 
 ### Changes

@@ -2,7 +2,7 @@
 [![docs.io](https://docs.rs/opencl-sys/badge.svg)](https://docs.rs/opencl-sys/)
 [![OpenCL 3.0](https://img.shields.io/badge/OpenCL-3.0-blue.svg)](https://www.khronos.org/registry/OpenCL/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Rust](https://github.com/kenba/opencl-sys-rs/workflows/Rust/badge.svg)](https://github.com/kenba/opencl-sys-rs/actions)
+[![Rust CI](https://github.com/kenba/opencl-sys-rs/actions/workflows/rust.yml/badge.svg)](https://github.com/kenba/opencl-sys-rs/actions/workflows/rust.yml)
 
 OpenCL C FFI bindings for the Rust programming language.
 

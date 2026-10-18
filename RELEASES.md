@@ -1,5 +1,11 @@
 # Releases
 
+## Version 0.6.5 (2026-10-18)
+
+### Changes
+
+* Make cl_khr_unified_svm function calls consistent with other functions.
+
 ## Version 0.6.4 (2026-10-14)
 
 ### Changes

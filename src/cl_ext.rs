@@ -3312,9 +3312,13 @@ pub type clGetSVMSuggestedTypeIndexKHR_t = Option<
 >;
 pub type clGetSVMSuggestedTypeIndexKHR_fn = clGetSVMSuggestedTypeIndexKHR_t;
 
+#[cfg_attr(not(target_os = "macos"), link(name = "OpenCL"))]
+#[cfg_attr(target_os = "macos", link(name = "OpenCL", kind = "framework"))]
+#[cfg(feature = "CL_VERSION_2_0")]
 #[cfg(feature = "CL_ENABLE_BETA_EXTENSIONS")]
 #[cfg(not(feature = "CL_NO_NON_ICD_DISPATCH_EXTENSION_PROTOTYPES"))]
-unsafe extern "C" {
+#[cfg(feature = "static")]
+unsafe extern "system" {
     pub fn clSVMAllocWithPropertiesKHR(
         context: cl_context,
         properties: *const cl_svm_alloc_properties_khr,

@@ -4,7 +4,6 @@ version = "0.6.5"
 authors = ["Ken Barker <ken.barker@via-technology.aero>"]
 description = "OpenCL C FFI bindings for the Rust programming language."
 documentation = "https://docs.rs/opencl-sys/"
-homepage = "https://github.com/kenba/opencl-sys-rs"
 repository = "https://github.com/kenba/opencl-sys-rs"
 readme = "README.md"
 keywords = ["opencl", "gpu", "gpgpu", "ffi", "api"]
